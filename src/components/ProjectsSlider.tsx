@@ -140,7 +140,7 @@ export function ProjectsSlider({
               onClick={() => onSelectProperty(activeProp)}
               className="flex-1 sm:flex-initial px-6 py-3 rounded-full bg-[#141517] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#9c8052] transition-colors duration-300 shadow-md flex items-center justify-center gap-2"
             >
-              <span>VIEW SPECIFICATIONS</span>
+              <span>FEATURES</span>
               <Maximize2 className="w-3.5 h-3.5" />
             </button>
 

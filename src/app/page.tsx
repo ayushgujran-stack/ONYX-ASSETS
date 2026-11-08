@@ -1,69 +1,116 @@
-import Image from "next/image";
+"use client";
+
+import React, { useState } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { Navbar } from "@/components/Navbar";
+import { Hero } from "@/components/Hero";
+import { AboutSection } from "@/components/AboutSection";
+import { ProjectsSlider } from "@/components/ProjectsSlider";
+import { BeliefsSection } from "@/components/BeliefsSection";
+import { AmenitiesSection } from "@/components/AmenitiesSection";
+import { FaqSection } from "@/components/FaqSection";
+import { CtaSection } from "@/components/CtaSection";
+import { Footer } from "@/components/Footer";
+import { ProjectModal } from "@/components/ProjectModal";
+import { Property } from "@/data/properties";
 
 export default function Home() {
+  const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
+
+  const handleOpenBookVisit = () => {
+    const el = document.getElementById("cta");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleExploreResidences = () => {
+    const el = document.getElementById("projects");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <SmoothScroll>
+      <main className="min-h-screen bg-[#f6f5f0] text-[#141517]">
+        {/* Floating Glass Header */}
+        <Navbar onOpenBookVisit={handleOpenBookVisit} />
+
+        {/* Hero — parallax bg + shader grain + masked letter reveal */}
+        <Hero onExplore={handleExploreResidences} onBookVisit={handleOpenBookVisit} />
+
+        {/* About — spring physics parallax image + stat counters */}
+        <AboutSection />
+
+        {/* Curated Masterpieces — 7 expanding architectural cards */}
+        <ProjectsSlider
+          onSelectProperty={(prop) => setSelectedProperty(prop)}
+          onOpenBookVisit={handleOpenBookVisit}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+
+        {/* Multi-Page Portal: Invitation to Dedicated Estates Archive */}
+        <section className="py-20 bg-[#ede8df] border-y border-black/8 relative overflow-hidden">
+          <div className="max-w-[1720px] mx-auto px-6 md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="space-y-3 max-w-2xl"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              <span className="text-xs font-mono tracking-[0.25em] text-[#9c8052] uppercase block">
+                (THE EXTENDED COLLECTION)
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#141517] font-light tracking-tight">
+                Explore All 16 Estates & Private Villas
+              </h2>
+              <p className="text-sm text-[#5e6573] font-light leading-relaxed">
+                Discover our full archival portfolio: upcoming landmark high-rises in Kunjibettu, riverfront residences at Mission Compound, and exclusive private coastal villas 2 through 12.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+              <Link
+                href="/estates"
+                className="group px-8 py-4 rounded-full bg-[#141517] text-white font-mono text-xs uppercase tracking-widest hover:bg-[#9c8052] transition-colors duration-300 shadow-lg flex items-center gap-3 shrink-0"
+              >
+                <span>VIEW ALL 16 ESTATES</span>
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* 5 Architectural Beliefs */}
+        <BeliefsSection />
+
+        {/* Curated Amenities (Wellness / Art / Nature) */}
+        <AmenitiesSection />
+
+        {/* FAQ Accordion */}
+        <FaqSection />
+
+        {/* Fullscreen CTA & Lead Capture */}
+        <CtaSection />
+
+        {/* Editorial Footer */}
+        <Footer onOpenBookVisit={handleOpenBookVisit} />
+
+        {/* Property Detail Modal */}
+        <ProjectModal
+          property={selectedProperty}
+          onClose={() => setSelectedProperty(null)}
+          onBookVisit={() => {
+            setSelectedProperty(null);
+            handleOpenBookVisit();
+          }}
+        />
       </main>
-    </div>
+    </SmoothScroll>
   );
 }

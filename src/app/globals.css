@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-serif: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
+  --bg-sand: #f6f5f0;
+  --bg-card: #ffffff;
+  --text-primary: #141517;
+  --text-muted: #5e6573;
+  --border-light: rgba(20, 21, 23, 0.08);
+  --accent-gold: #9c8052;
+  --accent-gold-dark: #7a633c;
+  --onyx-purple: #4e2e84;
+  --onyx-purple-light: #6b3fa0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Suppress default OS cursor completely on desktop pointer devices so only custom gold cursor displays */
+@media (pointer: fine) {
+  *, *::before, *::after, html, body, a, button, input, select, textarea, [role="button"], label {
+    cursor: none !important;
   }
 }
 
+.custom-cursor-active,
+.custom-cursor-active *,
+.custom-cursor-active *::before,
+.custom-cursor-active *::after {
+  cursor: none !important;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-sand);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Fluid responsive sizing matching Elyse */
+@media (min-width: 1024px) {
+  .hero-title-clamp {
+    font-size: clamp(3.5rem, 8.5vw, 9.5rem);
+    line-height: 0.95;
+  }
+}
+
+/* Smooth custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f6f5f0;
+}
+::-webkit-scrollbar-thumb {
+  background: #cfcbbe;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9c8052;
+}
+
+/* Luxury Card & Glass */
+.glass-header {
+  background: rgba(246, 245, 240, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(20, 21, 23, 0.06);
+}
+
+.card-luxury {
+  background: #ffffff;
+  border: 1px solid rgba(20, 21, 23, 0.08);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.03);
+}
+
+/* Shimmer & Image reveal */
+.img-reveal-container {
+  overflow: hidden;
+  position: relative;
 }

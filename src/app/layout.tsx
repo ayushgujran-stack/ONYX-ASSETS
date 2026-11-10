@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${plusJakarta.variable} scroll-smooth`}
+      className={`${cormorant.variable} ${plusJakarta.variable}`}
     >
       <body className="bg-[#f6f5f0] text-[#141517] font-sans antialiased selection:bg-[#9c8052] selection:text-white">
         <CustomCursor />

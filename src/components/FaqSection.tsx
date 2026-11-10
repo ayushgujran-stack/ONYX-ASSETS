@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
+import { MaskedWords, ScrubbedText } from "@/components/ui/motion-primitives";
 
 const FAQS = [
   {
@@ -34,87 +35,112 @@ const FAQS = [
 
 export function FaqSection() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
+  const prefersReducedMotion = useReducedMotion();
 
   const toggle = (idx: number) => {
     setOpenIdx(openIdx === idx ? null : idx);
   };
 
   return (
-    <section id="faq" className="py-28 md:py-40 bg-[#f6f5f0] border-t border-black/5 relative overflow-hidden">
+    <section
+      id="faq"
+      className="py-28 md:py-40 bg-[#f6f5f0] border-t border-black/5 relative overflow-clip"
+    >
       <div className="max-w-[1720px] mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          {/* Left Title with masked entrance */}
-          <div className="lg:col-span-5">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Sticky Editorial Heading */}
+          <div className="lg:col-span-5 lg:sticky lg:top-32">
             <motion.span
-              initial={{ opacity: 0, x: -20 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, x: -16 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="text-xs font-mono tracking-[0.25em] text-[#9c8052] uppercase block mb-3"
             >
               (FREQUENTLY ASKED QUESTIONS)
             </motion.span>
-            <div className="overflow-hidden">
-              <motion.h2
-                initial={{ y: "70%", opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                className="text-4xl sm:text-6xl font-serif text-[#141517] font-light tracking-tight leading-tight"
-              >
-                Your Questions, <br />
-                <span className="italic font-normal text-[#9c8052]">Answered</span>
-              </motion.h2>
-            </div>
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.2 }}
+            <h2 className="text-4xl sm:text-6xl font-serif text-[#141517] font-light tracking-tight leading-tight">
+              <MaskedWords segments={[{ text: "Your Questions," }]} />
+              <br />
+              <MaskedWords
+                segments={[
+                  {
+                    text: "Answered",
+                    className: "italic font-normal text-[#9c8052]",
+                  },
+                ]}
+                delay={0.1}
+              />
+            </h2>
+            <ScrubbedText
+              segments={[
+                {
+                  text: "Everything you need to know about acquisitions, architectural floor plans, site visits, and development timelines.",
+                },
+              ]}
               className="mt-6 text-base text-[#5e6573] font-light leading-relaxed max-w-md"
-            >
-              Everything you need to know about acquisitions, architectural floor plans,
-              site visits, and development timelines.
-            </motion.p>
+            />
           </div>
 
-          {/* Right Accordion List with staggered entrance */}
+          {/* Right Minimalist Hairline Accordion */}
           <div className="lg:col-span-7 divide-y divide-black/10 border-y border-black/10">
             {FAQS.map((faq, idx) => {
               const isOpen = openIdx === idx;
               return (
                 <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 15 }}
+                  key={faq.question}
+                  initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.08 }}
-                  className="py-7 group cursor-pointer"
-                  onClick={() => toggle(idx)}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: idx * 0.06,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
                 >
-                  <div className="flex items-center justify-between gap-6">
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    onClick={() => toggle(idx)}
+                    className="w-full py-7 text-left group flex items-center justify-between gap-6 cursor-pointer"
+                  >
                     <h3 className="text-lg sm:text-xl font-serif text-[#141517] group-hover:text-[#9c8052] transition-colors">
                       {faq.question}
                     </h3>
-                    <motion.div
+                    <motion.span
                       animate={{ rotate: isOpen ? 180 : 0 }}
-                      transition={{ type: "spring", stiffness: 350, damping: 25 }}
-                      className="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center text-black group-hover:border-black shrink-0"
+                      transition={{
+                        type: "spring",
+                        stiffness: 350,
+                        damping: 25,
+                      }}
+                      className="text-[#141517] group-hover:text-[#9c8052] transition-colors shrink-0"
                     >
-                      {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-                    </motion.div>
-                  </div>
+                      {isOpen ? (
+                        <Minus className="w-4 h-4" />
+                      ) : (
+                        <Plus className="w-4 h-4" />
+                      )}
+                    </motion.span>
+                  </button>
 
                   <AnimatePresence initial={false}>
                     {isOpen && (
                       <motion.div
-                        initial={{ opacity: 0, height: 0 }}
+                        initial={
+                          prefersReducedMotion
+                            ? false
+                            : { opacity: 0, height: 0 }
+                        }
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{
+                          duration: 0.45,
+                          ease: [0.16, 1, 0.3, 1],
+                        }}
                         className="overflow-hidden"
                       >
-                        <p className="pt-4 text-sm sm:text-base text-[#5e6573] font-light leading-relaxed max-w-2xl">
+                        <p className="pb-7 text-sm sm:text-base text-[#5e6573] font-light leading-relaxed max-w-2xl">
                           {faq.answer}
                         </p>
                       </motion.div>

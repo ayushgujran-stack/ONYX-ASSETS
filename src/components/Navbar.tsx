@@ -11,53 +11,64 @@ interface NavbarProps {
 }
 
 export function Navbar({ onOpenBookVisit }: NavbarProps) {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isPastHero, setIsPastHero] = useState(false);
+  const [isDarkBackdrop, setIsDarkBackdrop] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const isDarkHero = false;
+  // Subpages (/estates, /heritage, /insights, /consultation) start with a dark banner
+  const isSubpageDarkBanner = pathname !== "/";
+  const useLightText = !isPastHero && (isSubpageDarkBanner || isDarkBackdrop);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    const updateHeaderState = () => {
+      const heroEl = document.getElementById("hero-sequence");
+      if (heroEl) {
+        const rect = heroEl.getBoundingClientRect();
+        const maxScroll = Math.max(1, heroEl.offsetHeight - window.innerHeight);
+        const heroProgress = Math.min(1, Math.max(0, -rect.top / maxScroll));
+
+        // Remain transparent across load + entire hero reveal; activate off-white
+        // header container only when scrolling into the main content section below.
+        const pastHero = rect.bottom <= 150;
+        setIsPastHero(pastHero);
+        setIsDarkBackdrop(!pastHero && heroProgress >= 0.3);
+      } else {
+        setIsPastHero(window.scrollY > 20);
+        setIsDarkBackdrop(false);
+      }
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
-  const textColorClass = isDarkHero
-    ? isScrolled
-      ? "text-[#141517]"
-      : "text-white"
-    : "text-[#141517]";
+    updateHeaderState();
+    window.addEventListener("scroll", updateHeaderState, { passive: true });
+    window.addEventListener("resize", updateHeaderState, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", updateHeaderState);
+      window.removeEventListener("resize", updateHeaderState);
+    };
+  }, [pathname]);
 
-  const subColorClass = isDarkHero
-    ? isScrolled
-      ? "text-[#5e6573]"
-      : "text-white/60"
-    : "text-[#5e6573]";
+  const textColorClass = useLightText ? "text-white" : "text-[#141517]";
 
-  const linkColorClass = isDarkHero
-    ? isScrolled
-      ? "text-[#5e6573] hover:text-[#141517]"
-      : "text-white/80 hover:text-white"
-    : "text-[#5e6573] hover:text-[#141517]";
+  const subColorClass = useLightText ? "text-white/65" : "text-[#5e6573]";
 
-  const buttonClass = isDarkHero
-    ? isScrolled
-      ? "border-black/15 bg-white text-[#141517] hover:bg-[#141517] hover:text-white"
-      : "border-white/30 bg-white/10 text-white backdrop-blur-sm hover:bg-white hover:text-[#141517]"
-    : "border-black/15 bg-white text-[#141517] hover:bg-[#141517] hover:text-white";
+  const linkColorClass = useLightText
+    ? "text-white/80 hover:text-white"
+    : "text-[#141517]/75 hover:text-[#141517]";
+
+  const buttonClass = useLightText
+    ? "border-white/30 bg-white/10 text-white backdrop-blur-sm hover:bg-white hover:text-[#141517]"
+    : isPastHero
+    ? "border-black/15 bg-white text-[#141517] hover:bg-[#141517] hover:text-white"
+    : "border-black/15 bg-white/80 backdrop-blur-sm text-[#141517] hover:bg-[#141517] hover:text-white";
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-          isScrolled
+          isPastHero
             ? "py-3.5 glass-header shadow-sm bg-[#f6f5f0]/95 backdrop-blur-md"
-            : isDarkHero
-            ? "py-6 bg-transparent"
-            : "py-6 bg-[#f6f5f0]/80 backdrop-blur-sm border-b border-black/5"
+            : "py-6 bg-transparent border-b border-transparent"
         }`}
       >
         <div className="max-w-[1720px] mx-auto px-6 md:px-12 flex items-center justify-between">

@@ -19,53 +19,51 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
     offset: ["start start", "end end"],
   });
 
-  // GSAP-like silky spring physics (scrub: 0.1 equivalent)
+  // Silky spring physics matching GSAP scrub: 0.1
   const progress = useSpring(scrollYProgress, {
     stiffness: 120,
     damping: 30,
     restDelta: 0.0005,
   });
 
-  // ─── 1. Content (Headline, Subtext, CTA) ──────────────────────
-  // Immediately moves down (+20%), shrinks slightly (0.9), and fades out by 18% scroll
-  const contentY = useTransform(progress, [0, 0.22], ["0%", "22%"]);
-  const contentScale = useTransform(progress, [0, 0.22], [1, 0.92]);
-  const contentOpacity = useTransform(progress, [0, 0.16], [1, 0]);
-  const contentPointerEvents = useTransform(progress, (v) => (v < 0.12 ? "auto" : "none"));
+  // ─── 1. Initial Content (Headline, Subtext, CTA) ──────────────
+  // On scroll: drifts down (+20%), shrinks slightly (0.92), fades out quickly
+  const contentY = useTransform(progress, [0, 0.2], ["0%", "20%"]);
+  const contentScale = useTransform(progress, [0, 0.2], [1, 0.92]);
+  const contentOpacity = useTransform(progress, [0, 0.14], [1, 0]);
+  const contentPointerEvents = useTransform(progress, (v) => (v < 0.1 ? "auto" : "none"));
 
   // ─── 2. Sky Background Photo ─────────────────────────────────
-  // Stationary golden-hour sky with subtle camera breathing
   const skyScale = useTransform(progress, [0, 1], [1.04, 1.0]);
 
-  // ─── 3. House Cutout (rising from bottom & zooming in) ────────
-  // Positioned at top: 58vh so only ~42% rises into frame initially
+  // ─── 3. House Cutout rising from the bottom ──────────────────
   const houseY = useTransform(progress, [0, 0.85], ["0%", "-36%"]);
   const houseScale = useTransform(progress, [0, 0.85], [1, 1.34]);
-  // Original unmasked house fades out when composite mask takes over
-  const houseOpacity = useTransform(progress, [0, 0.28, 0.38], [1, 1, 0]);
+  const houseOpacity = useTransform(progress, [0, 0.4, 0.75], [1, 1, 0.6]);
 
-  // ─── 4. Composite Layer (House masked by ONYX logotype) ───────
-  // Fades in around 28% scroll, showing the building texture through the ONYX letters
-  const compositeOpacity = useTransform(progress, [0.26, 0.36, 0.72, 0.85], [0, 1, 1, 0.4]);
+  // ─── 4. UNIFIED ONYX WORDMARK (Outline + Masked Image as ONE) ─
+  // Both live in the EXACT same SVG container and coordinates.
+  // Outline appears first, then photo fills RIGHT OVER and INSIDE that same outline.
+  const onyxContainerOpacity = useTransform(progress, [0.12, 0.22, 0.68, 0.82], [0, 1, 1, 0]);
+  const onyxScale = useTransform(progress, [0.12, 0.75], [0.94, 1.28]);
+  const onyxY = useTransform(progress, [0.12, 0.75], ["2%", "-10%"]);
 
-  // ─── 5. ONYX Stroked Vector Outline ──────────────────────────
-  // Outline appears at 10% scroll, draws its strokes, and fades out by 32%
-  const logoOpacity = useTransform(progress, [0.08, 0.14, 0.26, 0.32], [0, 0.9, 0.9, 0]);
-  const logoScale = useTransform(progress, [0.08, 0.32], [0.96, 1.08]);
+  // Stroke outline: fades in first, framing the letters
+  const strokeOpacity = useTransform(progress, [0.12, 0.2, 0.62, 0.75], [0, 1, 0.9, 0]);
 
-  // ─── 6. Clouds Parallax (parting laterally) ──────────────────
-  // Left cloud drifts left, right cloud drifts right
+  // Image fill: smoothly fades in RIGHT INSIDE the outline from 18% to 32% scroll!
+  const imageFillOpacity = useTransform(progress, [0.18, 0.34, 0.68, 0.82], [0, 1, 1, 0]);
+
+  // ─── 5. Clouds Parallax (parting laterally) ──────────────────
   const cloudLeftX = useTransform(progress, [0, 0.7], ["0%", "-28%"]);
   const cloudRightX = useTransform(progress, [0, 0.7], ["0%", "28%"]);
   const cloudsOpacity = useTransform(progress, [0, 0.5, 0.85], [0.95, 0.85, 0.3]);
 
-  // ─── 7. Smoke / Volumetric Mist ──────────────────────────────
-  // Starts with translateY(70%) (mostly hidden at bottom), rises to 0%
+  // ─── 6. Smoke / Volumetric Mist ──────────────────────────────
   const smokeY = useTransform(progress, [0, 0.65], ["70%", "0%"]);
   const smokeOpacity = useTransform(progress, [0, 0.2, 0.7], [0.2, 0.85, 1]);
 
-  // ─── 8. Bottom Blend Overlay ─────────────────────────────────
-  // Smoothly fades to page background color #f6f5f0 near the end of scroll
+  // ─── 7. Bottom Sand Blend Gradient ───────────────────────────
   const bottomOverlayOpacity = useTransform(progress, [0.65, 0.95], [0, 1]);
 
   return (
@@ -125,7 +123,7 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
           </motion.div>
         </motion.div>
 
-        {/* Layer 2: Main Rising House Cutout (Natural unmasked state) */}
+        {/* Layer 2: Main Rising House Cutout at the bottom */}
         <motion.div
           style={{
             y: houseY,
@@ -147,85 +145,124 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
           </div>
         </motion.div>
 
-        {/* Layer 3: ONYX Logo Outline (Drawn in vector stroke over the sky) */}
+        {/* Layer 3: UNIFIED ONYX WORDMARK (Outline + Image Mask inside ONE single SVG) */}
+        {/* The outline appears first, and over that EXACT outline the estate image fills in */}
         <motion.div
           style={{
-            opacity: logoOpacity,
-            scale: logoScale,
+            opacity: onyxContainerOpacity,
+            scale: onyxScale,
+            y: onyxY,
           }}
-          className="absolute inset-0 z-[4] flex items-center justify-center pointer-events-none will-change-transform px-6"
+          className="absolute inset-0 z-[5] flex items-center justify-center pointer-events-none will-change-transform px-6"
         >
           <svg
             viewBox="0 0 1000 400"
-            className="w-[85vw] max-w-[1100px] h-auto overflow-visible"
+            className="w-[88vw] max-w-[1150px] h-auto overflow-visible drop-shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
           >
-            {/* Elegant stroked letterforms of ONYX */}
-            <text
-              x="500"
-              y="265"
-              textAnchor="middle"
-              fill="transparent"
-              stroke="#ffffff"
-              strokeWidth="2"
-              strokeDasharray="14 0"
-              fontFamily="var(--font-sans), system-ui, sans-serif"
-              fontWeight="900"
-              fontSize="260"
-              letterSpacing="0.08em"
-              className="drop-shadow-[0_4px_24px_rgba(0,0,0,0.3)]"
+            <defs>
+              {/* The exact clip-path definition for the ONYX letterforms */}
+              <clipPath id="onyx-unified-clip">
+                <text
+                  x="500"
+                  y="265"
+                  textAnchor="middle"
+                  fontFamily="var(--font-sans), system-ui, sans-serif"
+                  fontWeight="900"
+                  fontSize="260"
+                  letterSpacing="0.08em"
+                >
+                  ONYX
+                </text>
+                <text
+                  x="500"
+                  y="325"
+                  textAnchor="middle"
+                  fontFamily="var(--font-mono), monospace"
+                  fontSize="32"
+                  letterSpacing="0.4em"
+                >
+                  RESIDENCE &bull; UDUPI
+                </text>
+              </clipPath>
+            </defs>
+
+            {/* 1. THE PICTURE FILL: Revealed directly inside the ONYX letterforms */}
+            <motion.g
+              style={{ opacity: imageFillOpacity }}
+              clipPath="url(#onyx-unified-clip)"
             >
-              ONYX
-            </text>
-            <text
-              x="500"
-              y="325"
-              textAnchor="middle"
-              fill="transparent"
-              stroke="#ffffff"
-              strokeWidth="1.2"
-              strokeOpacity="0.8"
-              fontFamily="var(--font-mono), monospace"
-              fontSize="32"
-              letterSpacing="0.4em"
-            >
-              RESIDENCE &bull; UDUPI
-            </text>
+              <image
+                href="/assets/house.png"
+                x="0"
+                y="-120"
+                width="1000"
+                height="620"
+                preserveAspectRatio="xMidYMid slice"
+              />
+              {/* Subtle warm golden ambient grade over the image */}
+              <rect
+                width="1000"
+                height="400"
+                fill="#c5a059"
+                opacity="0.12"
+                style={{ mixBlendMode: "color" }}
+              />
+            </motion.g>
+
+            {/* 2. THE VECTOR STROKE OUTLINE: Sits on the EXACT same coordinates, perfectly hugging the image */}
+            <motion.g style={{ opacity: strokeOpacity }}>
+              {/* Main ONYX letter outline */}
+              <text
+                x="500"
+                y="265"
+                textAnchor="middle"
+                fill="none"
+                stroke="#c5a059"
+                strokeWidth="2.5"
+                fontFamily="var(--font-sans), system-ui, sans-serif"
+                fontWeight="900"
+                fontSize="260"
+                letterSpacing="0.08em"
+              >
+                ONYX
+              </text>
+              {/* Secondary white hairline for crisp luxury contrast */}
+              <text
+                x="500"
+                y="265"
+                textAnchor="middle"
+                fill="none"
+                stroke="#ffffff"
+                strokeWidth="1.2"
+                strokeOpacity="0.8"
+                fontFamily="var(--font-sans), system-ui, sans-serif"
+                fontWeight="900"
+                fontSize="260"
+                letterSpacing="0.08em"
+              >
+                ONYX
+              </text>
+
+              {/* Sub-label outline */}
+              <text
+                x="500"
+                y="325"
+                textAnchor="middle"
+                fill="none"
+                stroke="#ffffff"
+                strokeWidth="1.2"
+                strokeOpacity="0.9"
+                fontFamily="var(--font-mono), monospace"
+                fontSize="32"
+                letterSpacing="0.4em"
+              >
+                RESIDENCE &bull; UDUPI
+              </text>
+            </motion.g>
           </svg>
         </motion.div>
 
-        {/* Layer 4: Composite Layer (Building revealed inside ONYX logotype) */}
-        <motion.div
-          style={{
-            y: houseY,
-            scale: houseScale,
-            opacity: compositeOpacity,
-            transformOrigin: "bottom center",
-            WebkitMaskImage:
-              'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1000 400\'><text x=\'500\' y=\'265\' text-anchor=\'middle\' fill=\'black\' font-family=\'system-ui, sans-serif\' font-weight=\'900\' font-size=\'260\' letter-spacing=\'0.08em\'>ONYX</text><text x=\'500\' y=\'325\' text-anchor=\'middle\' fill=\'black\' font-family=\'monospace\' font-size=\'32\' letter-spacing=\'0.4em\'>RESIDENCE • UDUPI</text></svg>")',
-            WebkitMaskRepeat: "no-repeat",
-            WebkitMaskPosition: "center 42%",
-            WebkitMaskSize: "85vw 34vw",
-            maskImage:
-              'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1000 400\'><text x=\'500\' y=\'265\' text-anchor=\'middle\' fill=\'black\' font-family=\'system-ui, sans-serif\' font-weight=\'900\' font-size=\'260\' letter-spacing=\'0.08em\'>ONYX</text><text x=\'500\' y=\'325\' text-anchor=\'middle\' fill=\'black\' font-family=\'monospace\' font-size=\'32\' letter-spacing=\'0.4em\'>RESIDENCE • UDUPI</text></svg>")',
-            maskRepeat: "no-repeat",
-            maskPosition: "center 42%",
-            maskSize: "85vw 34vw",
-          }}
-          className="absolute top-[56vh] md:top-[58vh] left-0 right-0 h-[120vh] md:h-[165vh] z-[5] pointer-events-none will-change-transform flex justify-center"
-        >
-          <div className="relative w-full max-w-[1720px] h-full mx-auto px-4 md:px-12">
-            <Image
-              src="/assets/house.png"
-              alt="Luxury Architectural Estate Composite"
-              fill
-              priority
-              sizes="100vw"
-              className="object-contain object-bottom brightness-110 contrast-105"
-            />
-          </div>
-        </motion.div>
-
-        {/* Layer 5: Smoke / Rising Coastal Mist */}
+        {/* Layer 4: Smoke / Rising Coastal Mist */}
         <motion.div
           style={{
             y: smokeY,
@@ -242,13 +279,13 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
           />
         </motion.div>
 
-        {/* Layer 6: Bottom Sand Blend Gradient (transitions seamlessly to page content) */}
+        {/* Layer 5: Bottom Sand Blend Gradient (transitions seamlessly to page content) */}
         <motion.div
           style={{ opacity: bottomOverlayOpacity }}
           className="absolute left-0 right-0 bottom-0 h-44 md:h-64 z-[7] pointer-events-none bg-gradient-to-b from-transparent via-[#f6f5f0]/80 to-[#f6f5f0]"
         />
 
-        {/* Layer 7: Foreground Content (Overlays everything at page load) */}
+        {/* Layer 6: Foreground Content (Overlays everything at page load) */}
         <motion.div
           style={{
             y: contentY,

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
 interface NavbarProps {
@@ -15,6 +16,7 @@ export function Navbar({ onOpenBookVisit }: NavbarProps) {
   const [isDarkBackdrop, setIsDarkBackdrop] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const prefersReducedMotion = useReducedMotion();
 
   // Subpages (/estates, /heritage, /insights, /consultation) start with a dark banner
   const isSubpageDarkBanner = pathname !== "/";
@@ -71,7 +73,12 @@ export function Navbar({ onOpenBookVisit }: NavbarProps) {
             : "py-6 bg-transparent border-b border-transparent"
         }`}
       >
-        <div className="max-w-[1720px] mx-auto px-6 md:px-12 flex items-center justify-between">
+        <motion.div
+          initial={prefersReducedMotion ? false : { opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-[1720px] mx-auto px-6 md:px-12 flex items-center justify-between"
+        >
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-full border border-black/10 bg-white p-1 flex items-center justify-center shadow-sm transition-transform group-hover:scale-105 shrink-0">
@@ -158,7 +165,7 @@ export function Navbar({ onOpenBookVisit }: NavbarProps) {
           >
             {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
-        </div>
+        </motion.div>
       </header>
 
       {/* Mobile Drawer */}

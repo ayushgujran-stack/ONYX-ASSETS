@@ -123,7 +123,7 @@ export default function EstatesPage() {
                 Call Senior Advisor (+91 91139 25641)
               </a>
               <Link
-                href="/#cta"
+                href="/consultation"
                 className="px-8 py-4 rounded-full border border-white/30 bg-white/5 text-white font-mono text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 text-center flex items-center justify-center gap-2"
               >
                 <span>Online Inquiry Form</span>

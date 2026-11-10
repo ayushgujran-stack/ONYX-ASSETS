@@ -77,10 +77,9 @@ export function Footer({ onOpenBookVisit: _onOpenBookVisit }: FooterProps) {
                 <Image
                   src="/onyx-logo.png"
                   alt="Onyx Assets"
-                  width={28}
-                  height={28}
-                  style={{ width: "auto", height: "auto" }}
-                  className="object-contain"
+                  width={655}
+                  height={619}
+                  className="w-7 h-7 object-contain"
                 />
               </div>
               <span className="font-serif text-lg tracking-widest uppercase font-medium">

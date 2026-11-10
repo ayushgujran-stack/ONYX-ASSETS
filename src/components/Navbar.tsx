@@ -85,10 +85,9 @@ export function Navbar({ onOpenBookVisit }: NavbarProps) {
               <Image
                 src="/onyx-logo.png"
                 alt="Onyx Assets"
-                width={32}
-                height={32}
-                style={{ width: "auto", height: "auto" }}
-                className="object-contain"
+                width={655}
+                height={619}
+                className="w-8 h-8 object-contain"
                 priority
               />
             </div>

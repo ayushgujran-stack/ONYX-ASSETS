@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Compass, Sparkles } from "lucide-react";
+import { ArrowUpRight, ArrowDown } from "lucide-react";
 
 interface HeroProps {
   onExplore: () => void;
@@ -13,277 +13,291 @@ interface HeroProps {
 export function Hero({ onExplore, onBookVisit }: HeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Scroll tracking across the 350vh cinematic track
+  // Track scroll across the full 450vh container
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  // Physics springs for ultra-smooth 60fps tracking
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 90,
-    damping: 26,
-    restDelta: 0.001,
+  // GSAP-like silky spring physics (scrub: 0.1 equivalent)
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    restDelta: 0.0005,
   });
 
-  // 1. Camera Zoom & Push-in on the Estate
-  const estateScale = useTransform(smoothProgress, [0, 0.7, 1], [1, 1.28, 1.42]);
-  const estateY = useTransform(smoothProgress, [0, 1], ["0%", "-6%"]);
+  // ─── 1. Content (Headline, Subtext, CTA) ──────────────────────
+  // Immediately moves down (+20%), shrinks slightly (0.9), and fades out by 18% scroll
+  const contentY = useTransform(progress, [0, 0.22], ["0%", "22%"]);
+  const contentScale = useTransform(progress, [0, 0.22], [1, 0.92]);
+  const contentOpacity = useTransform(progress, [0, 0.16], [1, 0]);
+  const contentPointerEvents = useTransform(progress, (v) => (v < 0.12 ? "auto" : "none"));
 
-  // 2. The Monumental "ONYX" Lettering Mask:
-  // Starts at scale 1 (framing the villa inside the letters), then expands past the screen
-  const maskScale = useTransform(smoothProgress, [0, 0.2, 0.65], [1, 1.15, 14]);
-  const maskOpacity = useTransform(smoothProgress, [0, 0.45, 0.65], [1, 0.9, 0]);
+  // ─── 2. Sky Background Photo ─────────────────────────────────
+  // Stationary golden-hour sky with subtle camera breathing
+  const skyScale = useTransform(progress, [0, 1], [1.04, 1.0]);
 
-  // Stroke Outline of the ONYX Wordmark:
-  const strokeScale = useTransform(smoothProgress, [0, 0.25, 0.6], [1, 1.3, 8]);
-  const strokeOpacity = useTransform(smoothProgress, [0, 0.35, 0.55], [0.75, 0.5, 0]);
+  // ─── 3. House Cutout (rising from bottom & zooming in) ────────
+  // Positioned at top: 58vh so only ~42% rises into frame initially
+  const houseY = useTransform(progress, [0, 0.85], ["0%", "-36%"]);
+  const houseScale = useTransform(progress, [0, 0.85], [1, 1.34]);
+  // Original unmasked house fades out when composite mask takes over
+  const houseOpacity = useTransform(progress, [0, 0.28, 0.38], [1, 1, 0]);
 
-  // 3. Natural Atmospheric Coastal Mist & Fog parting laterally
-  const mistLeftX = useTransform(smoothProgress, [0, 0.6], ["0%", "-40%"]);
-  const mistRightX = useTransform(smoothProgress, [0, 0.6], ["0%", "40%"]);
-  const mistOpacity = useTransform(smoothProgress, [0, 0.5, 0.85], [0.85, 0.6, 0.15]);
+  // ─── 4. Composite Layer (House masked by ONYX logotype) ───────
+  // Fades in around 28% scroll, showing the building texture through the ONYX letters
+  const compositeOpacity = useTransform(progress, [0.26, 0.36, 0.72, 0.85], [0, 1, 1, 0.4]);
 
-  // 4. Revealed Headline & Dual CTAs (emerges as camera pushes through the letters)
-  const contentOpacity = useTransform(smoothProgress, [0.45, 0.75], [0, 1]);
-  const contentY = useTransform(smoothProgress, [0.45, 0.75], [40, 0]);
-  const contentPointerEvents = useTransform(smoothProgress, (v) => (v > 0.4 ? "auto" : "none"));
+  // ─── 5. ONYX Stroked Vector Outline ──────────────────────────
+  // Outline appears at 10% scroll, draws its strokes, and fades out by 32%
+  const logoOpacity = useTransform(progress, [0.08, 0.14, 0.26, 0.32], [0, 0.9, 0.9, 0]);
+  const logoScale = useTransform(progress, [0.08, 0.32], [0.96, 1.08]);
 
-  // 5. Initial scroll prompt (visible at top, fades on scroll)
-  const initialPromptOpacity = useTransform(smoothProgress, [0, 0.18], [1, 0]);
+  // ─── 6. Clouds Parallax (parting laterally) ──────────────────
+  // Left cloud drifts left, right cloud drifts right
+  const cloudLeftX = useTransform(progress, [0, 0.7], ["0%", "-28%"]);
+  const cloudRightX = useTransform(progress, [0, 0.7], ["0%", "28%"]);
+  const cloudsOpacity = useTransform(progress, [0, 0.5, 0.85], [0.95, 0.85, 0.3]);
+
+  // ─── 7. Smoke / Volumetric Mist ──────────────────────────────
+  // Starts with translateY(70%) (mostly hidden at bottom), rises to 0%
+  const smokeY = useTransform(progress, [0, 0.65], ["70%", "0%"]);
+  const smokeOpacity = useTransform(progress, [0, 0.2, 0.7], [0.2, 0.85, 1]);
+
+  // ─── 8. Bottom Blend Overlay ─────────────────────────────────
+  // Smoothly fades to page background color #f6f5f0 near the end of scroll
+  const bottomOverlayOpacity = useTransform(progress, [0.65, 0.95], [0, 1]);
 
   return (
     <section
       ref={containerRef}
-      className="relative h-[280vh] md:h-[350vh] bg-[#0c0d0f] text-[#f6f5f0]"
+      className="relative h-[320vh] md:h-[450vh] bg-[#f6f5f0] text-[#141517] overflow-clip"
     >
-      {/* Sticky 100vh Viewport Window */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between select-none">
-        {/* Layer 1: Ambient Tropical Dusk Sky & Horizon Glow */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#0c0d0f] via-[#15171c] to-[#0c0d0f]" />
-
-        {/* Ambient warm sunrise/sunset illumination pulse */}
+      {/* ─── STICKY VIEWPORT (100vh) ───────────────────────────────── */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden select-none">
+        
+        {/* Layer 0: Full-Bleed Warm Golden-Hour Sunset Sky */}
         <motion.div
-          animate={{
-            opacity: [0.35, 0.6, 0.35],
-            scale: [1, 1.08, 1],
-          }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[55vh] rounded-full bg-radial from-[#c5a059]/25 via-[#9c8052]/10 to-transparent blur-[120px] pointer-events-none z-[1]"
-        />
-
-        {/* Layer 2: Main Estate Visual (Sampoorna Villa Dusk Elevation) */}
-        <motion.div
-          style={{
-            scale: estateScale,
-            y: estateY,
-          }}
-          className="absolute inset-[-5%] w-[110%] h-[110%] z-[2] will-change-transform"
+          style={{ scale: skyScale }}
+          className="absolute inset-0 w-full h-full z-0 will-change-transform"
         >
           <Image
-            src="https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/Sampoorna%20Big%20Villa%20Elevation.jpeg"
-            alt="Onyx Sanctuary Villa Dusk Elevation"
+            src="/assets/hero_back.jpg"
+            alt="Golden Sunset Sky"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center brightness-[0.62] contrast-[1.12] saturate-[0.95]"
+            className="object-cover object-center"
           />
-
-          {/* Tropical Coastal Foliage Silhouettes & Vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0c0d0f] via-transparent to-[#0c0d0f]/60" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0c0d0f]/75 via-transparent to-[#0c0d0f]/75" />
         </motion.div>
 
-        {/* Layer 3: The Monumental "ONYX" Lettering Mask (FindRealEstate inspired cutout) */}
+        {/* Layer 1: Left & Right Parting Clouds */}
         <motion.div
-          style={{
-            scale: maskScale,
-            opacity: maskOpacity,
-          }}
-          className="absolute inset-0 z-[4] flex items-center justify-center pointer-events-none will-change-transform"
+          style={{ opacity: cloudsOpacity }}
+          className="absolute inset-0 z-[2] pointer-events-none"
         >
-          {/* Giant Cutout Typography in bold architectural proportions */}
-          <svg
-            viewBox="0 0 1000 400"
-            className="w-[85vw] max-w-[1280px] h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
+          {/* Cloud 1 (Left) */}
+          <motion.div
+            style={{ x: cloudLeftX }}
+            className="absolute top-[18%] md:top-[22%] -left-[20vw] md:-left-[12vw] w-[70vw] md:w-[50vw] h-auto aspect-[2248/954] will-change-transform"
           >
-            <defs>
-              <mask id="onyx-cutout-mask">
-                {/* White base fills everywhere */}
-                <rect width="1000" height="400" fill="white" />
-                {/* Black letters punch holes through the mask */}
-                <text
-                  x="500"
-                  y="265"
-                  textAnchor="middle"
-                  fill="black"
-                  fontFamily="var(--font-sans), system-ui, sans-serif"
-                  fontWeight="900"
-                  fontSize="285"
-                  letterSpacing="0.04em"
-                >
-                  ONYX
-                </text>
-              </mask>
-            </defs>
-
-            {/* Dark veil that masks the scene, revealing it inside the ONYX letters */}
-            <rect
-              width="1000"
-              height="400"
-              fill="#0c0d0f"
-              mask="url(#onyx-cutout-mask)"
+            <Image
+              src="/assets/cloud.png"
+              alt="Atmospheric Cloud"
+              fill
+              sizes="(max-width: 768px) 70vw, 50vw"
+              className="object-contain"
             />
-          </svg>
+          </motion.div>
+
+          {/* Cloud 2 (Right) */}
+          <motion.div
+            style={{ x: cloudRightX }}
+            className="absolute top-[12%] md:top-[16%] -right-[20vw] md:-right-[12vw] w-[65vw] md:w-[45vw] h-auto aspect-[2248/954] will-change-transform"
+          >
+            <Image
+              src="/assets/cloud.png"
+              alt="Atmospheric Cloud"
+              fill
+              sizes="(max-width: 768px) 65vw, 45vw"
+              className="object-contain"
+            />
+          </motion.div>
         </motion.div>
 
-        {/* Layer 3b: Vector Hairline Stroke Outline of ONYX */}
+        {/* Layer 2: Main Rising House Cutout (Natural unmasked state) */}
         <motion.div
           style={{
-            scale: strokeScale,
-            opacity: strokeOpacity,
+            y: houseY,
+            scale: houseScale,
+            opacity: houseOpacity,
+            transformOrigin: "bottom center",
           }}
-          className="absolute inset-0 z-[5] flex items-center justify-center pointer-events-none will-change-transform"
+          className="absolute top-[56vh] md:top-[58vh] left-0 right-0 h-[120vh] md:h-[165vh] z-[3] pointer-events-none will-change-transform flex justify-center"
+        >
+          <div className="relative w-full max-w-[1720px] h-full mx-auto px-4 md:px-12">
+            <Image
+              src="/assets/house.png"
+              alt="Luxury Architectural Estate"
+              fill
+              priority
+              sizes="100vw"
+              className="object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.25)]"
+            />
+          </div>
+        </motion.div>
+
+        {/* Layer 3: ONYX Logo Outline (Drawn in vector stroke over the sky) */}
+        <motion.div
+          style={{
+            opacity: logoOpacity,
+            scale: logoScale,
+          }}
+          className="absolute inset-0 z-[4] flex items-center justify-center pointer-events-none will-change-transform px-6"
         >
           <svg
             viewBox="0 0 1000 400"
-            className="w-[85vw] max-w-[1280px] h-auto pointer-events-none"
+            className="w-[85vw] max-w-[1100px] h-auto overflow-visible"
           >
+            {/* Elegant stroked letterforms of ONYX */}
             <text
               x="500"
               y="265"
               textAnchor="middle"
               fill="transparent"
-              stroke="#c5a059"
-              strokeWidth="2.5"
-              strokeOpacity="0.85"
+              stroke="#ffffff"
+              strokeWidth="2"
+              strokeDasharray="14 0"
               fontFamily="var(--font-sans), system-ui, sans-serif"
               fontWeight="900"
-              fontSize="285"
-              letterSpacing="0.04em"
+              fontSize="260"
+              letterSpacing="0.08em"
+              className="drop-shadow-[0_4px_24px_rgba(0,0,0,0.3)]"
             >
               ONYX
+            </text>
+            <text
+              x="500"
+              y="325"
+              textAnchor="middle"
+              fill="transparent"
+              stroke="#ffffff"
+              strokeWidth="1.2"
+              strokeOpacity="0.8"
+              fontFamily="var(--font-mono), monospace"
+              fontSize="32"
+              letterSpacing="0.4em"
+            >
+              RESIDENCE &bull; UDUPI
             </text>
           </svg>
         </motion.div>
 
-        {/* Layer 4: Natural Coastal Mist & Parting Fog Layers */}
+        {/* Layer 4: Composite Layer (Building revealed inside ONYX logotype) */}
         <motion.div
           style={{
-            x: mistLeftX,
-            opacity: mistOpacity,
+            y: houseY,
+            scale: houseScale,
+            opacity: compositeOpacity,
+            transformOrigin: "bottom center",
+            WebkitMaskImage:
+              'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1000 400\'><text x=\'500\' y=\'265\' text-anchor=\'middle\' fill=\'black\' font-family=\'system-ui, sans-serif\' font-weight=\'900\' font-size=\'260\' letter-spacing=\'0.08em\'>ONYX</text><text x=\'500\' y=\'325\' text-anchor=\'middle\' fill=\'black\' font-family=\'monospace\' font-size=\'32\' letter-spacing=\'0.4em\'>RESIDENCE • UDUPI</text></svg>")',
+            WebkitMaskRepeat: "no-repeat",
+            WebkitMaskPosition: "center 42%",
+            WebkitMaskSize: "85vw 34vw",
+            maskImage:
+              'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1000 400\'><text x=\'500\' y=\'265\' text-anchor=\'middle\' fill=\'black\' font-family=\'system-ui, sans-serif\' font-weight=\'900\' font-size=\'260\' letter-spacing=\'0.08em\'>ONYX</text><text x=\'500\' y=\'325\' text-anchor=\'middle\' fill=\'black\' font-family=\'monospace\' font-size=\'32\' letter-spacing=\'0.4em\'>RESIDENCE • UDUPI</text></svg>")',
+            maskRepeat: "no-repeat",
+            maskPosition: "center 42%",
+            maskSize: "85vw 34vw",
           }}
-          className="absolute -bottom-10 -left-20 w-[60vw] h-[50vh] z-[6] pointer-events-none will-change-transform"
+          className="absolute top-[56vh] md:top-[58vh] left-0 right-0 h-[120vh] md:h-[165vh] z-[5] pointer-events-none will-change-transform flex justify-center"
         >
-          <Image
-            src="/assets/cloud.png"
-            alt="Atmospheric Mist"
-            fill
-            sizes="60vw"
-            className="object-contain object-left-bottom opacity-70 filter blur-[1px] mix-blend-screen"
-          />
+          <div className="relative w-full max-w-[1720px] h-full mx-auto px-4 md:px-12">
+            <Image
+              src="/assets/house.png"
+              alt="Luxury Architectural Estate Composite"
+              fill
+              priority
+              sizes="100vw"
+              className="object-contain object-bottom brightness-110 contrast-105"
+            />
+          </div>
         </motion.div>
 
+        {/* Layer 5: Smoke / Rising Coastal Mist */}
         <motion.div
           style={{
-            x: mistRightX,
-            opacity: mistOpacity,
+            y: smokeY,
+            opacity: smokeOpacity,
           }}
-          className="absolute -bottom-10 -right-20 w-[65vw] h-[55vh] z-[6] pointer-events-none will-change-transform"
+          className="absolute -bottom-8 left-0 right-0 h-[48vh] md:h-[62vh] z-[6] pointer-events-none will-change-transform"
         >
           <Image
             src="/assets/smoke.png"
-            alt="Coastal River Mist"
+            alt="Misty Fog"
             fill
-            sizes="65vw"
-            className="object-contain object-right-bottom opacity-65 filter blur-[2px] mix-blend-screen"
+            sizes="100vw"
+            className="object-cover object-top"
           />
         </motion.div>
 
-        {/* Layer 5: Initial Arrival Prompt (fades out as you scroll down) */}
+        {/* Layer 6: Bottom Sand Blend Gradient (transitions seamlessly to page content) */}
         <motion.div
-          style={{ opacity: initialPromptOpacity }}
-          className="relative z-[8] pt-28 px-6 md:px-12 flex justify-between items-start max-w-[1720px] mx-auto w-full pointer-events-none"
-        >
-          <div className="flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-[#c5a059] animate-ping" />
-            <span className="text-[11px] font-mono tracking-[0.25em] text-[#c5a059] uppercase">
-              ARCHITECTURAL INTRO • UDUPI
-            </span>
-          </div>
-          <div className="text-right">
-            <span className="text-[10px] font-mono tracking-[0.2em] text-white/50 uppercase block">
-              COASTAL LATITUDE
-            </span>
-            <span className="text-xs font-mono text-white/80">
-              13.3409° N, 74.7421° E
-            </span>
-          </div>
-        </motion.div>
+          style={{ opacity: bottomOverlayOpacity }}
+          className="absolute left-0 right-0 bottom-0 h-44 md:h-64 z-[7] pointer-events-none bg-gradient-to-b from-transparent via-[#f6f5f0]/80 to-[#f6f5f0]"
+        />
 
-        {/* Layer 6: Revealed Final Hero Content & Dual Actions */}
+        {/* Layer 7: Foreground Content (Overlays everything at page load) */}
         <motion.div
           style={{
-            opacity: contentOpacity,
             y: contentY,
+            scale: contentScale,
+            opacity: contentOpacity,
             pointerEvents: contentPointerEvents as any,
           }}
-          className="relative z-[10] max-w-[1720px] mx-auto px-6 md:px-12 w-full pb-16 flex flex-col items-center text-center will-change-transform"
+          className="relative z-[10] h-full flex flex-col items-center justify-center px-6 md:px-12 text-center pb-24 md:pb-36 will-change-transform"
         >
-          <motion.div className="max-w-4xl space-y-5">
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[#c5a059] text-[11px] font-mono tracking-[0.25em] uppercase">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>THE ARCHITECTURAL FLAGSHIP</span>
-            </div>
-
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-white font-light tracking-tight leading-[0.95]">
-              Bespoke Coastal Residences
+          <div className="max-w-6xl mx-auto space-y-5 md:space-y-6">
+            {/* Giant Display Headline */}
+            <h1 className="font-sans font-bold text-5xl sm:text-7xl md:text-8xl lg:text-[7.6rem] tracking-tight text-[#151717] leading-[0.96]">
+              Find Your Coastal Sanctuary
             </h1>
 
-            <p className="text-sm sm:text-lg text-neutral-300 font-light max-w-2xl mx-auto leading-relaxed">
-              Where architectural rigor meets coastal serenity. Crafted by Onyx
-              Assets across Udupi&apos;s most sought-after riverfront and coastal
-              ridges.
+            {/* Editorial Subtitle with 50% opacity tail */}
+            <p className="text-base sm:text-2xl md:text-3xl font-medium text-[#151717] tracking-tight max-w-3xl mx-auto leading-relaxed">
+              Architectural rigor. Coastal serenity.{" "}
+              <span className="text-[#151717]/50">A legacy in Udupi.</span>
             </p>
 
-            <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
-              <motion.button
+            {/* Black Pill CTA Action */}
+            <div className="pt-3 md:pt-4 flex items-center justify-center gap-4">
+              <button
                 onClick={onExplore}
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-                className="group px-8 py-4 rounded-full bg-[#c5a059] text-[#121316] font-mono text-xs font-semibold uppercase tracking-widest hover:bg-white transition-colors duration-300 shadow-xl flex items-center gap-3"
+                className="group px-8 md:px-10 py-4 md:py-4.5 rounded-full bg-[#151717] text-white font-mono text-xs uppercase tracking-widest hover:bg-[#9c8052] transition-colors duration-300 shadow-xl flex items-center gap-3"
               >
                 <span>EXPLORE RESIDENCES</span>
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </motion.button>
+              </button>
 
-              <motion.button
+              <button
                 onClick={onBookVisit}
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-                className="px-8 py-4 rounded-full border border-white/30 bg-black/30 hover:bg-white hover:text-[#121316] text-white font-mono text-xs uppercase tracking-widest transition-all duration-300 backdrop-blur-md shadow-lg"
+                className="hidden sm:flex px-7 py-4 rounded-full border border-black/15 bg-white/70 hover:bg-white text-[#151717] font-mono text-xs uppercase tracking-widest transition-all duration-300 shadow-sm backdrop-blur-sm"
               >
-                <span>BOOK A VISIT</span>
-              </motion.button>
+                <span>BOOK VISIT</span>
+              </button>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
 
-        {/* Bottom Scroll Telemetry / Cue Bar */}
-        <div className="relative z-[8] max-w-[1720px] mx-auto px-6 md:px-12 w-full pb-6 border-t border-white/10 flex items-center justify-between text-xs font-mono uppercase tracking-widest text-white/50">
-          <div className="flex items-center gap-6">
-            <span>(EST. 1994)</span>
-            <span className="hidden sm:inline">30+ YEARS COASTAL LEGACY</span>
-          </div>
-
-          <motion.div
-            style={{ opacity: initialPromptOpacity }}
-            className="flex items-center gap-2 text-[#c5a059]"
-          >
-            <span>SCROLL TO ENTER</span>
-            <ArrowDown className="w-3.5 h-3.5 animate-bounce" />
-          </motion.div>
-        </div>
+        {/* Bottom Scroll Cue */}
+        <motion.div
+          style={{ opacity: contentOpacity }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[10] flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.25em] text-[#151717]/60 pointer-events-none"
+        >
+          <span>SCROLL TO DISCOVER</span>
+          <ArrowDown className="w-3.5 h-3.5 animate-bounce text-[#9c8052]" />
+        </motion.div>
       </div>
     </section>
   );

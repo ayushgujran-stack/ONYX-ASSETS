@@ -15,7 +15,7 @@ export function Navbar({ onOpenBookVisit }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const isDarkHero = pathname === "/";
+  const isDarkHero = false;
 
   useEffect(() => {
     const handleScroll = () => {

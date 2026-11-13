@@ -16,9 +16,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Onyx Assets LLP | Luxury Residential Developments & Villas",
+  title: "Onyx Assets LLP | Luxury Flats, Residences & Coastal Homes",
   description:
-    "Building trust, one project at a time. Discover Opulence, Riviera, A.R. Sattva, and the Onyx Villa Collection in Udupi, Karnataka.",
+    "Building trust, one project at a time. Discover Opulence, Riviera, A.R. Sattva luxury apartments and residential enclaves in Udupi, Karnataka.",
   icons: {
     icon: "/onyx-logo.png",
   },

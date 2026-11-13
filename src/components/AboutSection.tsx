@@ -24,14 +24,14 @@ export function AboutSection() {
       label: "Years of combined engineering and architectural mastery.",
     },
     {
-      value: 11,
+      value: 70,
       unit: "",
-      label: "Exclusive private villas in our gated coastal enclave (Villas 2–12).",
+      label: "Signature apartments across Opulence (42 units) and Riviera (28 units).",
     },
     {
       value: 100,
       unit: "%",
-      label: "Structural trust and certified RERA compliance on every project.",
+      label: "Structural trust and certified RERA compliance on every flat.",
     },
   ];
 
@@ -80,7 +80,7 @@ export function AboutSection() {
             <ScrubbedText
               segments={[
                 {
-                  text: "Whether you are seeking a serene riverfront haven, a landmark urban apartment in Kunjibettu, or a private gated villa estate, Onyx Assets crafts homes built to last for generations.",
+                  text: "Whether you are seeking a landmark 3 or 4 BHK luxury apartment in Kunjibettu, a serene riverfront flat at Mission Compound, or a bespoke coastal residence, Onyx Assets crafts homes built to last for generations.",
                 },
               ]}
               className="text-sm sm:text-base text-[#5e6573] font-light leading-relaxed"

@@ -103,7 +103,7 @@ export function Footer({ onOpenBookVisit: _onOpenBookVisit }: FooterProps) {
             transition={{ duration: 0.7, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
           >
             <h4 className="font-mono uppercase tracking-[0.2em] text-[#9c8052] mb-5">
-              (Residences)
+              (Portfolio)
             </h4>
             <ul className="space-y-3 text-[#d1d5db] font-light">
               <li>
@@ -111,40 +111,40 @@ export function Footer({ onOpenBookVisit: _onOpenBookVisit }: FooterProps) {
                   href="/estates"
                   className="text-[#c5a059] font-medium hover:text-white transition-colors flex items-center gap-1.5"
                 >
-                  <span>View All 16 Estates Catalog</span>
+                  <span>All 16 Estates Catalog</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/#projects"
+                  href="/estates?status=ongoing"
                   className="hover:text-white transition-colors"
                 >
-                  Opulence by Onyx (Kunjibettu)
+                  Ongoing Developments
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/#projects"
+                  href="/estates?status=completed"
                   className="hover:text-white transition-colors"
                 >
-                  Riviera by Onyx (Mission Compound)
+                  Completed Landmarks
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/estates"
+                  href="/estates?status=pre-launch"
                   className="hover:text-white transition-colors"
                 >
-                  The Onyx Villa Enclave (Villas 2–12)
+                  Pre-Launch & Future Pipeline
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/estates"
+                  href="/gallery"
                   className="hover:text-white transition-colors"
                 >
-                  A.R. Sattva Signature Series
+                  Architectural Photo Gallery
                 </Link>
               </li>
             </ul>

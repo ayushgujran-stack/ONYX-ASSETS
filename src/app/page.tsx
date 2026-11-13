@@ -9,10 +9,12 @@ import { AboutSection } from "@/components/AboutSection";
 import { ProjectsSlider } from "@/components/ProjectsSlider";
 import { BeliefsSection } from "@/components/BeliefsSection";
 import { AmenitiesSection } from "@/components/AmenitiesSection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { FaqSection } from "@/components/FaqSection";
 import { CtaSection } from "@/components/CtaSection";
 import { Footer } from "@/components/Footer";
 import { ProjectModal } from "@/components/ProjectModal";
+import { ConversionDock } from "@/components/ConversionDock";
 import { Property } from "@/data/properties";
 
 export default function Home() {
@@ -66,6 +68,9 @@ export default function Home() {
         {/* Curated Amenities — asymmetric dual-photo scrollytelling */}
         <AmenitiesSection />
 
+        {/* Homeowner Voices & Advisory Testimonials */}
+        <TestimonialsSection />
+
         {/* Sticky FAQ Accordion */}
         <FaqSection />
 
@@ -74,6 +79,12 @@ export default function Home() {
 
         {/* Minimalist Editorial Footer */}
         <Footer onOpenBookVisit={handleOpenBookVisit} />
+
+        {/* Persistent Luxury Conversion Dock (WhatsApp + VIP Schedule Viewing) */}
+        <ConversionDock
+          watchHeroElement
+          activePropertyName={selectedProperty?.name}
+        />
 
         {/* Property Detail Modal */}
         <ProjectModal

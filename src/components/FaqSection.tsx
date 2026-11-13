@@ -44,7 +44,7 @@ export function FaqSection() {
   return (
     <section
       id="faq"
-      className="py-28 md:py-40 bg-[#f6f5f0] border-t border-black/5 relative overflow-clip"
+      className="py-28 md:py-40 bg-[#f0ede6] border-t border-black/5 relative overflow-clip"
     >
       <div className="max-w-[1720px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">

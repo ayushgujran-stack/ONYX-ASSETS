@@ -39,11 +39,11 @@ export function CtaSection() {
         className="absolute inset-0 z-0 will-change-transform"
       >
         <Image
-          src="https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/Sampoorna%20Big%20Villa%20Elevation.jpeg"
-          alt="Onyx Sanctuary"
+          src="https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/1.jpeg"
+          alt="Opulence by Onyx Flagship Architecture"
           fill
           sizes="100vw"
-          className="object-cover brightness-[0.3] contrast-[1.12]"
+          className="object-cover brightness-[0.35] contrast-[1.08]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#141517]/90 via-[#141517]/40 to-[#0e1014]" />
       </motion.div>

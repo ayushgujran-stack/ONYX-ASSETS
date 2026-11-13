@@ -48,9 +48,9 @@ const AMENITY_SETS = [
     label: "Nature",
     title: "Riverine Breezeways & Verdant Greens",
     description:
-      "Nestled along scenic riverfronts and coastal breezes, Riviera and the Onyx Villa Enclave weave native flora, shaded pergolas, and natural rainwater harvesting systems into an effortless botanical haven.",
-    bigImage: `${CDN}/Marpalli%201.jpeg`,
-    smallImage: `${CDN}/Marpalli%202.jpeg`,
+      "Nestled along scenic riverfronts and coastal breezes, Riviera and Opulence weave landscaped apartment courtyards, shaded pergolas, and deep rainwater harvesting systems into an effortless botanical haven.",
+    bigImage: `${CDN}/WhatsApp%20Image%202025-07-08%20at%2008.08.38-2.jpeg`,
+    smallImage: `${CDN}/WhatsApp%20Image%202025-07-08%20at%2008.08.38-3.jpeg`,
     highlights: [
       "Riverfront Promenade & Boardwalk",
       "60% Greenery Footprint",

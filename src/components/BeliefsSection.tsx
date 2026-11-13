@@ -41,16 +41,16 @@ const BELIEFS = [
     title: "Community & Connection",
     tagline: "Shared spaces designed for meaningful bonds",
     description:
-      "From open-air rooftop lounges to riverside walkways at Riviera, Onyx properties cultivate vibrant, safe communities where families flourish and neighborly bonds grow naturally.",
-    image: `${CDN}/Marpalli%201.jpeg`,
+      "From open-air rooftop lounges to riverside walkways at Riviera, Onyx apartment communities cultivate vibrant, safe neighborhoods where families flourish naturally.",
+    image: `${CDN}/WhatsApp%20Image%202025-07-08%20at%2008.08.38.jpeg`,
   },
   {
     id: "05",
     title: "Sustainable Elegance",
     tagline: "Built to endure for generations",
     description:
-      "Deep rainwater recharge pits, energy-efficient fixtures, solar lighting for communal passages, and responsibly sourced stone and timber ensure our footprints protect Karnataka's coastal ecosystem.",
-    image: `${CDN}/SAMPOORNA%201.jpeg`,
+      "Deep rainwater recharge pits, solar lighting for communal passages, and thermally insulated concrete facades protect Karnataka's coastal ecosystem.",
+    image: `${CDN}/3.jpeg`,
   },
 ];
 

@@ -4,6 +4,13 @@ import * as React from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+export interface CardSpecMatrix {
+  units?: string;
+  area?: string;
+  possession?: string;
+  price?: string;
+}
+
 export interface CardItem {
   id: string | number;
   title: string;
@@ -11,6 +18,7 @@ export interface CardItem {
   description: string;
   imgSrc: string;
   linkHref: string;
+  specs?: CardSpecMatrix;
 }
 
 interface ExpandingCardsProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -43,8 +51,18 @@ export const ExpandingCards = React.forwardRef<
     const scrollContainerRef = React.useRef<HTMLDivElement>(null);
     const cardRefs = React.useRef<(HTMLDivElement | null)[]>([]);
 
+    // Reset active indices safely when filtered tab changes
+    React.useEffect(() => {
+      setDesktopActiveIndex(0);
+      setMobileActiveIndex(0);
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollTo({ left: 0, behavior: "instant" });
+      }
+    }, [items.length, items[0]?.id]);
+
     // Desktop dynamic grid template columns (1fr collapsed, 5fr expanded on hover)
     const desktopColumns = React.useMemo(() => {
+      if (items.length <= 1) return "1fr";
       return items
         .map((_, index) => (index === desktopActiveIndex ? "5fr" : "1fr"))
         .join(" ");
@@ -83,7 +101,6 @@ export const ExpandingCards = React.forwardRef<
       }
     };
 
-    // Smooth scroll to card when user taps a pagination dot or arrow button
     const scrollMobileTo = (index: number) => {
       const targetCard = cardRefs.current[index];
       const container = scrollContainerRef.current;
@@ -142,9 +159,9 @@ export const ExpandingCards = React.forwardRef<
                   alt={item.title}
                   className="absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-data-[active=true]:scale-100 group-data-[active=true]:brightness-100 scale-110 brightness-[0.72] contrast-[1.05]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10 transition-opacity duration-500 group-data-[active=true]:from-black/88 group-data-[active=true]:via-black/35" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/15 transition-opacity duration-500 group-data-[active=true]:from-black/92 group-data-[active=true]:via-black/40" />
 
-                <article className="absolute inset-0 flex flex-col justify-end gap-2 p-8 select-none">
+                <article className="absolute inset-0 flex flex-col justify-end gap-2.5 p-8 select-none">
                   {/* Collapsed vertical label on desktop */}
                   <h3 className="origin-left rotate-90 text-[11px] font-mono uppercase tracking-[0.25em] text-white/80 opacity-100 transition-opacity duration-300 block group-data-[active=true]:opacity-0 whitespace-nowrap pl-4">
                     {item.title}
@@ -167,9 +184,47 @@ export const ExpandingCards = React.forwardRef<
                     {item.description}
                   </p>
 
+                  {/* Hairline 4-Metric Spec Matrix inside expanded card */}
+                  {item.specs && (
+                    <div className="grid grid-cols-4 gap-3 pt-3 mt-1 border-t border-white/15 opacity-0 transition-all duration-500 delay-200 ease-out group-data-[active=true]:opacity-100 max-w-2xl">
+                      <div>
+                        <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-white/45">
+                          Typology
+                        </div>
+                        <div className="text-xs font-light text-white mt-0.5 truncate">
+                          {item.specs.units || "Bespoke"}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-white/45">
+                          Area
+                        </div>
+                        <div className="text-xs font-light text-white mt-0.5 truncate">
+                          {item.specs.area || "Custom"}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-white/45">
+                          Handover
+                        </div>
+                        <div className="text-xs font-light text-[#dfc082] mt-0.5 truncate">
+                          {item.specs.possession || "Enquire"}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-white/45">
+                          Indicative
+                        </div>
+                        <div className="text-xs font-light text-white mt-0.5 truncate">
+                          {item.specs.price || "On Request"}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Inline modal open affordance inside expanded card */}
                   <span className="inline-flex items-center gap-1.5 pt-2 text-[11px] font-mono uppercase tracking-[0.22em] text-white opacity-0 transition-all duration-500 delay-250 ease-out group-data-[active=true]:opacity-100 group-hover:text-[#dfc082]">
-                    <span>View Residence</span>
+                    <span>Inspect Residence & Floor Specs</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </span>
                 </article>
@@ -180,7 +235,6 @@ export const ExpandingCards = React.forwardRef<
 
         {/* ─── 2. Mobile View: Fluid Swipeable Portrait Gallery with Touch Snapping ─── */}
         <div className="block md:hidden w-full space-y-4">
-          {/* Scrollable Card Track */}
           <div
             ref={scrollContainerRef}
             onScroll={handleMobileScroll}
@@ -200,11 +254,10 @@ export const ExpandingCards = React.forwardRef<
                     if (onInspectActive) onInspectActive(item, index);
                   }}
                   className={cn(
-                    "snap-center shrink-0 w-[84vw] max-w-[340px] h-[510px] rounded-2xl relative overflow-hidden bg-[#141517] shadow-xl transition-all duration-500 cursor-pointer active:scale-[0.98]",
+                    "snap-center shrink-0 w-[84vw] max-w-[340px] h-[530px] rounded-2xl relative overflow-hidden bg-[#141517] shadow-xl transition-all duration-500 cursor-pointer active:scale-[0.98]",
                     isCenter ? "ring-1 ring-[#c5a059]/50" : "opacity-90"
                   )}
                 >
-                  {/* High Quality Photograph with active zoom */}
                   <img
                     src={item.imgSrc}
                     alt={item.title}
@@ -214,8 +267,7 @@ export const ExpandingCards = React.forwardRef<
                     )}
                   />
 
-                  {/* Cinematic Dark Scrim */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/45 to-black/20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/94 via-black/48 to-black/20" />
 
                   {/* Top Tag */}
                   <div className="absolute top-5 left-5 right-5 flex items-center justify-between z-10">
@@ -241,11 +293,33 @@ export const ExpandingCards = React.forwardRef<
                       {item.title}
                     </h3>
 
-                    <p className="text-xs text-white/75 font-light leading-relaxed line-clamp-3">
+                    <p className="text-xs text-white/75 font-light leading-relaxed line-clamp-2">
                       {item.description}
                     </p>
 
-                    <div className="pt-2">
+                    {/* Compact Spec Matrix on Mobile Card */}
+                    {item.specs && (
+                      <div className="grid grid-cols-2 gap-x-4 gap-y-2 pt-2.5 border-t border-white/15">
+                        <div>
+                          <div className="text-[9px] font-mono uppercase tracking-[0.18em] text-white/45">
+                            Typology & Area
+                          </div>
+                          <div className="text-[11px] font-light text-white truncate">
+                            {item.specs.units} • {item.specs.area}
+                          </div>
+                        </div>
+                        <div>
+                          <div className="text-[9px] font-mono uppercase tracking-[0.18em] text-white/45">
+                            Handover
+                          </div>
+                          <div className="text-[11px] font-light text-[#dfc082] truncate">
+                            {item.specs.possession || "Enquire"}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="pt-1.5">
                       <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono uppercase tracking-widest active:bg-[#c5a059] active:text-black transition-colors">
                         <span>Explore Residence</span>
                         <ArrowUpRight className="w-3.5 h-3.5 text-[#dfc082]" />
@@ -258,65 +332,65 @@ export const ExpandingCards = React.forwardRef<
           </div>
 
           {/* Mobile Bottom Navigation & Progress Indicator */}
-          <div className="flex items-center justify-between px-2 pt-2">
-            {/* Active Counter & Swipe Hint */}
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono tracking-widest text-[#9c8052] font-semibold">
-                0{mobileActiveIndex + 1}
-              </span>
-              <span className="text-xs font-mono text-black/30">/</span>
-              <span className="text-xs font-mono text-black/40">
-                0{items.length}
-              </span>
-              <span className="text-[11px] font-mono uppercase tracking-wider text-black/40 ml-2">
-                • Swipe to explore
-              </span>
-            </div>
+          {items.length > 1 && (
+            <div className="flex items-center justify-between px-2 pt-2">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono tracking-widest text-[#9c8052] font-semibold">
+                  0{mobileActiveIndex + 1}
+                </span>
+                <span className="text-xs font-mono text-black/30">/</span>
+                <span className="text-xs font-mono text-black/40">
+                  0{items.length}
+                </span>
+                <span className="text-[11px] font-mono uppercase tracking-wider text-black/40 ml-2">
+                  • Swipe to explore
+                </span>
+              </div>
 
-            {/* Prev / Next Touch Arrows & Dot Indicators */}
-            <div className="flex items-center gap-3">
-              {/* Dots */}
-              <div className="flex items-center gap-1.5">
-                {items.map((_, i) => (
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-1.5">
+                  {items.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => scrollMobileTo(i)}
+                      aria-label={`Go to slide ${i + 1}`}
+                      className={cn(
+                        "h-1.5 rounded-full transition-all duration-300",
+                        mobileActiveIndex === i
+                          ? "w-6 bg-[#9c8052]"
+                          : "w-1.5 bg-black/20"
+                      )}
+                    />
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-1">
                   <button
-                    key={i}
-                    onClick={() => scrollMobileTo(i)}
-                    aria-label={`Go to slide ${i + 1}`}
-                    className={cn(
-                      "h-1.5 rounded-full transition-all duration-300",
-                      mobileActiveIndex === i
-                        ? "w-6 bg-[#9c8052]"
-                        : "w-1.5 bg-black/20"
-                    )}
-                  />
-                ))}
-              </div>
-
-              {/* Arrow Buttons */}
-              <div className="flex items-center gap-1">
-                <button
-                  onClick={() => scrollMobileTo(Math.max(0, mobileActiveIndex - 1))}
-                  disabled={mobileActiveIndex === 0}
-                  aria-label="Previous residence"
-                  className="w-8 h-8 rounded-full border border-black/15 bg-white flex items-center justify-center text-black/70 disabled:opacity-30 disabled:pointer-events-none active:bg-black active:text-white transition-colors"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() =>
-                    scrollMobileTo(
-                      Math.min(items.length - 1, mobileActiveIndex + 1)
-                    )
-                  }
-                  disabled={mobileActiveIndex === items.length - 1}
-                  aria-label="Next residence"
-                  className="w-8 h-8 rounded-full border border-black/15 bg-white flex items-center justify-center text-black/70 disabled:opacity-30 disabled:pointer-events-none active:bg-black active:text-white transition-colors"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
+                    onClick={() =>
+                      scrollMobileTo(Math.max(0, mobileActiveIndex - 1))
+                    }
+                    disabled={mobileActiveIndex === 0}
+                    aria-label="Previous residence"
+                    className="w-8 h-8 rounded-full border border-black/15 bg-white flex items-center justify-center text-black/70 disabled:opacity-30 disabled:pointer-events-none active:bg-black active:text-white transition-colors"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() =>
+                      scrollMobileTo(
+                        Math.min(items.length - 1, mobileActiveIndex + 1)
+                      )
+                    }
+                    disabled={mobileActiveIndex === items.length - 1}
+                    aria-label="Next residence"
+                    className="w-8 h-8 rounded-full border border-black/15 bg-white flex items-center justify-center text-black/70 disabled:opacity-30 disabled:pointer-events-none active:bg-black active:text-white transition-colors"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     );

@@ -2,22 +2,31 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowLeft, ArrowUpRight, Building2, Trees, Landmark } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Navbar } from "@/components/Navbar";
 import { PortfolioGrid } from "@/components/PortfolioGrid";
 import { ProjectModal } from "@/components/ProjectModal";
+import { ConversionDock } from "@/components/ConversionDock";
 import { Footer } from "@/components/Footer";
-import { ALL_PORTFOLIO, Property } from "@/data/properties";
+import { MaskedWords } from "@/components/ui/motion-primitives";
+import { Property } from "@/data/properties";
+
+const EXPO_OUT = [0.16, 1, 0.3, 1] as const;
 
 export default function EstatesPage() {
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   const handleOpenBookVisit = () => {
     const el = document.getElementById("booking-cta");
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+      if (window.__lenis) {
+        window.__lenis.scrollTo(el, { duration: 1.2 });
+      } else {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -27,65 +36,49 @@ export default function EstatesPage() {
         {/* Floating Header */}
         <Navbar onOpenBookVisit={handleOpenBookVisit} />
 
-        {/* Dedicated Estates Hero Banner */}
-        <section className="relative pt-36 pb-16 md:pt-44 md:pb-24 bg-[#121316] text-[#f6f5f0] overflow-hidden border-b border-black/10">
-          {/* Warm ambient golden glow */}
-          <div className="absolute top-0 right-1/4 w-[600px] h-[400px] bg-[#c5a059]/10 rounded-full blur-[140px] pointer-events-none" />
-
+        {/* Warm Sand Editorial Hero Matching FindRealEstate Rhythm */}
+        <section className="relative pt-36 pb-16 md:pt-44 md:pb-24 bg-[#f6f5f0] text-[#141517] overflow-clip">
           <div className="max-w-[1720px] mx-auto px-6 md:px-12 relative z-10">
             {/* Back link */}
             <motion.div
-              initial={{ opacity: 0, x: -10 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, x: -12 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="mb-8"
+              transition={{ duration: 0.6, ease: EXPO_OUT }}
+              className="mb-10"
             >
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-[#c5a059] hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-[#9c8052] hover:text-[#141517] transition-colors"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
                 <span>Return to Overview</span>
               </Link>
             </motion.div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
               <div className="lg:col-span-8">
-                <motion.span
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  className="text-xs font-mono tracking-[0.25em] text-[#c5a059] uppercase block mb-4"
-                >
-                  (COMPLETE PORTFOLIO CATALOG)
-                </motion.span>
-                <div className="overflow-hidden">
-                  <motion.h1
-                    initial={{ y: "70%", opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                    className="text-5xl sm:text-7xl lg:text-8xl font-serif font-light text-white tracking-tight leading-[0.96]"
-                  >
-                    The Onyx <br />
-                    <span className="italic font-normal text-[#c5a059]">Collection</span>
-                  </motion.h1>
-                </div>
+                <h1 className="text-5xl sm:text-7xl lg:text-[6.5rem] font-serif font-light text-[#141517] tracking-tight leading-[0.94]">
+                  <MaskedWords
+                    segments={[
+                      { text: "The Onyx " },
+                      {
+                        text: "Residences",
+                        className: "italic font-normal text-[#9c8052]",
+                      },
+                    ]}
+                  />
+                </h1>
               </div>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="lg:col-span-4 space-y-4 lg:pb-3"
+                transition={{ duration: 0.85, delay: 0.25, ease: EXPO_OUT }}
+                className="lg:col-span-4 lg:pb-2"
               >
-                <p className="text-sm sm:text-base text-white/80 font-light leading-relaxed">
-                  Explore every residence, private villa, and landmark coastal development conceived, engineered, and delivered across Udupi by Onyx Assets LLP.
+                <p className="text-sm sm:text-base text-[#5e6573] font-light leading-relaxed">
+                  Flagship luxury apartments, signature flats, and private enclaves conceived across Udupi.
                 </p>
-                <div className="flex items-center gap-6 text-xs font-mono uppercase tracking-widest text-white/50 pt-2 border-t border-white/10">
-                  <span>16 Properties</span>
-                  <span>•</span>
-                  <span>Udupi Prime & Coastal</span>
-                </div>
               </motion.div>
             </div>
           </div>
@@ -135,6 +128,9 @@ export default function EstatesPage() {
 
         {/* Editorial Footer */}
         <Footer onOpenBookVisit={handleOpenBookVisit} />
+
+        {/* Persistent Luxury Conversion Dock */}
+        <ConversionDock activePropertyName={selectedProperty?.name} />
 
         {/* Architectural Specs & Floor Plan Modal */}
         <ProjectModal

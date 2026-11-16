@@ -596,42 +596,42 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
 export const CLIENT_TESTIMONIALS: ClientTestimonial[] = [
   {
     name: "Deepa A",
-    tenure: "Homeowner • 3 Years",
+    tenure: "Opulence Enclave • Homeowner (3 Yrs)",
     headline: "End-to-end execution from construction to bank loan processing",
     quote:
       "The firm helps with the complete process including bank loan processing, registration, and paperwork. Hassle-free experience, very reliable execution with great taste and quality. Best in Udupi & Mangalore.",
   },
   {
     name: "Anupama Harihar",
-    tenure: "Homeowner • 2 Years",
+    tenure: "Riviera Residences • Homeowner (2 Yrs)",
     headline: "Integrity, transparency, and consistent communication",
     quote:
       "Their team is highly professional, responsive, and knowledgeable. They guided us through every step, ensuring a smooth and efficient handover.",
   },
   {
     name: "Raghav",
-    tenure: "Homeowner • Udupi",
+    tenure: "A.R. Sattva • First-Time Homeowner",
     headline: "Purchaser-friendly experience led by Mr. Harish Bhat",
     quote:
       "If you are looking in and around Udupi, Onyx Assets is the right choice. Thank you to Mr. Harish Bhat for all the extended support in realizing my first home.",
   },
   {
     name: "Gururaj S",
-    tenure: "Investor • 1 Year",
+    tenure: "Manipal Corridor • Portfolio Investor",
     headline: "Landmark residential locations across Udupi and Manipal",
     quote:
       "Onyx Assets LLP delivers high-class construction quality in amazing localities with dedicated, knowledgeable staff. Strongly recommended for Udupi real estate.",
   },
   {
     name: "Navyashri Rao",
-    tenure: "Homeowner",
+    tenure: "Udupi Enclave • Homeowner",
     headline: "Patience, personal guidance, and relationship beyond business",
     quote:
       "Highly satisfied with our project and grateful to Harish Bhat sir for his patient guidance and support throughout the journey.",
   },
   {
     name: "Krishnaraja",
-    tenure: "Homeowner • 3 Years",
+    tenure: "Signature Villas • Homeowner (3 Yrs)",
     headline: "Punctual delivery and relationship-driven craftsmanship",
     quote:
       "A trusted name for quality construction in Udupi. Professional, punctual, and genuine value delivered on commitment.",

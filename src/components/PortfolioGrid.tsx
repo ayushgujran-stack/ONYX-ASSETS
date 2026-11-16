@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Download, ShieldCheck, Calendar } from "lucide-react";
 import {
   ALL_PORTFOLIO,
@@ -49,7 +49,6 @@ export function PortfolioGrid({
 }: PortfolioGridProps) {
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("all");
-  const prefersReducedMotion = useReducedMotion();
 
   // Read optional status deep-link (?status=ongoing|completed|pre-launch|future)
   useEffect(() => {
@@ -103,28 +102,10 @@ export function PortfolioGrid({
   const totalMatches =
     activeTowers.length + filteredVillas.length + filteredSattva.length;
 
-  // Determine sequential chapter counter & alternating background rhythm
-  const chapters = useMemo(() => {
-    const list: (
-      | { kind: "single"; property: Property }
-      | { kind: "villas"; items: Property[] }
-      | { kind: "sattva"; items: Property[] }
-    )[] = [];
-
-    activeTowers.forEach((prop) => {
-      list.push({ kind: "single", property: prop });
-    });
-
-    if (filteredSattva.length > 0) {
-      list.push({ kind: "sattva", items: filteredSattva });
-    }
-
-    if (filteredVillas.length > 0) {
-      list.push({ kind: "villas", items: filteredVillas });
-    }
-
-    return list;
-  }, [activeTowers, filteredVillas, filteredSattva]);
+  // Flatten all matching properties so every single estate renders as an editorial spread
+  const matchingProperties = useMemo(() => {
+    return [...activeTowers, ...filteredSattva, ...filteredVillas];
+  }, [activeTowers, filteredSattva, filteredVillas]);
 
   const scrollToRail = () => {
     const el = document.getElementById("portfolio");
@@ -222,58 +203,20 @@ export function PortfolioGrid({
         />
       ) : (
         <div className="divide-y divide-black/6">
-          {chapters.map((chapter, idx) => {
+          {matchingProperties.map((property, idx) => {
             const isAltBg = idx % 2 === 1;
             const reversed = idx % 2 === 1;
             const chapterNumber = String(idx + 1).padStart(2, "0");
 
-            if (chapter.kind === "single") {
-              return (
-                <EditorialPropertySpread
-                  key={chapter.property.id}
-                  property={chapter.property}
-                  chapterNumber={chapterNumber}
-                  reversed={reversed}
-                  altBackground={isAltBg}
-                  onSelect={onSelectProperty}
-                  onBook={onOpenBookVisit}
-                />
-              );
-            }
-
-            if (chapter.kind === "villas") {
-              return (
-                <EnclaveSeriesSpread
-                  key={`villas-${statusFilter}`}
-                  title="Onyx Villa Enclave"
-                  location="Coastal Green Belt, Udupi"
-                  items={chapter.items}
-                  chapterNumber={chapterNumber}
-                  reversed={reversed}
-                  altBackground={isAltBg}
-                  prefersReducedMotion={Boolean(prefersReducedMotion)}
-                  onSelect={onSelectProperty}
-                  onBook={onOpenBookVisit}
-                  labelForItem={(item) => item.name.replace("Onyx ", "")}
-                />
-              );
-            }
-
             return (
-              <EnclaveSeriesSpread
-                key={`sattva-${statusFilter}`}
-                title="A.R. Sattva"
-                location="Udupi Urban Prime, Karnataka"
-                items={chapter.items}
+              <EditorialPropertySpread
+                key={property.id}
+                property={property}
                 chapterNumber={chapterNumber}
                 reversed={reversed}
                 altBackground={isAltBg}
-                prefersReducedMotion={Boolean(prefersReducedMotion)}
                 onSelect={onSelectProperty}
                 onBook={onOpenBookVisit}
-                labelForItem={(_, i) =>
-                  i === 0 ? "Main Residence" : i === 1 ? "Courtyard Wing" : "Teak Atrium"
-                }
               />
             );
           })}
@@ -426,185 +369,6 @@ function EditorialPropertySpread({
                 </a>
               )}
             </motion.div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── Interactive Enclave Series Chapter (Villas 2–12 & A.R. Sattva) ─
-function EnclaveSeriesSpread({
-  title,
-  location,
-  items,
-  chapterNumber,
-  reversed,
-  altBackground,
-  prefersReducedMotion,
-  onSelect,
-  onBook,
-  labelForItem,
-}: {
-  title: string;
-  location: string;
-  items: Property[];
-  chapterNumber: string;
-  reversed: boolean;
-  altBackground: boolean;
-  prefersReducedMotion: boolean;
-  onSelect: (p: Property) => void;
-  onBook: () => void;
-  labelForItem: (item: Property, index: number) => string;
-}) {
-  const [selectedId, setSelectedId] = useState<string | null>(null);
-
-  const foundIndex = items.findIndex((it) => it.id === selectedId);
-  const safeIndex = foundIndex >= 0 ? foundIndex : 0;
-  const activeItem = items[safeIndex];
-
-  if (!activeItem) return null;
-
-  return (
-    <section
-      className={`py-24 md:py-36 relative overflow-clip ${
-        altBackground ? "bg-[#dcd9c8]" : "bg-[#fffdf1]"
-      }`}
-    >
-      <div className="max-w-[1720px] mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Interactive Image Frame (7 Cols) */}
-          <div
-            className={`lg:col-span-7 space-y-4 ${
-              reversed ? "lg:order-2" : "lg:order-1"
-            }`}
-          >
-            <div
-              onClick={() => onSelect(activeItem)}
-              className="cursor-pointer group relative"
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeItem.id}
-                  initial={prefersReducedMotion ? false : { opacity: 0.25 }}
-                  animate={{ opacity: 1 }}
-                  exit={prefersReducedMotion ? undefined : { opacity: 0.25 }}
-                  transition={{ duration: 0.45, ease: EXPO_OUT }}
-                >
-                  <SlidingImage
-                    src={activeItem.image}
-                    alt={activeItem.name}
-                    direction={reversed ? "right" : "left"}
-                    className="aspect-[16/10] rounded-2xl shadow-xl"
-                    sizes="(max-width: 1024px) 100vw, 58vw"
-                  />
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Clean Pill Switcher Strip */}
-            <div className="flex flex-wrap gap-2 pt-1">
-              {items.map((item, i) => {
-                const active = safeIndex === i;
-                return (
-                  <button
-                    key={item.id}
-                    onClick={() => setSelectedId(item.id)}
-                    className={`px-3.5 py-2 rounded-full text-[11px] font-mono uppercase tracking-wider border transition-all duration-300 ${
-                      active
-                        ? "bg-[#141416] text-[#dfc082] border-[#141416] shadow-sm"
-                        : "bg-white/70 text-[#97968d] border-black/10 hover:border-[#9c8052] hover:text-[#141416]"
-                    }`}
-                  >
-                    {labelForItem(item, i)}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Concise Editorial Copy (5 Cols) */}
-          <div
-            className={`lg:col-span-5 space-y-7 ${
-              reversed ? "lg:order-1" : "lg:order-2"
-            }`}
-          >
-            <div className="flex items-baseline justify-between border-b border-dashed border-black/15 pb-4">
-              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#9c8052]">
-                {location}
-              </span>
-              <span className="font-serif text-5xl sm:text-6xl font-light text-black/15 leading-none select-none">
-                {chapterNumber}
-              </span>
-            </div>
-
-            <div>
-              <h2 className="text-4xl sm:text-5xl font-serif text-[#141416] font-light leading-[1.04] tracking-tight">
-                <MaskedWords segments={[{ text: title }]} />
-              </h2>
-              <div className="text-xl sm:text-2xl font-serif italic text-[#9c8052] mt-2">
-                {activeItem.name}
-              </div>
-            </div>
-
-            <p className="text-sm sm:text-base text-[#97968d] font-light leading-relaxed">
-              {activeItem.description}
-            </p>
-
-            {/* Clean 3-Metric Hairline Strip */}
-            <div className="grid grid-cols-3 gap-4 py-4 border-y border-black/10">
-              <div>
-                <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#97968d]">
-                  Typology
-                </div>
-                <div className="text-xs sm:text-sm font-medium text-[#141416] mt-1">
-                  {activeItem.units}
-                </div>
-              </div>
-              <div>
-                <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#97968d]">
-                  Area
-                </div>
-                <div className="text-xs sm:text-sm font-medium text-[#141416] mt-1">
-                  {activeItem.area}
-                </div>
-              </div>
-              <div>
-                <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#97968d]">
-                  Status
-                </div>
-                <div className="text-xs sm:text-sm font-medium text-[#9c8052] mt-1">
-                  {activeItem.status}
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-3 pt-1">
-              <button
-                onClick={() => onSelect(activeItem)}
-                className="group px-7 py-3.5 rounded bg-[#141416] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#9c8052] transition-colors shadow-md flex items-center gap-2"
-              >
-                <span>Inspect {labelForItem(activeItem, safeIndex)}</span>
-                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </button>
-
-              <Link
-                href={`/estates/${activeItem.id}`}
-                className="px-6 py-3.5 rounded border border-[rgba(20,20,22,0.18)] border-dashed bg-white text-[#141416] hover:border-[#9c8052] hover:text-[#9c8052] text-xs font-mono uppercase tracking-widest transition-colors flex items-center gap-1.5"
-              >
-                <span>Full Dossier</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </Link>
-
-              {activeItem.projectPhase === "ongoing" && (
-                <button
-                  onClick={onBook}
-                  className="px-6 py-3.5 rounded border border-[rgba(20,20,22,0.18)] border-dashed text-[#141416] hover:border-[#141416] text-xs font-mono uppercase tracking-widest transition-colors"
-                >
-                  Enquire Allocation
-                </button>
-              )}
-            </div>
           </div>
         </div>
       </div>

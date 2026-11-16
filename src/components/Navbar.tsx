@@ -67,24 +67,24 @@ export function Navbar({ onOpenBookVisit }: NavbarProps) {
     };
   }, [pathname]);
 
-  const textColorClass = useLightText ? "text-white" : "text-[#141517]";
-  const subColorClass = useLightText ? "text-white/65" : "text-[#5e6573]";
+  const textColorClass = useLightText ? "text-white" : "text-[#141416]";
+  const subColorClass = useLightText ? "text-white/65" : "text-[#97968d]";
   const linkColorClass = useLightText
     ? "text-white/80 hover:text-white"
-    : "text-[#141517]/75 hover:text-[#141517]";
+    : "text-[#141416]/75 hover:text-[#141416]";
 
   const buttonClass = useLightText
-    ? "border-white/30 bg-white/10 text-white backdrop-blur-sm hover:bg-white hover:text-[#141517]"
+    ? "border-white/30 bg-white/10 text-white backdrop-blur-sm hover:bg-white hover:text-[#141416]"
     : isPastHero
-      ? "border-black/15 bg-white text-[#141517] hover:bg-[#141517] hover:text-white"
-      : "border-black/15 bg-white/80 backdrop-blur-sm text-[#141517] hover:bg-[#141517] hover:text-white";
+      ? "border-black/15 bg-white text-[#141416] hover:bg-[#141416] hover:text-white"
+      : "border-black/15 bg-white/80 backdrop-blur-sm text-[#141416] hover:bg-[#141416] hover:text-white";
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
           isPastHero
-            ? "py-3.5 glass-header shadow-sm bg-[#f6f5f0]/95 backdrop-blur-md"
+            ? "py-3.5 glass-header shadow-sm bg-[#fffdf1]/95 backdrop-blur-md"
             : "py-6 bg-transparent border-b border-transparent"
         }`}
       >
@@ -96,7 +96,7 @@ export function Navbar({ onOpenBookVisit }: NavbarProps) {
         >
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group lg:justify-self-start">
-            <div className="w-10 h-10 rounded-full border border-black/10 bg-white p-1 flex items-center justify-center shadow-sm transition-transform group-hover:scale-105 shrink-0">
+            <div className="w-10 h-10 rounded border border-black/10 bg-white p-1 flex items-center justify-center shadow-sm transition-transform group-hover:scale-105 shrink-0">
               <Image
                 src="/onyx-logo.png"
                 alt="Onyx Assets"
@@ -161,7 +161,7 @@ export function Navbar({ onOpenBookVisit }: NavbarProps) {
                     transition={{ duration: 0.25, ease: EXPO_OUT }}
                     className="absolute left-0 top-full pt-2 w-64"
                   >
-                    <div className="rounded-2xl bg-[#141517]/95 backdrop-blur-xl border border-white/15 shadow-2xl p-2 text-white">
+                    <div className="rounded-2xl bg-[#141416]/95 backdrop-blur-xl border border-white/15 shadow-2xl p-2 text-white">
                       {RESIDENCE_LINKS.map((item) => (
                         <Link
                           key={item.href}
@@ -233,7 +233,7 @@ export function Navbar({ onOpenBookVisit }: NavbarProps) {
 
       {/* Streamlined Mobile Drawer */}
       {menuOpen && (
-        <div className="fixed inset-0 z-30 bg-[#141517]/95 backdrop-blur-xl flex flex-col justify-between p-8 pt-28 text-white lg:hidden overflow-y-auto">
+        <div className="fixed inset-0 z-30 bg-[#141416]/95 backdrop-blur-xl flex flex-col justify-between p-8 pt-28 text-white lg:hidden overflow-y-auto">
           <nav className="flex flex-col gap-6">
             <div className="space-y-3">
               <Link
@@ -287,7 +287,7 @@ export function Navbar({ onOpenBookVisit }: NavbarProps) {
             <Link
               href="/consultation"
               onClick={() => setMenuOpen(false)}
-              className="block w-full py-4 rounded-full bg-[#9c8052] text-white font-mono text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors text-center font-semibold"
+              className="block w-full py-4 rounded bg-[#9c8052] text-white font-mono text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors text-center font-semibold"
             >
               Book a Private Consultation
             </Link>

@@ -125,7 +125,7 @@ export function ConversionDock({
                   <a
                     href={`tel:${ONYX_PHONE}`}
                     onClick={() => setDockExpanded(false)}
-                    className="flex items-center gap-3 px-4 py-2.5 rounded-full bg-[#141517]/95 backdrop-blur-xl border border-white/15 text-white hover:border-[#c5a059] shadow-xl transition-all group"
+                    className="flex items-center gap-3 px-4 py-2.5 rounded bg-[#141416]/95 backdrop-blur-xl border border-white/15 text-white hover:border-[#c5a059] shadow-xl transition-all group"
                   >
                     <span className="text-[11px] font-mono uppercase tracking-[0.18em] text-white/85 group-hover:text-[#dfc082]">
                       Call Advisory
@@ -142,12 +142,12 @@ export function ConversionDock({
                       setSubmitted(false);
                       setModalOpen(true);
                     }}
-                    className="flex items-center gap-3 px-4 py-2.5 rounded-full bg-[#141517]/95 backdrop-blur-xl border border-white/15 text-white hover:border-[#c5a059] shadow-xl transition-all group"
+                    className="flex items-center gap-3 px-4 py-2.5 rounded bg-[#141416]/95 backdrop-blur-xl border border-white/15 text-white hover:border-[#c5a059] shadow-xl transition-all group"
                   >
                     <span className="text-[11px] font-mono uppercase tracking-[0.18em] text-white/85 group-hover:text-[#dfc082]">
                       Schedule Visit
                     </span>
-                    <span className="w-7 h-7 rounded-full bg-[#c5a059] flex items-center justify-center text-[#141517]">
+                    <span className="w-7 h-7 rounded-full bg-[#c5a059] flex items-center justify-center text-[#141416]">
                       <Calendar className="w-3.5 h-3.5" />
                     </span>
                   </button>
@@ -158,7 +158,7 @@ export function ConversionDock({
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setDockExpanded(false)}
-                    className="flex items-center gap-3 px-4 py-2.5 rounded-full bg-[#141517]/95 backdrop-blur-xl border border-[#c5a059]/40 text-white hover:bg-[#9c8052] shadow-xl transition-all group"
+                    className="flex items-center gap-3 px-4 py-2.5 rounded bg-[#141416]/95 backdrop-blur-xl border border-[#c5a059]/40 text-white hover:bg-[#9c8052] shadow-xl transition-all group"
                   >
                     <span className="text-[11px] font-mono uppercase tracking-[0.18em] text-[#dfc082] group-hover:text-white">
                       WhatsApp Chat
@@ -180,8 +180,8 @@ export function ConversionDock({
               aria-expanded={dockExpanded}
               className={`w-13 h-13 rounded-full flex items-center justify-center shadow-[0_14px_34px_rgba(0,0,0,0.28)] border transition-all duration-300 backdrop-blur-xl ${
                 dockExpanded
-                  ? "bg-white text-[#141517] border-black/15"
-                  : "bg-[#141517]/92 text-[#dfc082] border-[#c5a059]/45 hover:bg-[#9c8052] hover:text-white hover:border-[#9c8052]"
+                  ? "bg-white text-[#141416] border-black/15"
+                  : "bg-[#141416]/92 text-[#dfc082] border-[#c5a059]/45 hover:bg-[#9c8052] hover:text-white hover:border-[#9c8052]"
               }`}
             >
               {dockExpanded ? (
@@ -218,7 +218,7 @@ export function ConversionDock({
                   : { opacity: 0, scale: 0.96, y: 16 }
               }
               transition={{ duration: 0.4, ease: EXPO_OUT }}
-              className="relative w-full max-w-lg rounded-3xl bg-[#f6f5f0] text-[#141517] border border-black/10 shadow-2xl p-6 sm:p-9 z-10 max-h-[90vh] overflow-y-auto"
+              className="relative w-full max-w-lg rounded-3xl bg-[#fffdf1] text-[#141416] border border-black/10 shadow-2xl p-6 sm:p-9 z-10 max-h-[90vh] overflow-y-auto"
             >
               <button
                 onClick={() => setModalOpen(false)}
@@ -230,19 +230,19 @@ export function ConversionDock({
 
               {submitted ? (
                 <div className="py-6 text-center space-y-5">
-                  <div className="w-12 h-12 rounded-full bg-[#9c8052]/15 text-[#9c8052] flex items-center justify-center mx-auto">
+                  <div className="w-12 h-12 rounded bg-[#9c8052]/15 text-[#9c8052] flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <div className="space-y-2">
                     <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#9c8052]">
                       (VIEWING CONFIRMED)
                     </span>
-                    <h3 className="font-serif text-3xl text-[#141517] font-light">
+                    <h3 className="font-serif text-3xl text-[#141416] font-light">
                       Private Tour Reserved
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#5e6573] font-light max-w-sm mx-auto leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#97968d] font-light max-w-sm mx-auto leading-relaxed">
                       Our senior partner will contact you at{" "}
-                      <span className="text-[#141517] font-medium">{phone}</span>{" "}
+                      <span className="text-[#141416] font-medium">{phone}</span>{" "}
                       to finalize access for{" "}
                       <span className="text-[#9c8052] font-medium">
                         {residence}
@@ -257,7 +257,7 @@ export function ConversionDock({
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#141517] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#9c8052] transition-colors"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded bg-[#141416] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#9c8052] transition-colors"
                   >
                     <span>Confirm via WhatsApp</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -269,7 +269,7 @@ export function ConversionDock({
                     <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#9c8052] block mb-1.5">
                       (PRIVATE APPOINTMENT)
                     </span>
-                    <h3 className="font-serif text-3xl text-[#141517] font-light">
+                    <h3 className="font-serif text-3xl text-[#141416] font-light">
                       Schedule a Site{" "}
                       <span className="italic font-normal text-[#9c8052]">
                         Walkthrough
@@ -279,13 +279,13 @@ export function ConversionDock({
 
                   <div className="space-y-4">
                     <div>
-                      <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#5e6573] block mb-1.5">
+                      <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#97968d] block mb-1.5">
                         Select Estate
                       </label>
                       <select
                         value={residence}
                         onChange={(e) => setSelectedResidence(e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 text-sm text-[#141517] focus:outline-none focus:border-[#9c8052]"
+                        className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 text-sm text-[#141416] focus:outline-none focus:border-[#9c8052]"
                       >
                         {ALL_SELECTABLE_ESTATES.map((est) => (
                           <option key={est} value={est}>
@@ -297,7 +297,7 @@ export function ConversionDock({
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                       <div>
-                        <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#5e6573] block mb-1.5">
+                        <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#97968d] block mb-1.5">
                           Full Name
                         </label>
                         <input
@@ -306,11 +306,11 @@ export function ConversionDock({
                           placeholder="Your name"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 text-sm text-[#141517] focus:outline-none focus:border-[#9c8052]"
+                          className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 text-sm text-[#141416] focus:outline-none focus:border-[#9c8052]"
                         />
                       </div>
                       <div>
-                        <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#5e6573] block mb-1.5">
+                        <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#97968d] block mb-1.5">
                           Phone / WhatsApp
                         </label>
                         <input
@@ -319,31 +319,31 @@ export function ConversionDock({
                           placeholder="+91 ..."
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 text-sm text-[#141517] focus:outline-none focus:border-[#9c8052]"
+                          className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 text-sm text-[#141416] focus:outline-none focus:border-[#9c8052]"
                         />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                       <div>
-                        <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#5e6573] block mb-1.5">
+                        <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#97968d] block mb-1.5">
                           Preferred Date
                         </label>
                         <input
                           type="date"
                           value={date}
                           onChange={(e) => setDate(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 text-sm text-[#141517] focus:outline-none focus:border-[#9c8052]"
+                          className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 text-sm text-[#141416] focus:outline-none focus:border-[#9c8052]"
                         />
                       </div>
                       <div>
-                        <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#5e6573] block mb-1.5">
+                        <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#97968d] block mb-1.5">
                           Time Window
                         </label>
                         <select
                           value={slot}
                           onChange={(e) => setSlot(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 text-sm text-[#141517] focus:outline-none focus:border-[#9c8052]"
+                          className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 text-sm text-[#141416] focus:outline-none focus:border-[#9c8052]"
                         >
                           <option>Morning (10:00 AM – 1:00 PM)</option>
                           <option>Afternoon (2:00 PM – 5:30 PM)</option>
@@ -356,7 +356,7 @@ export function ConversionDock({
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 rounded-full bg-[#141517] text-white font-mono text-xs uppercase tracking-widest hover:bg-[#9c8052] transition-colors shadow-lg disabled:opacity-60"
+                    className="w-full py-4 rounded bg-[#141416] text-white font-mono text-xs uppercase tracking-widest hover:bg-[#9c8052] transition-colors shadow-lg disabled:opacity-60"
                   >
                     {isSubmitting
                       ? "Reserving Slot..."

@@ -94,11 +94,11 @@ export default function InsightsPage() {
 
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-[#f6f5f0] text-[#141517]">
+      <main className="min-h-screen bg-[#fffdf1] text-[#141416]">
         <Navbar onOpenBookVisit={handleOpenBookVisit} />
 
         {/* Hero Banner */}
-        <section className="relative pt-36 pb-20 md:pt-44 md:pb-28 bg-[#121316] text-[#f6f5f0] overflow-hidden">
+        <section className="relative pt-36 pb-20 md:pt-44 md:pb-28 bg-[#121316] text-[#fffdf1] overflow-hidden">
           <div className="max-w-[1720px] mx-auto px-6 md:px-12 relative z-10">
             <motion.div
               initial={{ opacity: 0, x: -10 }}
@@ -153,7 +153,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Featured Top Insight */}
-        <section className="py-20 md:py-28 border-b border-black/5">
+        <section className="py-20 md:py-28 border-b border-dashed border-black/12">
           <div className="max-w-[1720px] mx-auto px-6 md:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
               <div className="lg:col-span-7">
@@ -168,7 +168,7 @@ export default function InsightsPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute top-6 left-6">
-                    <span className="px-3.5 py-1.5 rounded-full text-[11px] font-mono tracking-widest uppercase bg-white/95 text-[#141517] shadow-md">
+                    <span className="px-3.5 py-1.5 rounded-full text-[11px] font-mono tracking-widest uppercase bg-white/95 text-[#141416] shadow-md">
                       Featured Analysis
                     </span>
                   </div>
@@ -176,7 +176,7 @@ export default function InsightsPage() {
               </div>
 
               <div className="lg:col-span-5 space-y-6">
-                <div className="flex items-center gap-4 text-xs font-mono text-[#5e6573] uppercase tracking-wider">
+                <div className="flex items-center gap-4 text-xs font-mono text-[#97968d] uppercase tracking-wider">
                   <span className="text-[#9c8052] font-semibold">{ARTICLES[0].category}</span>
                   <span>•</span>
                   <span className="flex items-center gap-1">
@@ -185,15 +185,15 @@ export default function InsightsPage() {
                   </span>
                 </div>
 
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#141517] font-normal leading-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#141416] font-normal leading-tight">
                   {ARTICLES[0].title}
                 </h2>
 
-                <p className="text-base text-[#2c3038] font-light leading-relaxed">
+                <p className="text-base text-[#2c2b2f] font-light leading-relaxed">
                   {ARTICLES[0].excerpt}
                 </p>
 
-                <div className="p-5 rounded-2xl bg-[#ede8df] border border-black/5 text-xs font-mono text-[#141517] space-y-1">
+                <div className="p-5 rounded-2xl bg-[#ede8df] border border-black/5 text-xs font-mono text-[#141416] space-y-1">
                   <span className="text-[#9c8052] font-semibold block uppercase tracking-wider">
                     Executive Takeaway:
                   </span>
@@ -205,13 +205,13 @@ export default function InsightsPage() {
         </section>
 
         {/* Remaining Articles List */}
-        <section className="py-24 md:py-36 bg-[#f0ede6]">
+        <section className="py-24 md:py-36 bg-[#dcd9c8]">
           <div className="max-w-[1720px] mx-auto px-6 md:px-12">
             <div className="max-w-2xl mb-16">
               <span className="text-xs font-mono tracking-[0.25em] text-[#9c8052] uppercase block mb-3">
                 ESSAYS & REPORTS
               </span>
-              <h2 className="text-4xl sm:text-6xl font-serif font-light text-[#141517] tracking-tight">
+              <h2 className="text-4xl sm:text-6xl font-serif font-light text-[#141416] tracking-tight">
                 Curated <span className="italic font-normal text-[#9c8052]">Perspectives</span>
               </h2>
             </div>
@@ -235,7 +235,7 @@ export default function InsightsPage() {
                       className="object-cover"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-white/90 text-[#141517] shadow-sm">
+                      <span className="px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-white/90 text-[#141416] shadow-sm">
                         {art.category}
                       </span>
                     </div>
@@ -243,15 +243,15 @@ export default function InsightsPage() {
 
                   <div className="p-8 sm:p-10 space-y-4 flex-1 flex flex-col justify-between">
                     <div className="space-y-3">
-                      <div className="flex items-center gap-3 text-xs font-mono text-[#5e6573]">
+                      <div className="flex items-center gap-3 text-xs font-mono text-[#97968d]">
                         <span>{art.date}</span>
                         <span>•</span>
                         <span>{art.readTime}</span>
                       </div>
-                      <h3 className="font-serif text-2xl sm:text-3xl text-[#141517] font-normal leading-tight">
+                      <h3 className="font-serif text-2xl sm:text-3xl text-[#141416] font-normal leading-tight">
                         {art.title}
                       </h3>
-                      <p className="text-sm text-[#5e6573] font-light leading-relaxed">
+                      <p className="text-sm text-[#97968d] font-light leading-relaxed">
                         {art.excerpt}
                       </p>
                     </div>
@@ -269,7 +269,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Private Advisory Inquiry Band */}
-        <section className="py-20 bg-[#141517] text-white">
+        <section className="py-20 bg-[#141416] text-white">
           <div className="max-w-[1720px] mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
             <div className="space-y-2">
               <span className="text-xs font-mono tracking-[0.25em] text-[#c5a059] uppercase block">
@@ -281,7 +281,7 @@ export default function InsightsPage() {
             </div>
             <Link
               href="/consultation"
-              className="px-8 py-4 rounded-full bg-[#c5a059] text-[#141517] font-mono text-xs uppercase tracking-widest hover:bg-white transition-colors duration-300 font-semibold shadow-lg flex items-center gap-2 shrink-0"
+              className="px-8 py-4 rounded-full bg-[#c5a059] text-[#141416] font-mono text-xs uppercase tracking-widest hover:bg-white transition-colors duration-300 font-semibold shadow-lg flex items-center gap-2 shrink-0"
             >
               <span>SCHEDULE WITH SENIOR ADVISOR</span>
               <ArrowUpRight className="w-4 h-4" />

@@ -135,7 +135,7 @@ export const ExpandingCards = React.forwardRef<
                 tabIndex={0}
                 aria-expanded={isActive}
                 className={cn(
-                  "group relative cursor-pointer overflow-hidden bg-[#141517] transition-all duration-500 rounded-xl",
+                  "group relative cursor-pointer overflow-hidden bg-[#141416] transition-all duration-500 rounded-xl",
                   "min-w-[72px]",
                   "min-h-0 focus-visible:outline-2 focus-visible:outline-[#9c8052]"
                 )}
@@ -254,7 +254,7 @@ export const ExpandingCards = React.forwardRef<
                     if (onInspectActive) onInspectActive(item, index);
                   }}
                   className={cn(
-                    "snap-center shrink-0 w-[84vw] max-w-[340px] h-[530px] rounded-2xl relative overflow-hidden bg-[#141517] shadow-xl transition-all duration-500 cursor-pointer active:scale-[0.98]",
+                    "snap-center shrink-0 w-[84vw] max-w-[340px] h-[530px] rounded-2xl relative overflow-hidden bg-[#141416] shadow-xl transition-all duration-500 cursor-pointer active:scale-[0.98]",
                     isCenter ? "ring-1 ring-[#c5a059]/50" : "opacity-90"
                   )}
                 >
@@ -371,7 +371,7 @@ export const ExpandingCards = React.forwardRef<
                     }
                     disabled={mobileActiveIndex === 0}
                     aria-label="Previous residence"
-                    className="w-8 h-8 rounded-full border border-black/15 bg-white flex items-center justify-center text-black/70 disabled:opacity-30 disabled:pointer-events-none active:bg-black active:text-white transition-colors"
+                    className="w-8 h-8 rounded border border-[rgba(20,20,22,0.18)] border-dashed bg-white flex items-center justify-center text-black/70 disabled:opacity-30 disabled:pointer-events-none active:bg-black active:text-white transition-colors"
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
@@ -383,7 +383,7 @@ export const ExpandingCards = React.forwardRef<
                     }
                     disabled={mobileActiveIndex === items.length - 1}
                     aria-label="Next residence"
-                    className="w-8 h-8 rounded-full border border-black/15 bg-white flex items-center justify-center text-black/70 disabled:opacity-30 disabled:pointer-events-none active:bg-black active:text-white transition-colors"
+                    className="w-8 h-8 rounded border border-[rgba(20,20,22,0.18)] border-dashed bg-white flex items-center justify-center text-black/70 disabled:opacity-30 disabled:pointer-events-none active:bg-black active:text-white transition-colors"
                   >
                     <ChevronRight className="w-4 h-4" />
                   </button>

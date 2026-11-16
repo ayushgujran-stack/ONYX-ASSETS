@@ -60,7 +60,7 @@ export function BeliefsSection() {
   return (
     <section
       id="beliefs"
-      className="py-28 md:py-40 bg-[#f6f5f0] border-t border-black/5 relative overflow-clip"
+      className="py-28 md:py-40 bg-[#fffdf1] border-t border-dashed border-black/12 relative overflow-clip"
     >
       <div className="max-w-[1720px] mx-auto px-6 md:px-12">
         {/* Top Editorial Header */}
@@ -74,7 +74,7 @@ export function BeliefsSection() {
           >
             (OUR BELIEFS)
           </motion.span>
-          <h2 className="text-4xl sm:text-6xl font-serif text-[#141517] font-light tracking-tight">
+          <h2 className="text-4xl sm:text-6xl font-serif text-[#141416] font-light tracking-tight">
             <MaskedWords
               segments={[
                 { text: "A Vision of " },
@@ -91,12 +91,12 @@ export function BeliefsSection() {
                 text: "Our architectural philosophy is anchored in five core commitments that guide every pencil sketch, structural pour, and interior finish.",
               },
             ]}
-            className="mt-5 text-base sm:text-lg text-[#5e6573] font-light leading-relaxed"
+            className="mt-5 text-base sm:text-lg text-[#97968d] font-light leading-relaxed"
           />
         </div>
 
         {/* Continuous Scrollytelling Asymmetric Bands (Zero Tabs / Zero Card Boxes) */}
-        <div className="divide-y divide-black/10 border-t border-black/10">
+        <div className="divide-y divide-black/10 border-t border-dashed border-black/15">
           {BELIEFS.map((belief, idx) => {
             const imageFirstOnDesktop = idx % 2 === 1;
             const slideDirection = idx % 2 === 0 ? "left" : "right";
@@ -114,16 +114,16 @@ export function BeliefsSection() {
                   <div className="flex items-center gap-3 text-xs font-mono tracking-[0.22em] uppercase text-[#9c8052]">
                     <span>({belief.id})</span>
                     <span className="text-black/25">/</span>
-                    <span className="text-[#5e6573]">{belief.tagline}</span>
+                    <span className="text-[#97968d]">{belief.tagline}</span>
                   </div>
 
-                  <h3 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#141517] font-light leading-tight">
+                  <h3 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#141416] font-light leading-tight">
                     <MaskedWords segments={[{ text: belief.title }]} />
                   </h3>
 
                   <ScrubbedText
                     segments={[{ text: belief.description }]}
-                    className="text-sm sm:text-base text-[#2c3038] font-light leading-relaxed"
+                    className="text-sm sm:text-base text-[#2c2b2f] font-light leading-relaxed"
                   />
                 </div>
 

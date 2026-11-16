@@ -97,12 +97,12 @@ export default function GalleryPage() {
 
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-[#f6f5f0] text-[#141517]">
+      <main className="min-h-screen bg-[#fffdf1] text-[#141416]">
         {/* Consistent Header */}
         <Navbar onOpenBookVisit={handleOpenBookVisit} />
 
         {/* Editorial Obsidian Hero Banner */}
-        <section className="relative pt-36 pb-16 md:pt-44 md:pb-24 bg-[#121316] text-[#f6f5f0] overflow-hidden border-b border-black/10">
+        <section className="relative pt-36 pb-16 md:pt-44 md:pb-24 bg-[#121316] text-[#fffdf1] overflow-hidden border-b border-dashed border-black/15">
           <div className="absolute top-0 right-1/4 w-[600px] h-[400px] bg-[#c5a059]/10 rounded-full blur-[140px] pointer-events-none" />
 
           <div className="max-w-[1720px] mx-auto px-6 md:px-12 relative z-10">
@@ -164,10 +164,10 @@ export default function GalleryPage() {
         </section>
 
         {/* Gallery Filtering & Editorial Grid */}
-        <section className="py-20 md:py-32 bg-[#f6f5f0]">
+        <section className="py-20 md:py-32 bg-[#fffdf1]">
           <div className="max-w-[1720px] mx-auto px-6 md:px-12">
             {/* Category Navigation Bar */}
-            <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-5 mb-12 border-b border-black/10">
+            <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-5 mb-12 border-b border-dashed border-black/15">
               {CATEGORIES.map((category) => {
                 const isActive = activeCategory === category;
                 const count =
@@ -182,14 +182,14 @@ export default function GalleryPage() {
                     className={`relative px-5 py-2.5 rounded-full text-xs font-mono uppercase tracking-[0.18em] whitespace-nowrap transition-colors duration-300 shrink-0 ${
                       isActive
                         ? "text-white"
-                        : "text-[#5e6573] hover:text-[#141517]"
+                        : "text-[#97968d] hover:text-[#141416]"
                     }`}
                   >
                     {isActive && (
                       <motion.span
                         layoutId="gallery-cat-pill"
                         transition={{ duration: 0.45, ease: EXPO_OUT }}
-                        className="absolute inset-0 rounded-full bg-[#141517] shadow-sm"
+                        className="absolute inset-0 rounded bg-[#141416] shadow-sm"
                       />
                     )}
                     <span className="relative z-10 flex items-center gap-2">
@@ -295,7 +295,7 @@ export default function GalleryPage() {
                           <span className="px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md text-[10px] font-mono uppercase tracking-[0.2em] text-[#dfc082] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             {photo.category}
                           </span>
-                          <div className="w-10 h-10 rounded-full bg-white/95 text-[#141517] flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                          <div className="w-10 h-10 rounded-full bg-white/95 text-[#141416] flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                             <Maximize2 className="w-4 h-4" />
                           </div>
                         </div>
@@ -303,10 +303,10 @@ export default function GalleryPage() {
 
                       <div className="flex items-baseline justify-between gap-4 px-1 pt-0.5">
                         <div className="min-w-0">
-                          <h3 className="font-serif text-xl text-[#141517] font-normal group-hover:text-[#9c8052] transition-colors truncate">
+                          <h3 className="font-serif text-xl text-[#141416] font-normal group-hover:text-[#9c8052] transition-colors truncate">
                             {photo.title}
                           </h3>
-                          <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-[#5e6573] mt-1">
+                          <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-[#97968d] mt-1">
                             <span className="text-[#9c8052] truncate">
                               {photo.project}
                             </span>
@@ -398,7 +398,7 @@ export default function GalleryPage() {
                           )
                         }
                         aria-label="Previous frame"
-                        className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/60 hover:bg-[#c5a059] hover:text-[#141517] text-white border border-white/15 flex items-center justify-center transition-colors"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/60 hover:bg-[#c5a059] hover:text-[#141416] text-white border border-white/15 flex items-center justify-center transition-colors"
                       >
                         <ChevronLeft className="w-5 h-5" />
                       </button>
@@ -409,7 +409,7 @@ export default function GalleryPage() {
                           )
                         }
                         aria-label="Next frame"
-                        className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/60 hover:bg-[#c5a059] hover:text-[#141517] text-white border border-white/15 flex items-center justify-center transition-colors"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/60 hover:bg-[#c5a059] hover:text-[#141416] text-white border border-white/15 flex items-center justify-center transition-colors"
                       >
                         <ChevronRight className="w-5 h-5" />
                       </button>
@@ -427,7 +427,7 @@ export default function GalleryPage() {
 
                   <button
                     onClick={() => handleOpenProperty(activePhoto.projectId)}
-                    className="px-6 py-3 rounded-full bg-[#c5a059] text-[#141517] font-semibold uppercase tracking-widest hover:bg-white transition-colors flex items-center gap-2"
+                    className="px-6 py-3 rounded-full bg-[#c5a059] text-[#141416] font-semibold uppercase tracking-widest hover:bg-white transition-colors flex items-center gap-2"
                   >
                     <span>Inspect Residence Specs</span>
                     <ArrowUpRight className="w-4 h-4" />

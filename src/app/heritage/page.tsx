@@ -72,11 +72,11 @@ export default function HeritagePage() {
 
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-[#f6f5f0] text-[#141517]">
+      <main className="min-h-screen bg-[#fffdf1] text-[#141416]">
         <Navbar onOpenBookVisit={handleOpenBookVisit} />
 
         {/* Hero Banner */}
-        <section className="relative pt-36 pb-20 md:pt-44 md:pb-28 bg-[#121316] text-[#f6f5f0] overflow-hidden">
+        <section className="relative pt-36 pb-20 md:pt-44 md:pb-28 bg-[#121316] text-[#fffdf1] overflow-hidden">
           <div className="max-w-[1720px] mx-auto px-6 md:px-12 relative z-10">
             <motion.div
               initial={{ opacity: 0, x: -10 }}
@@ -133,33 +133,33 @@ export default function HeritagePage() {
         </section>
 
         {/* Heritage Narrative & Founder Philosophy */}
-        <section className="py-24 md:py-36 border-b border-black/5">
+        <section className="py-24 md:py-36 border-b border-dashed border-black/12">
           <div className="max-w-[1720px] mx-auto px-6 md:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
               <div className="lg:col-span-6 space-y-6">
                 <span className="text-xs font-mono tracking-[0.25em] text-[#9c8052] uppercase block">
                   OUR PHILOSOPHY
                 </span>
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-light text-[#141517] tracking-tight leading-[1.05]">
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-light text-[#141416] tracking-tight leading-[1.05]">
                   A Home Must Be More <br />
                   <span className="italic font-normal text-[#9c8052]">Than Just a Structure</span>
                 </h2>
-                <p className="text-base sm:text-lg text-[#2c3038] font-light leading-relaxed">
+                <p className="text-base sm:text-lg text-[#2c2b2f] font-light leading-relaxed">
                   At Onyx Assets LLP, our mission is to build homes that inspire and delight. We believe that a residence should be a direct reflection of your personality, family heritage, and enduring taste.
                 </p>
-                <p className="text-sm sm:text-base text-[#5e6573] font-light leading-relaxed">
+                <p className="text-sm sm:text-base text-[#97968d] font-light leading-relaxed">
                   We work closely with our clients from initial architectural conceptualization to final keys handover, using advanced construction methodology to ensure that our homes exceed expectations across decades.
                 </p>
-                <div className="pt-4 grid grid-cols-2 gap-6 border-t border-black/10">
+                <div className="pt-4 grid grid-cols-2 gap-6 border-t border-dashed border-black/15">
                   <div>
-                    <span className="text-4xl font-serif text-[#141517]">30+</span>
-                    <p className="text-xs font-mono uppercase tracking-widest text-[#5e6573] mt-1">
+                    <span className="text-4xl font-serif text-[#141416]">30+</span>
+                    <p className="text-xs font-mono uppercase tracking-widest text-[#97968d] mt-1">
                       Years Combined Mastery
                     </p>
                   </div>
                   <div>
-                    <span className="text-4xl font-serif text-[#141517]">100%</span>
-                    <p className="text-xs font-mono uppercase tracking-widest text-[#5e6573] mt-1">
+                    <span className="text-4xl font-serif text-[#141416]">100%</span>
+                    <p className="text-xs font-mono uppercase tracking-widest text-[#97968d] mt-1">
                       Structural Integrity
                     </p>
                   </div>
@@ -186,13 +186,13 @@ export default function HeritagePage() {
         </section>
 
         {/* 30-Year Chronological Timeline */}
-        <section className="py-24 md:py-36 bg-[#f0ede6] border-b border-black/5">
+        <section className="py-24 md:py-36 bg-[#dcd9c8] border-b border-dashed border-black/12">
           <div className="max-w-[1720px] mx-auto px-6 md:px-12">
             <div className="max-w-2xl mb-16">
               <span className="text-xs font-mono tracking-[0.25em] text-[#9c8052] uppercase block mb-3">
                 MILESTONES OF RIGOR
               </span>
-              <h2 className="text-4xl sm:text-6xl font-serif font-light text-[#141517] tracking-tight">
+              <h2 className="text-4xl sm:text-6xl font-serif font-light text-[#141416] tracking-tight">
                 Chronicles of <span className="italic font-normal text-[#9c8052]">Three Decades</span>
               </h2>
             </div>
@@ -211,10 +211,10 @@ export default function HeritagePage() {
                     {item.year}
                   </span>
                   <div className="space-y-2">
-                    <h3 className="font-serif text-2xl text-[#141517] font-normal">
+                    <h3 className="font-serif text-2xl text-[#141416] font-normal">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-[#5e6573] font-light leading-relaxed">
+                    <p className="text-sm text-[#97968d] font-light leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -231,7 +231,7 @@ export default function HeritagePage() {
               <span className="text-xs font-mono tracking-[0.25em] text-[#9c8052] uppercase block mb-3">
                 THE FOUNDATION
               </span>
-              <h2 className="text-4xl sm:text-6xl font-serif font-light text-[#141517] tracking-tight">
+              <h2 className="text-4xl sm:text-6xl font-serif font-light text-[#141416] tracking-tight">
                 Our Core <span className="italic font-normal text-[#9c8052]">Commitments</span>
               </h2>
             </div>
@@ -243,10 +243,10 @@ export default function HeritagePage() {
                   className="bg-white border border-black/8 rounded-2xl p-8 space-y-4 shadow-sm"
                 >
                   <span className="font-mono text-xs text-[#9c8052]">({val.number})</span>
-                  <h3 className="font-serif text-2xl text-[#141517] font-normal">
+                  <h3 className="font-serif text-2xl text-[#141416] font-normal">
                     {val.title}
                   </h3>
-                  <p className="text-sm text-[#5e6573] font-light leading-relaxed">
+                  <p className="text-sm text-[#97968d] font-light leading-relaxed">
                     {val.description}
                   </p>
                 </div>
@@ -254,9 +254,9 @@ export default function HeritagePage() {
             </div>
 
             {/* Bottom Callout */}
-            <div className="mt-16 pt-12 border-t border-black/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div className="mt-16 pt-12 border-t border-dashed border-black/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
               <div>
-                <p className="text-sm font-serif text-[#141517]">
+                <p className="text-sm font-serif text-[#141416]">
                   Ready to experience our architectural portfolio in person?
                 </p>
                 <p className="text-xs font-mono text-[#9c8052] mt-1">
@@ -265,7 +265,7 @@ export default function HeritagePage() {
               </div>
               <Link
                 href="/consultation"
-                className="px-8 py-4 rounded-full bg-[#141517] text-white font-mono text-xs uppercase tracking-widest hover:bg-[#9c8052] transition-colors duration-300 shadow-lg flex items-center gap-2"
+                className="px-8 py-4 rounded bg-[#141416] text-white font-mono text-xs uppercase tracking-widest hover:bg-[#9c8052] transition-colors duration-300 shadow-lg flex items-center gap-2"
               >
                 <span>BOOK A PRIVATE CONSULTATION</span>
                 <ArrowUpRight className="w-4 h-4" />

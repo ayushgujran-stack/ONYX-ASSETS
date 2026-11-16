@@ -38,7 +38,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="py-28 md:py-40 bg-[#f6f5f0] border-t border-black/5 relative overflow-clip"
+      className="py-28 md:py-40 bg-[#fffdf1] border-t border-dashed border-black/12 relative overflow-clip"
     >
       <div className="max-w-[1720px] mx-auto px-6 md:px-12">
         <motion.div
@@ -53,7 +53,7 @@ export function AboutSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-24">
           <div className="lg:col-span-7">
-            <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-[#141517] font-light leading-[0.98] tracking-tight">
+            <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-[#141416] font-light leading-[0.98] tracking-tight">
               <MaskedWords
                 segments={[
                   { text: "Timeless " },
@@ -75,7 +75,7 @@ export function AboutSection() {
                   text: "Every element of Onyx Assets reflects an uncompromising commitment to excellence. From the structural durability of our foundations to our thoughtfully oriented floor plans, each property embodies a holistic approach to luxury living.",
                 },
               ]}
-              className="text-base sm:text-lg text-[#2c3038] font-light leading-relaxed"
+              className="text-base sm:text-lg text-[#2c2b2f] font-light leading-relaxed"
             />
             <ScrubbedText
               segments={[
@@ -83,14 +83,14 @@ export function AboutSection() {
                   text: "Whether you are seeking a landmark 3 or 4 BHK luxury apartment in Kunjibettu, a serene riverfront flat at Mission Compound, or a bespoke coastal residence, Onyx Assets crafts homes built to last for generations.",
                 },
               ]}
-              className="text-sm sm:text-base text-[#5e6573] font-light leading-relaxed"
+              className="text-sm sm:text-base text-[#97968d] font-light leading-relaxed"
               baseOpacity={0.3}
             />
           </div>
         </div>
 
         {/* Stats + Frameless Pan-In Parallax Image */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center pt-10 border-t border-black/10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center pt-10 border-t border-dashed border-black/15">
           <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12">
             {stats.map((s, i) => (
               <motion.div
@@ -105,14 +105,14 @@ export function AboutSection() {
                 }}
                 className="space-y-3"
               >
-                <div className="text-6xl sm:text-7xl font-serif text-[#141517] font-light">
+                <div className="text-6xl sm:text-7xl font-serif text-[#141416] font-light">
                   <AnimatedCounter
                     to={s.value}
                     suffix={s.unit}
                     suffixClassName="text-3xl sm:text-4xl text-[#9c8052]"
                   />
                 </div>
-                <p className="text-xs sm:text-sm font-mono tracking-wider uppercase text-[#5e6573] leading-relaxed">
+                <p className="text-xs sm:text-sm font-mono tracking-wider uppercase text-[#97968d] leading-relaxed">
                   {s.label}
                 </p>
               </motion.div>

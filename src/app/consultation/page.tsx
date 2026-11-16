@@ -90,11 +90,11 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
 
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-[#f6f5f0] text-[#141517]">
+      <main className="min-h-screen bg-[#fffdf1] text-[#141416]">
         <Navbar onOpenBookVisit={() => {}} />
 
         {/* Hero Section */}
-        <section className="relative pt-36 pb-20 md:pt-44 md:pb-28 bg-[#121316] text-[#f6f5f0] overflow-hidden">
+        <section className="relative pt-36 pb-20 md:pt-44 md:pb-28 bg-[#121316] text-[#fffdf1] overflow-hidden">
           <div className="max-w-[1720px] mx-auto px-6 md:px-12 relative z-10">
             <motion.div
               initial={{ opacity: 0, x: -10 }}
@@ -158,11 +158,11 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                   <span className="text-xs font-mono tracking-[0.25em] text-[#9c8052] uppercase block">
                     THE ENGAGEMENT PROTOCOL
                   </span>
-                  <h2 className="text-3xl sm:text-4xl font-serif font-light text-[#141517] tracking-tight">
+                  <h2 className="text-3xl sm:text-4xl font-serif font-light text-[#141416] tracking-tight">
                     Personalized Guidance, <br />
                     <span className="italic font-normal text-[#9c8052]">Direct With Onyx Principals</span>
                   </h2>
-                  <p className="text-sm sm:text-base text-[#5e6573] font-light leading-relaxed">
+                  <p className="text-sm sm:text-base text-[#97968d] font-light leading-relaxed">
                     We recognize that acquiring a luxury home in Udupi is an intimate, generational decision. Every consultation is conducted directly with key decision-makers who understand local zoning, structural engineering, bank loan facilitation, and Vastu orientation.
                   </p>
                 </div>
@@ -177,14 +177,14 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                     <div className="space-y-1">
                       <a
                         href={`tel:${ONYX_PHONE_PRIMARY.replace(/\s+/g, "")}`}
-                        className="text-lg font-serif text-[#141517] hover:text-[#9c8052] transition-colors flex items-center gap-2"
+                        className="text-lg font-serif text-[#141416] hover:text-[#9c8052] transition-colors flex items-center gap-2"
                       >
                         <Phone className="w-4 h-4 text-[#9c8052]" />
                         <span>{ONYX_PHONE_PRIMARY}</span>
                       </a>
                       <a
                         href={`tel:${ONYX_PHONE_SECONDARY.replace(/\s+/g, "")}`}
-                        className="text-sm font-serif text-[#5e6573] hover:text-[#9c8052] transition-colors flex items-center gap-2 pl-6"
+                        className="text-sm font-serif text-[#97968d] hover:text-[#9c8052] transition-colors flex items-center gap-2 pl-6"
                       >
                         <span>{ONYX_PHONE_SECONDARY}</span>
                       </a>
@@ -209,12 +209,12 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                     </span>
                     <a
                       href={`mailto:${ONYX_EMAIL}`}
-                      className="text-lg font-serif text-[#141517] hover:text-[#9c8052] transition-colors flex items-center gap-2"
+                      className="text-lg font-serif text-[#141416] hover:text-[#9c8052] transition-colors flex items-center gap-2"
                     >
                       <Mail className="w-4 h-4 text-[#9c8052]" />
                       <span>{ONYX_EMAIL}</span>
                     </a>
-                    <p className="text-xs text-[#5e6573] font-light">
+                    <p className="text-xs text-[#97968d] font-light">
                       Direct delivery to Onyx Assets LLP management for prioritized turnaround.
                     </p>
                   </div>
@@ -224,14 +224,14 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                     <span className="text-[11px] font-mono text-[#9c8052] uppercase tracking-wider block">
                       Registered Corporate Office
                     </span>
-                    <div className="flex items-start gap-2.5 text-[#2c3038] font-light leading-relaxed">
+                    <div className="flex items-start gap-2.5 text-[#2c2b2f] font-light leading-relaxed">
                       <MapPin className="w-4 h-4 text-[#9c8052] shrink-0 mt-0.5" />
                       <div>
                         <strong>ONYX Assets LLP</strong>
                         <p>5-31(3), Vyavahar Pearl, Alevoor, Udupi, Karnataka, India 574118</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-2.5 text-[#5e6573] pt-2 border-t border-black/5">
+                    <div className="flex items-start gap-2.5 text-[#97968d] pt-2 border-t border-dashed border-black/12">
                       <Clock className="w-4 h-4 text-[#9c8052] shrink-0 mt-0.5" />
                       <div>
                         <p>Monday – Friday: 9:00 am – 6:30 pm</p>
@@ -241,11 +241,11 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                   </div>
 
                   <div className="p-6 rounded-2xl bg-[#ede8df] border border-black/8 space-y-2 text-xs font-mono">
-                    <div className="flex items-center gap-2 text-[#141517] font-semibold">
+                    <div className="flex items-center gap-2 text-[#141416] font-semibold">
                       <ShieldCheck className="w-4 h-4 text-[#9c8052]" />
                       <span>Strict Confidentiality & Compliance</span>
                     </div>
-                    <p className="text-[#5e6573] font-light leading-relaxed">
+                    <p className="text-[#97968d] font-light leading-relaxed">
                       All communications are handled with absolute discretion. Verified RERA developer credentials and end-to-end documentation assistance.
                     </p>
                   </div>
@@ -264,19 +264,19 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                       <CheckCircle2 className="w-10 h-10" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-3xl font-serif text-[#141517]">
+                      <h3 className="text-3xl font-serif text-[#141416]">
                         Consultation Registered
                       </h3>
-                      <p className="text-sm text-[#5e6573] font-light max-w-md mx-auto leading-relaxed">
+                      <p className="text-sm text-[#97968d] font-light max-w-md mx-auto leading-relaxed">
                         Thank you, <strong>{formData.name}</strong>. Your inquiry for <strong>{formData.residence}</strong> has been logged and queued for Onyx Assets LLP.
                       </p>
                     </div>
 
-                    <div className="p-6 rounded-2xl bg-[#f6f5f0] border border-black/8 max-w-md mx-auto text-left space-y-4">
+                    <div className="p-6 rounded-2xl bg-[#fffdf1] border border-black/8 max-w-md mx-auto text-left space-y-4">
                       <span className="text-[11px] font-mono uppercase tracking-widest text-[#9c8052] block">
                         Direct Dispatch Channels
                       </span>
-                      <p className="text-xs text-[#5e6573] leading-relaxed">
+                      <p className="text-xs text-[#97968d] leading-relaxed">
                         To receive immediate priority booking confirmation, click below to send your details directly via official WhatsApp or email:
                       </p>
 
@@ -293,7 +293,7 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
 
                         <a
                           href={getMailtoUrl()}
-                          className="w-full py-3.5 px-4 rounded-xl bg-[#141517] text-white font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#9c8052] transition-colors flex items-center justify-center gap-2 shadow-md"
+                          className="w-full py-3.5 px-4 rounded-xl bg-[#141416] text-white font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#9c8052] transition-colors flex items-center justify-center gap-2 shadow-md"
                         >
                           <Mail className="w-4 h-4" />
                           <span>Send via Email ({ONYX_EMAIL})</span>
@@ -301,38 +301,38 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                       </div>
                     </div>
 
-                    <div className="pt-4 max-w-sm mx-auto text-xs font-mono text-[#5e6573] space-y-1">
+                    <div className="pt-4 max-w-sm mx-auto text-xs font-mono text-[#97968d] space-y-1">
                       <p>Meeting Format: {formData.format}</p>
                       <p>Contact: {formData.phone} • {formData.email}</p>
                     </div>
 
                     <button
                       onClick={() => setSubmitted(false)}
-                      className="mt-4 px-6 py-2.5 rounded-full border border-black/15 text-xs font-mono uppercase tracking-widest hover:bg-black hover:text-white transition-colors"
+                      className="mt-4 px-6 py-2.5 rounded border border-[rgba(20,20,22,0.18)] border-dashed text-xs font-mono uppercase tracking-widest hover:bg-black hover:text-white transition-colors"
                     >
                       Book Another Appointment
                     </button>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-8">
-                    <div className="border-b border-black/8 pb-6">
+                    <div className="border-b border-dashed border-black/12 pb-6">
                       <span className="text-xs font-mono tracking-widest uppercase text-[#9c8052] block mb-2">
                         Step 1 of 2
                       </span>
-                      <h3 className="text-2xl font-serif text-[#141517]">
+                      <h3 className="text-2xl font-serif text-[#141416]">
                         Consultation Preferences
                       </h3>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
-                        <label className="text-[11px] font-mono tracking-widest uppercase text-[#5e6573] block mb-2">
+                        <label className="text-[11px] font-mono tracking-widest uppercase text-[#97968d] block mb-2">
                           Residence of Interest
                         </label>
                         <select
                           value={formData.residence}
                           onChange={(e) => setFormData({ ...formData, residence: e.target.value })}
-                          className="w-full bg-[#f6f5f0] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141517] focus:outline-none focus:border-[#9c8052] transition-colors"
+                          className="w-full bg-[#fffdf1] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141416] focus:outline-none focus:border-[#9c8052] transition-colors"
                         >
                           <option value="Opulence by Onyx">Opulence by Onyx (Kunjibettu)</option>
                           <option value="Riviera by Onyx">Riviera by Onyx (Mission Compound)</option>
@@ -343,13 +343,13 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                       </div>
 
                       <div>
-                        <label className="text-[11px] font-mono tracking-widest uppercase text-[#5e6573] block mb-2">
+                        <label className="text-[11px] font-mono tracking-widest uppercase text-[#97968d] block mb-2">
                           Preferred Meeting Format
                         </label>
                         <select
                           value={formData.format}
                           onChange={(e) => setFormData({ ...formData, format: e.target.value })}
-                          className="w-full bg-[#f6f5f0] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141517] focus:outline-none focus:border-[#9c8052] transition-colors"
+                          className="w-full bg-[#fffdf1] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141416] focus:outline-none focus:border-[#9c8052] transition-colors"
                         >
                           <option value="Private On-Site Walkthrough">Private On-Site Walkthrough (Udupi)</option>
                           <option value="Live Virtual Tour (Zoom / Google Meet)">Live Video Conference (Global NRI)</option>
@@ -360,7 +360,7 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
-                        <label className="text-[11px] font-mono tracking-widest uppercase text-[#5e6573] block mb-2">
+                        <label className="text-[11px] font-mono tracking-widest uppercase text-[#97968d] block mb-2">
                           Preferred Date
                         </label>
                         <input
@@ -368,18 +368,18 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                           required
                           value={formData.date}
                           onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                          className="w-full bg-[#f6f5f0] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141517] focus:outline-none focus:border-[#9c8052] transition-colors"
+                          className="w-full bg-[#fffdf1] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141416] focus:outline-none focus:border-[#9c8052] transition-colors"
                         />
                       </div>
 
                       <div>
-                        <label className="text-[11px] font-mono tracking-widest uppercase text-[#5e6573] block mb-2">
+                        <label className="text-[11px] font-mono tracking-widest uppercase text-[#97968d] block mb-2">
                           Preferred Time Window
                         </label>
                         <select
                           value={formData.timeOfDay}
                           onChange={(e) => setFormData({ ...formData, timeOfDay: e.target.value })}
-                          className="w-full bg-[#f6f5f0] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141517] focus:outline-none focus:border-[#9c8052] transition-colors"
+                          className="w-full bg-[#fffdf1] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141416] focus:outline-none focus:border-[#9c8052] transition-colors"
                         >
                           <option value="Morning (10:00 AM - 1:00 PM)">Morning (10:00 AM - 1:00 PM IST)</option>
                           <option value="Afternoon (2:00 PM - 5:00 PM)">Afternoon (2:00 PM - 5:00 PM IST)</option>
@@ -388,18 +388,18 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                       </div>
                     </div>
 
-                    <div className="border-b border-black/8 pb-6 pt-4">
+                    <div className="border-b border-dashed border-black/12 pb-6 pt-4">
                       <span className="text-xs font-mono tracking-widest uppercase text-[#9c8052] block mb-2">
                         Step 2 of 2
                       </span>
-                      <h3 className="text-2xl font-serif text-[#141517]">
+                      <h3 className="text-2xl font-serif text-[#141416]">
                         Client Credentials
                       </h3>
                     </div>
 
                     <div className="space-y-6">
                       <div>
-                        <label className="text-[11px] font-mono tracking-widest uppercase text-[#5e6573] block mb-2">
+                        <label className="text-[11px] font-mono tracking-widest uppercase text-[#97968d] block mb-2">
                           Full Name
                         </label>
                         <input
@@ -408,13 +408,13 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                           placeholder="E.g. Siddharth Rao"
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full bg-[#f6f5f0] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141517] placeholder-black/30 focus:outline-none focus:border-[#9c8052] transition-colors"
+                          className="w-full bg-[#fffdf1] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141416] placeholder-black/30 focus:outline-none focus:border-[#9c8052] transition-colors"
                         />
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                          <label className="text-[11px] font-mono tracking-widest uppercase text-[#5e6573] block mb-2">
+                          <label className="text-[11px] font-mono tracking-widest uppercase text-[#97968d] block mb-2">
                             Direct Telephone / WhatsApp
                           </label>
                           <input
@@ -423,12 +423,12 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                             placeholder="+91 91139 25641"
                             value={formData.phone}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            className="w-full bg-[#f6f5f0] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141517] placeholder-black/30 focus:outline-none focus:border-[#9c8052] transition-colors"
+                            className="w-full bg-[#fffdf1] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141416] placeholder-black/30 focus:outline-none focus:border-[#9c8052] transition-colors"
                           />
                         </div>
 
                         <div>
-                          <label className="text-[11px] font-mono tracking-widest uppercase text-[#5e6573] block mb-2">
+                          <label className="text-[11px] font-mono tracking-widest uppercase text-[#97968d] block mb-2">
                             Confidential Email Address
                           </label>
                           <input
@@ -437,13 +437,13 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                             placeholder="siddharth@example.com"
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className="w-full bg-[#f6f5f0] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141517] placeholder-black/30 focus:outline-none focus:border-[#9c8052] transition-colors"
+                            className="w-full bg-[#fffdf1] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141416] placeholder-black/30 focus:outline-none focus:border-[#9c8052] transition-colors"
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label className="text-[11px] font-mono tracking-widest uppercase text-[#5e6573] block mb-2">
+                        <label className="text-[11px] font-mono tracking-widest uppercase text-[#97968d] block mb-2">
                           Specific Requirements or Customization Notes (Optional)
                         </label>
                         <textarea
@@ -451,7 +451,7 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                           placeholder="E.g. Interested in dual-penthouse configuration at Opulence or private garden sizing for Villa 8..."
                           value={formData.notes}
                           onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                          className="w-full bg-[#f6f5f0] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141517] placeholder-black/30 focus:outline-none focus:border-[#9c8052] transition-colors resize-none"
+                          className="w-full bg-[#fffdf1] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141416] placeholder-black/30 focus:outline-none focus:border-[#9c8052] transition-colors resize-none"
                         />
                       </div>
                     </div>
@@ -459,7 +459,7 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-4 rounded-full bg-[#141517] text-white font-mono text-xs uppercase tracking-widest hover:bg-[#9c8052] transition-colors duration-300 font-semibold shadow-xl flex items-center justify-center gap-2 disabled:opacity-50"
+                      className="w-full py-4 rounded bg-[#141416] text-white font-mono text-xs uppercase tracking-widest hover:bg-[#9c8052] transition-colors duration-300 font-semibold shadow-xl flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                       <span>{isSubmitting ? "TRANSMITTING INQUIRY..." : "CONFIRM PRIVATE APPOINTMENT"}</span>
                       <ArrowUpRight className="w-4 h-4" />

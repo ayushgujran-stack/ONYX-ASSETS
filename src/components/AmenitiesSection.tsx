@@ -65,7 +65,7 @@ export function AmenitiesSection() {
   return (
     <section
       id="amenities"
-      className="py-28 md:py-40 bg-[#f0ede6] border-t border-black/5 relative overflow-clip"
+      className="py-28 md:py-40 bg-[#dcd9c8] border-t border-dashed border-black/12 relative overflow-clip"
     >
       <div className="max-w-[1720px] mx-auto px-6 md:px-12">
         {/* Top Editorial Header */}
@@ -79,7 +79,7 @@ export function AmenitiesSection() {
           >
             (CURATED AMENITIES)
           </motion.span>
-          <h2 className="text-4xl sm:text-6xl font-serif text-[#141517] font-light tracking-tight">
+          <h2 className="text-4xl sm:text-6xl font-serif text-[#141416] font-light tracking-tight">
             <MaskedWords segments={[{ text: "Spaces Designed for" }]} />
             <br />
             <MaskedWords
@@ -95,7 +95,7 @@ export function AmenitiesSection() {
         </div>
 
         {/* Asymmetric Dual-Image Scrollytelling Spreads (Zero Tabs / Zero Box Frames) */}
-        <div className="divide-y divide-black/10 border-t border-black/10">
+        <div className="divide-y divide-black/10 border-t border-dashed border-black/15">
           {AMENITY_SETS.map((item, idx) => {
             const reverseColumns = idx % 2 === 1;
             const bigSlideDir = reverseColumns ? "right" : "left";
@@ -116,28 +116,28 @@ export function AmenitiesSection() {
                     <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.22em] text-[#9c8052]">
                       <span>({item.number})</span>
                       <span className="text-black/25">/</span>
-                      <span className="text-[#5e6573]">{item.label}</span>
+                      <span className="text-[#97968d]">{item.label}</span>
                     </div>
 
-                    <h3 className="text-3xl sm:text-4xl font-serif text-[#141517] font-light leading-tight">
+                    <h3 className="text-3xl sm:text-4xl font-serif text-[#141416] font-light leading-tight">
                       <MaskedWords segments={[{ text: item.title }]} />
                     </h3>
 
                     <ScrubbedText
                       segments={[{ text: item.description }]}
-                      className="text-sm sm:text-base text-[#2c3038] font-light leading-relaxed"
+                      className="text-sm sm:text-base text-[#2c2b2f] font-light leading-relaxed"
                     />
                   </div>
 
                   {/* Minimalist Hairline Highlights */}
-                  <ul className="divide-y divide-black/10 border-y border-black/10 text-xs sm:text-sm font-mono text-[#141517]">
+                  <ul className="divide-y divide-black/10 border-y border-black/10 text-xs sm:text-sm font-mono text-[#141416]">
                     {item.highlights.map((highlight) => (
                       <li
                         key={highlight}
                         className="py-3 flex items-center justify-between"
                       >
                         <span>{highlight}</span>
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#9c8052]" />
+                        <span className="w-1.5 h-1.5 rounded bg-[#9c8052]" />
                       </li>
                     ))}
                   </ul>

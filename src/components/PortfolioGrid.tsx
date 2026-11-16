@@ -139,9 +139,9 @@ export function PortfolioGrid({
   };
 
   return (
-    <div id="portfolio" className="relative bg-[#f6f5f0]">
+    <div id="portfolio" className="relative bg-[#fffdf1]">
       {/* ─── Sticky Architectural Status & Typology Rail ─── */}
-      <div className="sticky top-[68px] md:top-[72px] z-30 bg-[#f6f5f0]/95 backdrop-blur-xl border-y border-black/10 transition-colors">
+      <div className="sticky top-[68px] md:top-[72px] z-30 bg-[#fffdf1]/95 backdrop-blur-xl border-y border-black/10 transition-colors">
         <div className="max-w-[1720px] mx-auto px-6 md:px-12 py-3.5 flex flex-col xl:flex-row xl:items-center justify-between gap-3">
           {/* Primary Client Status Tabs */}
           <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1 xl:pb-0">
@@ -163,14 +163,14 @@ export function PortfolioGrid({
                   className={`relative px-4 py-2 rounded-full text-[11px] font-mono uppercase tracking-[0.16em] whitespace-nowrap transition-colors duration-300 shrink-0 ${
                     isActive
                       ? "text-white"
-                      : "text-[#5e6573] hover:text-[#141517]"
+                      : "text-[#97968d] hover:text-[#141416]"
                   }`}
                 >
                   {isActive && (
                     <motion.span
                       layoutId="estates-sticky-pill"
                       transition={{ duration: 0.4, ease: EXPO_OUT }}
-                      className="absolute inset-0 rounded-full bg-[#141517] shadow-sm"
+                      className="absolute inset-0 rounded bg-[#141416] shadow-sm"
                     />
                   )}
                   <span className="relative z-10 flex items-center gap-1.5">
@@ -200,7 +200,7 @@ export function PortfolioGrid({
                 className={`px-3.5 py-1.5 rounded-full text-[10px] font-mono uppercase tracking-[0.16em] whitespace-nowrap border transition-all duration-300 shrink-0 ${
                   typeFilter === t.key
                     ? "bg-[#9c8052] text-white border-[#9c8052]"
-                    : "bg-transparent text-[#5e6573] border-black/12 hover:border-[#141517] hover:text-[#141517]"
+                    : "bg-transparent text-[#97968d] border-black/12 hover:border-[#141416] hover:text-[#141416]"
                 }`}
               >
                 {t.label}
@@ -304,7 +304,7 @@ function EditorialPropertySpread({
   return (
     <section
       className={`py-24 md:py-36 relative overflow-clip ${
-        altBackground ? "bg-[#f0ede6]" : "bg-[#f6f5f0]"
+        altBackground ? "bg-[#dcd9c8]" : "bg-[#fffdf1]"
       }`}
     >
       <div className="max-w-[1720px] mx-auto px-6 md:px-12">
@@ -332,7 +332,7 @@ function EditorialPropertySpread({
             }`}
           >
             {/* Single-line Location + Subtle Chapter Index */}
-            <div className="flex items-baseline justify-between border-b border-black/10 pb-4">
+            <div className="flex items-baseline justify-between border-b border-dashed border-black/15 pb-4">
               <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#9c8052]">
                 {property.location}
               </span>
@@ -342,36 +342,36 @@ function EditorialPropertySpread({
             </div>
 
             {/* Masked Editorial Serif Title */}
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-[#141517] font-light leading-[1.02] tracking-tight">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-[#141416] font-light leading-[1.02] tracking-tight">
               <MaskedWords segments={[{ text: property.name }]} />
             </h2>
 
             {/* Scroll-Scrubbed Architectural Statement */}
             <ScrubbedText
               segments={[{ text: property.description }]}
-              className="text-sm sm:text-base text-[#5e6573] font-light leading-relaxed"
+              className="text-sm sm:text-base text-[#97968d] font-light leading-relaxed"
             />
 
             {/* Clean 3-Metric Hairline Strip */}
             <div className="grid grid-cols-3 gap-4 py-4 border-y border-black/10">
               <div>
-                <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#5e6573]">
+                <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#97968d]">
                   Typology
                 </div>
-                <div className="text-xs sm:text-sm font-medium text-[#141517] mt-1">
+                <div className="text-xs sm:text-sm font-medium text-[#141416] mt-1">
                   {property.units || "Signature Home"}
                 </div>
               </div>
               <div>
-                <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#5e6573]">
+                <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#97968d]">
                   Area
                 </div>
-                <div className="text-xs sm:text-sm font-medium text-[#141517] mt-1">
+                <div className="text-xs sm:text-sm font-medium text-[#141416] mt-1">
                   {property.area || "Bespoke"}
                 </div>
               </div>
               <div>
-                <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#5e6573]">
+                <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#97968d]">
                   Status
                 </div>
                 <div className="text-xs sm:text-sm font-medium text-[#9c8052] mt-1">
@@ -390,7 +390,7 @@ function EditorialPropertySpread({
             >
               <button
                 onClick={() => onSelect(property)}
-                className="group px-7 py-3.5 rounded-full bg-[#141517] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#9c8052] transition-colors shadow-md flex items-center gap-2"
+                className="group px-7 py-3.5 rounded bg-[#141416] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#9c8052] transition-colors shadow-md flex items-center gap-2"
               >
                 <span>Inspect Residence</span>
                 <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -398,7 +398,7 @@ function EditorialPropertySpread({
 
               <Link
                 href={`/estates/${property.id}`}
-                className="px-6 py-3.5 rounded-full border border-black/15 bg-white text-[#141517] hover:border-[#9c8052] hover:text-[#9c8052] text-xs font-mono uppercase tracking-widest transition-colors flex items-center gap-1.5"
+                className="px-6 py-3.5 rounded border border-[rgba(20,20,22,0.18)] border-dashed bg-white text-[#141416] hover:border-[#9c8052] hover:text-[#9c8052] text-xs font-mono uppercase tracking-widest transition-colors flex items-center gap-1.5"
               >
                 <span>Full Dossier</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -407,7 +407,7 @@ function EditorialPropertySpread({
               {property.projectPhase === "ongoing" && (
                 <button
                   onClick={onBook}
-                  className="px-6 py-3.5 rounded-full border border-black/15 bg-transparent text-[#141517] hover:border-[#141517] text-xs font-mono uppercase tracking-widest transition-colors flex items-center gap-2"
+                  className="px-6 py-3.5 rounded border border-[rgba(20,20,22,0.18)] border-dashed bg-transparent text-[#141416] hover:border-[#141416] text-xs font-mono uppercase tracking-widest transition-colors flex items-center gap-2"
                 >
                   <Calendar className="w-3.5 h-3.5 text-[#9c8052]" />
                   <span>Book Viewing</span>
@@ -419,7 +419,7 @@ function EditorialPropertySpread({
                   href={property.brochureUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-2 text-[11px] font-mono uppercase tracking-[0.18em] text-[#5e6573] hover:text-[#9c8052] transition-colors"
+                  className="inline-flex items-center gap-1.5 px-3 py-2 text-[11px] font-mono uppercase tracking-[0.18em] text-[#97968d] hover:text-[#9c8052] transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Brochure PDF</span>
@@ -468,7 +468,7 @@ function EnclaveSeriesSpread({
   return (
     <section
       className={`py-24 md:py-36 relative overflow-clip ${
-        altBackground ? "bg-[#f0ede6]" : "bg-[#f6f5f0]"
+        altBackground ? "bg-[#dcd9c8]" : "bg-[#fffdf1]"
       }`}
     >
       <div className="max-w-[1720px] mx-auto px-6 md:px-12">
@@ -512,8 +512,8 @@ function EnclaveSeriesSpread({
                     onClick={() => setSelectedId(item.id)}
                     className={`px-3.5 py-2 rounded-full text-[11px] font-mono uppercase tracking-wider border transition-all duration-300 ${
                       active
-                        ? "bg-[#141517] text-[#dfc082] border-[#141517] shadow-sm"
-                        : "bg-white/70 text-[#5e6573] border-black/10 hover:border-[#9c8052] hover:text-[#141517]"
+                        ? "bg-[#141416] text-[#dfc082] border-[#141416] shadow-sm"
+                        : "bg-white/70 text-[#97968d] border-black/10 hover:border-[#9c8052] hover:text-[#141416]"
                     }`}
                   >
                     {labelForItem(item, i)}
@@ -529,7 +529,7 @@ function EnclaveSeriesSpread({
               reversed ? "lg:order-1" : "lg:order-2"
             }`}
           >
-            <div className="flex items-baseline justify-between border-b border-black/10 pb-4">
+            <div className="flex items-baseline justify-between border-b border-dashed border-black/15 pb-4">
               <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#9c8052]">
                 {location}
               </span>
@@ -539,7 +539,7 @@ function EnclaveSeriesSpread({
             </div>
 
             <div>
-              <h2 className="text-4xl sm:text-5xl font-serif text-[#141517] font-light leading-[1.04] tracking-tight">
+              <h2 className="text-4xl sm:text-5xl font-serif text-[#141416] font-light leading-[1.04] tracking-tight">
                 <MaskedWords segments={[{ text: title }]} />
               </h2>
               <div className="text-xl sm:text-2xl font-serif italic text-[#9c8052] mt-2">
@@ -547,30 +547,30 @@ function EnclaveSeriesSpread({
               </div>
             </div>
 
-            <p className="text-sm sm:text-base text-[#5e6573] font-light leading-relaxed">
+            <p className="text-sm sm:text-base text-[#97968d] font-light leading-relaxed">
               {activeItem.description}
             </p>
 
             {/* Clean 3-Metric Hairline Strip */}
             <div className="grid grid-cols-3 gap-4 py-4 border-y border-black/10">
               <div>
-                <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#5e6573]">
+                <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#97968d]">
                   Typology
                 </div>
-                <div className="text-xs sm:text-sm font-medium text-[#141517] mt-1">
+                <div className="text-xs sm:text-sm font-medium text-[#141416] mt-1">
                   {activeItem.units}
                 </div>
               </div>
               <div>
-                <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#5e6573]">
+                <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#97968d]">
                   Area
                 </div>
-                <div className="text-xs sm:text-sm font-medium text-[#141517] mt-1">
+                <div className="text-xs sm:text-sm font-medium text-[#141416] mt-1">
                   {activeItem.area}
                 </div>
               </div>
               <div>
-                <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#5e6573]">
+                <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#97968d]">
                   Status
                 </div>
                 <div className="text-xs sm:text-sm font-medium text-[#9c8052] mt-1">
@@ -582,7 +582,7 @@ function EnclaveSeriesSpread({
             <div className="flex flex-wrap items-center gap-3 pt-1">
               <button
                 onClick={() => onSelect(activeItem)}
-                className="group px-7 py-3.5 rounded-full bg-[#141517] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#9c8052] transition-colors shadow-md flex items-center gap-2"
+                className="group px-7 py-3.5 rounded bg-[#141416] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#9c8052] transition-colors shadow-md flex items-center gap-2"
               >
                 <span>Inspect {labelForItem(activeItem, safeIndex)}</span>
                 <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -590,7 +590,7 @@ function EnclaveSeriesSpread({
 
               <Link
                 href={`/estates/${activeItem.id}`}
-                className="px-6 py-3.5 rounded-full border border-black/15 bg-white text-[#141517] hover:border-[#9c8052] hover:text-[#9c8052] text-xs font-mono uppercase tracking-widest transition-colors flex items-center gap-1.5"
+                className="px-6 py-3.5 rounded border border-[rgba(20,20,22,0.18)] border-dashed bg-white text-[#141416] hover:border-[#9c8052] hover:text-[#9c8052] text-xs font-mono uppercase tracking-widest transition-colors flex items-center gap-1.5"
               >
                 <span>Full Dossier</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -599,7 +599,7 @@ function EnclaveSeriesSpread({
               {activeItem.projectPhase === "ongoing" && (
                 <button
                   onClick={onBook}
-                  className="px-6 py-3.5 rounded-full border border-black/15 text-[#141517] hover:border-[#141517] text-xs font-mono uppercase tracking-widest transition-colors"
+                  className="px-6 py-3.5 rounded border border-[rgba(20,20,22,0.18)] border-dashed text-[#141416] hover:border-[#141416] text-xs font-mono uppercase tracking-widest transition-colors"
                 >
                   Enquire Allocation
                 </button>
@@ -631,7 +631,7 @@ function HorizonBriefingChapter({
     : `${CDN}/RSN%20PLOT14%201.jpeg`;
 
   return (
-    <section className="py-24 md:py-36 bg-[#f6f5f0] relative overflow-clip">
+    <section className="py-24 md:py-36 bg-[#fffdf1] relative overflow-clip">
       <div className="max-w-[1720px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Muted Architectural Mood Study (6 Cols) */}
@@ -659,7 +659,7 @@ function HorizonBriefingChapter({
               </span>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-[#141517] font-light leading-[1.03] tracking-tight">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-[#141416] font-light leading-[1.03] tracking-tight">
               <MaskedWords
                 segments={[
                   {
@@ -681,7 +681,7 @@ function HorizonBriefingChapter({
               />
             </h2>
 
-            <p className="text-sm sm:text-base text-[#5e6573] font-light leading-relaxed max-w-xl">
+            <p className="text-sm sm:text-base text-[#97968d] font-light leading-relaxed max-w-xl">
               {isPreLaunch
                 ? "Upcoming coastal developments are currently in statutory sanctioning and architectural finalization. Request confidential priority briefings directly with Onyx Assets' partners prior to public release."
                 : isFuture
@@ -692,15 +692,15 @@ function HorizonBriefingChapter({
             {/* Hairline Horizon Expectations */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 py-5 border-y border-black/10">
               <div>
-                <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#5e6573]">
+                <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#97968d]">
                   Corridor
                 </div>
-                <div className="text-sm font-medium text-[#141517] mt-1">
+                <div className="text-sm font-medium text-[#141416] mt-1">
                   Udupi & Manipal
                 </div>
               </div>
               <div>
-                <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#5e6573]">
+                <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#97968d]">
                   Allocation Access
                 </div>
                 <div className="text-sm font-medium text-[#9c8052] mt-1">
@@ -708,10 +708,10 @@ function HorizonBriefingChapter({
                 </div>
               </div>
               <div>
-                <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#5e6573]">
+                <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#97968d]">
                   Tariff Guidance
                 </div>
-                <div className="text-sm font-medium text-[#141517] mt-1">
+                <div className="text-sm font-medium text-[#141416] mt-1">
                   Released Upon Launch
                 </div>
               </div>
@@ -721,7 +721,7 @@ function HorizonBriefingChapter({
               {isPreLaunch || isFuture ? (
                 <Link
                   href="/consultation"
-                  className="group px-8 py-4 rounded-full bg-[#141517] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#9c8052] transition-colors shadow-lg inline-flex items-center gap-2"
+                  className="group px-8 py-4 rounded bg-[#141416] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#9c8052] transition-colors shadow-lg inline-flex items-center gap-2"
                 >
                   <span>Register Priority Interest</span>
                   <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -729,7 +729,7 @@ function HorizonBriefingChapter({
               ) : (
                 <button
                   onClick={onBookVisit}
-                  className="px-8 py-4 rounded-full bg-[#141517] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#9c8052] transition-colors"
+                  className="px-8 py-4 rounded bg-[#141416] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#9c8052] transition-colors"
                 >
                   Schedule Advisory
                 </button>
@@ -737,7 +737,7 @@ function HorizonBriefingChapter({
 
               <button
                 onClick={onReset}
-                className="px-6 py-4 rounded-full border border-black/15 text-[#141517] hover:border-[#141517] text-xs font-mono uppercase tracking-widest transition-colors"
+                className="px-6 py-4 rounded border border-[rgba(20,20,22,0.18)] border-dashed text-[#141416] hover:border-[#141416] text-xs font-mono uppercase tracking-widest transition-colors"
               >
                 Explore All 16 Estates
               </button>

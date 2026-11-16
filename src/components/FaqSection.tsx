@@ -44,7 +44,7 @@ export function FaqSection() {
   return (
     <section
       id="faq"
-      className="py-28 md:py-40 bg-[#f0ede6] border-t border-black/5 relative overflow-clip"
+      className="py-28 md:py-40 bg-[#dcd9c8] border-t border-dashed border-black/12 relative overflow-clip"
     >
       <div className="max-w-[1720px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -59,7 +59,7 @@ export function FaqSection() {
             >
               (FREQUENTLY ASKED QUESTIONS)
             </motion.span>
-            <h2 className="text-4xl sm:text-6xl font-serif text-[#141517] font-light tracking-tight leading-tight">
+            <h2 className="text-4xl sm:text-6xl font-serif text-[#141416] font-light tracking-tight leading-tight">
               <MaskedWords segments={[{ text: "Your Questions," }]} />
               <br />
               <MaskedWords
@@ -78,7 +78,7 @@ export function FaqSection() {
                   text: "Everything you need to know about acquisitions, architectural floor plans, site visits, and development timelines.",
                 },
               ]}
-              className="mt-6 text-base text-[#5e6573] font-light leading-relaxed max-w-md"
+              className="mt-6 text-base text-[#97968d] font-light leading-relaxed max-w-md"
             />
           </div>
 
@@ -104,7 +104,7 @@ export function FaqSection() {
                     onClick={() => toggle(idx)}
                     className="w-full py-7 text-left group flex items-center justify-between gap-6 cursor-pointer"
                   >
-                    <h3 className="text-lg sm:text-xl font-serif text-[#141517] group-hover:text-[#9c8052] transition-colors">
+                    <h3 className="text-lg sm:text-xl font-serif text-[#141416] group-hover:text-[#9c8052] transition-colors">
                       {faq.question}
                     </h3>
                     <motion.span
@@ -114,7 +114,7 @@ export function FaqSection() {
                         stiffness: 350,
                         damping: 25,
                       }}
-                      className="text-[#141517] group-hover:text-[#9c8052] transition-colors shrink-0"
+                      className="text-[#141416] group-hover:text-[#9c8052] transition-colors shrink-0"
                     >
                       {isOpen ? (
                         <Minus className="w-4 h-4" />
@@ -140,7 +140,7 @@ export function FaqSection() {
                         }}
                         className="overflow-hidden"
                       >
-                        <p className="pb-7 text-sm sm:text-base text-[#5e6573] font-light leading-relaxed max-w-2xl">
+                        <p className="pb-7 text-sm sm:text-base text-[#97968d] font-light leading-relaxed max-w-2xl">
                           {faq.answer}
                         </p>
                       </motion.div>

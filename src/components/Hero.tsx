@@ -118,14 +118,14 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
   const smokeY = useTransform(progress, [0, 0.75], ["72%", "22%"]);
   const smokeOpacity = useTransform(progress, [0, 0.28, 0.72, 1], [0.04, 0.16, 0.18, 0.08]);
 
-  // ─── 8. Seamless Sand Footer Blend into #f6f5f0 Section Below ─
+  // ─── 8. Seamless Sand Footer Blend into #fffdf1 Section Below ─
   const bottomOverlayOpacity = useTransform(progress, [0.68, 0.98], [0, 1]);
 
   return (
     <section
       id="hero-sequence"
       ref={containerRef}
-      className="relative h-[320vh] md:h-[440vh] bg-[#f6f5f0] text-[#141517] overflow-clip"
+      className="relative h-[320vh] md:h-[440vh] bg-[#fffdf1] text-[#141416] overflow-clip"
     >
       {/* ─── STICKY 100vh VIEWPORT ───────────────────────────────── */}
       <div className="sticky top-0 h-screen w-full overflow-hidden select-none">
@@ -260,7 +260,7 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
 
               <button
                 onClick={onBookVisit}
-                className="hidden sm:flex px-7 py-4 rounded-full border border-black/15 bg-white/80 hover:bg-white text-[#151717] font-mono text-xs uppercase tracking-widest transition-all duration-300 shadow-sm backdrop-blur-sm"
+                className="hidden sm:flex px-7 py-4 rounded border border-[rgba(20,20,22,0.18)] border-dashed bg-white/80 hover:bg-white text-[#151717] font-mono text-xs uppercase tracking-widest transition-all duration-300 shadow-sm backdrop-blur-sm"
               >
                 <span>BOOK VISIT</span>
               </button>
@@ -384,7 +384,7 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
           style={{ opacity: badgeOpacity }}
           className="absolute inset-x-0 top-[calc(50%+clamp(64px,16vw,185px))] z-[5] flex justify-center px-4 pointer-events-none"
         >
-          <div className="flex items-center gap-2 sm:gap-3 text-[9px] sm:text-[11px] md:text-xs font-mono uppercase tracking-[0.2em] sm:tracking-[0.35em] whitespace-nowrap text-[#f6f5f0] bg-[#141517]/80 backdrop-blur-md px-4 py-2 sm:px-5 sm:py-2.5 rounded-full border border-white/25 shadow-lg">
+          <div className="flex items-center gap-2 sm:gap-3 text-[9px] sm:text-[11px] md:text-xs font-mono uppercase tracking-[0.2em] sm:tracking-[0.35em] whitespace-nowrap text-[#fffdf1] bg-[#141416]/80 backdrop-blur-md px-4 py-2 sm:px-5 sm:py-2.5 rounded border border-white/25 shadow-lg">
             <span>RESIDENCE COLLECTION</span>
             <span className="text-[#c5a059]">&bull;</span>
             <span>UDUPI, KARNATAKA</span>
@@ -474,10 +474,10 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
           </motion.div>
         </motion.div>
 
-        {/* Layer 8a: Seamless Bottom Blend into Sand Background (#f6f5f0) */}
+        {/* Layer 8a: Seamless Bottom Blend into Sand Background (#fffdf1) */}
         <motion.div
           style={{ opacity: bottomOverlayOpacity }}
-          className="absolute left-0 right-0 bottom-0 h-44 md:h-64 z-[8] pointer-events-none bg-gradient-to-b from-transparent via-[#f6f5f0]/85 to-[#f6f5f0]"
+          className="absolute left-0 right-0 bottom-0 h-44 md:h-64 z-[8] pointer-events-none bg-gradient-to-b from-transparent via-[#fffdf1]/85 to-[#fffdf1]"
         />
 
         {/* Layer 8b: Bottom Scroll Cue */}
@@ -489,7 +489,7 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
             initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.55, ease: EXPO_OUT }}
-            className="flex items-center gap-2 whitespace-nowrap text-[10px] font-mono uppercase tracking-[0.25em] text-[#f6f5f0] bg-[#141517]/55 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/15"
+            className="flex items-center gap-2 whitespace-nowrap text-[10px] font-mono uppercase tracking-[0.25em] text-[#fffdf1] bg-[#141416]/55 backdrop-blur-sm px-4 py-1.5 rounded border border-white/15"
           >
             <span>SCROLL TO DISCOVER</span>
             <ArrowDown className="w-3.5 h-3.5 motion-safe:animate-bounce text-[#c5a059]" />

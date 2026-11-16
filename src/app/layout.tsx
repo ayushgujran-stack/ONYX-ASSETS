@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import { CustomCursor } from "@/components/CustomCursor";
 import "./globals.css";
 
@@ -8,12 +8,14 @@ const cormorant = Cormorant_Garamond({
   variable: "--font-serif",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
+const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -33,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${plusJakarta.variable}`}
+      className={`${cormorant.variable} ${inter.variable}`}
     >
       <head>
         <Script
@@ -48,7 +50,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="bg-[#f6f5f0] text-[#141517] font-sans antialiased selection:bg-[#9c8052] selection:text-white">
+      <body className="bg-[#fffdf1] text-[#141416] font-sans antialiased selection:bg-[#9c8052] selection:text-white">
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-MNMV9F4C"

@@ -31,7 +31,7 @@ export function CtaSection() {
     <section
       ref={sectionRef}
       id="cta"
-      className="relative py-36 md:py-52 bg-[#141517] text-white overflow-hidden"
+      className="relative py-36 md:py-52 bg-[#141416] text-white overflow-hidden"
     >
       {/* Background Cinematic Parallax Visual */}
       <motion.div
@@ -45,7 +45,7 @@ export function CtaSection() {
           sizes="100vw"
           className="object-cover brightness-[0.35] contrast-[1.08]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#141517]/90 via-[#141517]/40 to-[#0e1014]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#141416]/90 via-[#141416]/40 to-[#0e1014]" />
       </motion.div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-12 text-center space-y-8">
@@ -93,7 +93,7 @@ export function CtaSection() {
         >
           <Link
             href="/consultation"
-            className="group px-9 py-4 rounded-full bg-[#c5a059] text-[#141517] font-mono text-xs uppercase tracking-widest hover:bg-white transition-colors duration-300 font-semibold inline-flex items-center gap-3 shadow-2xl"
+            className="group px-9 py-4 rounded-full bg-[#c5a059] text-[#141416] font-mono text-xs uppercase tracking-widest hover:bg-white transition-colors duration-300 font-semibold inline-flex items-center gap-3 shadow-2xl"
           >
             <span>Book a Private Consultation</span>
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

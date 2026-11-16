@@ -25,7 +25,7 @@ export function Footer({ onOpenBookVisit: _onOpenBookVisit }: FooterProps) {
   return (
     <footer
       id="contact"
-      className="bg-[#0e1014] text-white pt-28 pb-12 border-t border-black/10 relative overflow-clip"
+      className="bg-[#0e1014] text-white pt-28 pb-12 border-t border-dashed border-black/15 relative overflow-clip"
     >
       <div className="max-w-[1720px] mx-auto px-6 md:px-12">
         {/* Giant Editorial Brand Banner with masked reveal */}

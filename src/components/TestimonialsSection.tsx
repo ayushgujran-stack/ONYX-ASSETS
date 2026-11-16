@@ -14,7 +14,7 @@ export function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="py-28 md:py-40 bg-[#f6f5f0] border-t border-black/5 relative overflow-clip"
+      className="py-28 md:py-40 bg-[#fffdf1] border-t border-dashed border-black/12 relative overflow-clip"
     >
       <div className="max-w-[1720px] mx-auto px-6 md:px-12">
         {/* Header */}
@@ -29,7 +29,7 @@ export function TestimonialsSection() {
             >
               (HOMEOWNER TRUST)
             </motion.span>
-            <h2 className="text-4xl sm:text-6xl font-serif text-[#141517] font-light tracking-tight">
+            <h2 className="text-4xl sm:text-6xl font-serif text-[#141416] font-light tracking-tight">
               <MaskedWords
                 segments={[
                   { text: "Built on " },
@@ -42,13 +42,13 @@ export function TestimonialsSection() {
             </h2>
           </div>
 
-          <p className="text-sm sm:text-base text-[#5e6573] font-light max-w-md leading-relaxed">
+          <p className="text-sm sm:text-base text-[#97968d] font-light max-w-md leading-relaxed">
             Real stories from Udupi and Manipal families who trusted Onyx Assets LLP from soil breaking through registration.
           </p>
         </div>
 
         {/* Hairline Editorial Columns — Zero Cluttered Boxes */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-14 border-t border-black/10 pt-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-14 border-t border-dashed border-black/15 pt-14">
           {CLIENT_TESTIMONIALS.map((item, idx) => (
             <motion.article
               key={item.name}
@@ -60,20 +60,20 @@ export function TestimonialsSection() {
                 delay: (idx % 3) * 0.08,
                 ease: EXPO_OUT,
               }}
-              className="flex flex-col justify-between space-y-6 border-b border-black/8 pb-10"
+              className="flex flex-col justify-between space-y-6 border-b border-dashed border-black/12 pb-10"
             >
               <div className="space-y-4">
                 <Quote className="w-5 h-5 text-[#9c8052]/60" />
-                <h3 className="font-serif text-xl sm:text-2xl text-[#141517] font-light leading-snug">
+                <h3 className="font-serif text-xl sm:text-2xl text-[#141416] font-light leading-snug">
                   &ldquo;{item.headline}&rdquo;
                 </h3>
-                <p className="text-sm text-[#5e6573] font-light leading-relaxed">
+                <p className="text-sm text-[#97968d] font-light leading-relaxed">
                   {item.quote}
                 </p>
               </div>
 
               <div className="pt-2 flex items-center justify-between text-xs font-mono uppercase tracking-wider">
-                <span className="text-[#141517] font-semibold">
+                <span className="text-[#141416] font-semibold">
                   {item.name}
                 </span>
                 <span className="text-[#9c8052] text-[10px]">{item.tenure}</span>

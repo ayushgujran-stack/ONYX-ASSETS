@@ -89,7 +89,7 @@ export function ProjectsSlider({ onSelectProperty }: ProjectsSliderProps) {
   return (
     <section
       id="projects"
-      className="py-28 md:py-36 bg-[#f0ede6] border-t border-black/5 relative overflow-clip"
+      className="py-28 md:py-36 bg-[#dcd9c8] border-t border-dashed border-black/12 relative overflow-clip"
     >
       <div className="max-w-[1720px] mx-auto px-6 md:px-12 relative z-10">
         {/* Clean Editorial Header */}
@@ -104,7 +104,7 @@ export function ProjectsSlider({ onSelectProperty }: ProjectsSliderProps) {
             >
               (CURATED MASTERPIECES)
             </motion.span>
-            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-serif text-[#141517] font-light tracking-tight">
+            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-serif text-[#141416] font-light tracking-tight">
               <MaskedWords
                 segments={[
                   { text: "Architectural " },
@@ -126,14 +126,14 @@ export function ProjectsSlider({ onSelectProperty }: ProjectsSliderProps) {
           >
             <Link
               href="/gallery"
-              className="group inline-flex items-center gap-2 pb-1.5 border-b border-black/25 text-xs font-mono uppercase tracking-[0.2em] text-[#5e6573] hover:text-[#9c8052] hover:border-[#9c8052] transition-colors"
+              className="group inline-flex items-center gap-2 pb-1.5 border-b border-black/25 text-xs font-mono uppercase tracking-[0.2em] text-[#97968d] hover:text-[#9c8052] hover:border-[#9c8052] transition-colors"
             >
               <span>Photo Gallery</span>
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
             <Link
               href="/estates"
-              className="group inline-flex items-center gap-2 pb-1.5 border-b border-black/25 text-xs font-mono uppercase tracking-[0.2em] text-[#141517] hover:text-[#9c8052] hover:border-[#9c8052] transition-colors"
+              className="group inline-flex items-center gap-2 pb-1.5 border-b border-black/25 text-xs font-mono uppercase tracking-[0.2em] text-[#141416] hover:text-[#9c8052] hover:border-[#9c8052] transition-colors"
             >
               <span>All {ALL_PORTFOLIO.length} Estates</span>
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -147,7 +147,7 @@ export function ProjectsSlider({ onSelectProperty }: ProjectsSliderProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, delay: 0.1, ease: EXPO_OUT }}
-          className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-4 mb-8 border-b border-black/8"
+          className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-4 mb-8 border-b border-dashed border-black/12"
         >
           {STATUS_TABS.map((tab) => {
             const isActive = activeTab === tab.key;
@@ -164,14 +164,14 @@ export function ProjectsSlider({ onSelectProperty }: ProjectsSliderProps) {
                 className={`relative px-5 py-2.5 rounded-full text-xs font-mono uppercase tracking-[0.18em] whitespace-nowrap transition-colors duration-300 shrink-0 ${
                   isActive
                     ? "text-white"
-                    : "text-[#5e6573] hover:text-[#141517]"
+                    : "text-[#97968d] hover:text-[#141416]"
                 }`}
               >
                 {isActive && (
                   <motion.span
                     layoutId="landing-status-pill"
                     transition={{ duration: 0.45, ease: EXPO_OUT }}
-                    className="absolute inset-0 rounded-full bg-[#141517] shadow-sm"
+                    className="absolute inset-0 rounded bg-[#141416] shadow-sm"
                   />
                 )}
                 <span className="relative z-10 flex items-center gap-2">
@@ -245,7 +245,7 @@ export function ProjectsSlider({ onSelectProperty }: ProjectsSliderProps) {
                       <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#9c8052] block">
                         ({activeTab === "pre-launch" ? "UPCOMING PRE-LAUNCH" : "FUTURE HORIZON"})
                       </span>
-                      <h3 className="font-serif text-4xl sm:text-5xl text-[#141517] font-light leading-[1.04]">
+                      <h3 className="font-serif text-4xl sm:text-5xl text-[#141416] font-light leading-[1.04]">
                         {activeTab === "pre-launch" ? (
                           <>
                             Coastal Pre-Launch{" "}
@@ -262,7 +262,7 @@ export function ProjectsSlider({ onSelectProperty }: ProjectsSliderProps) {
                           </>
                         )}
                       </h3>
-                      <p className="text-sm sm:text-base text-[#5e6573] font-light leading-relaxed max-w-xl">
+                      <p className="text-sm sm:text-base text-[#97968d] font-light leading-relaxed max-w-xl">
                         {activeTab === "pre-launch"
                           ? "Upcoming coastal developments are currently in statutory sanctioning and architectural finalization. Request confidential priority briefings prior to public release."
                           : "Long-horizon coastal estates across prime Udupi and Manipal belts are undergoing master-plan conceptualization. Join our off-market dossier list for early updates."}
@@ -270,15 +270,15 @@ export function ProjectsSlider({ onSelectProperty }: ProjectsSliderProps) {
 
                       <div className="grid grid-cols-3 gap-4 py-4 border-y border-black/10 max-w-lg">
                         <div>
-                          <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-[#5e6573]">
+                          <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-[#97968d]">
                             Corridor
                           </div>
-                          <div className="text-xs font-medium text-[#141517] mt-1">
+                          <div className="text-xs font-medium text-[#141416] mt-1">
                             Udupi & Manipal
                           </div>
                         </div>
                         <div>
-                          <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-[#5e6573]">
+                          <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-[#97968d]">
                             Access
                           </div>
                           <div className="text-xs font-medium text-[#9c8052] mt-1">
@@ -286,10 +286,10 @@ export function ProjectsSlider({ onSelectProperty }: ProjectsSliderProps) {
                           </div>
                         </div>
                         <div>
-                          <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-[#5e6573]">
+                          <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-[#97968d]">
                             Rates
                           </div>
-                          <div className="text-xs font-medium text-[#141517] mt-1">
+                          <div className="text-xs font-medium text-[#141416] mt-1">
                             Upon Launch
                           </div>
                         </div>
@@ -297,7 +297,7 @@ export function ProjectsSlider({ onSelectProperty }: ProjectsSliderProps) {
 
                       <Link
                         href="/consultation"
-                        className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#141517] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#9c8052] transition-colors shadow-md"
+                        className="group inline-flex items-center gap-2 px-7 py-3.5 rounded bg-[#141416] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#9c8052] transition-colors shadow-md"
                       >
                         <span>Register Priority Interest</span>
                         <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

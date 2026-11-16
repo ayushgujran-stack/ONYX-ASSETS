@@ -1,20 +1,41 @@
 @import "tailwindcss";
 
 :root {
+  /* ── Onyx Assets Design Tokens (Swiss Editorial × Coastal Luxury) ── */
+
+  /* Surfaces */
+  --bg-cream: #fffdf1;        /* Primary warm off-white */
+  --bg-kaki: #dcd9c8;         /* Alternating kaki / concrete sand */
+  --bg-kaki-light: #e5e3d7;   /* Softer kaki variant */
+  --bg-limestone: #ede9dc;    /* Pale limestone */
+  --bg-card: #ffffff;
+
+  /* Dark */
+  --dark-base: #141416;       /* Deep matte charcoal */
+  --dark-elevated: #2c2b2f;   /* Elevated dark surface */
+
+  /* Text */
+  --text-primary: #141416;
+  --text-muted: #97968d;      /* Concrete grey — subdued labels */
+  --text-dark-muted: rgba(255, 255, 255, 0.65);
+
+  /* Accent Gold (Onyx signature) */
+  --accent-gold: #9c8052;
+  --accent-gold-light: #c5a059;
+  --accent-gold-pale: #dfc082;
+
+  /* Borders — architectural dashed feel */
+  --border-light: rgba(20, 20, 22, 0.14);
+  --border-dark: rgba(255, 255, 255, 0.15);
+
+  /* Legacy aliases */
+  --bg-sand: #fffdf1;
+  --text-muted-old: #97968d;
   --font-serif: var(--font-serif), "Cormorant Garamond", Georgia, serif;
   --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
-  --bg-sand: #f6f5f0;
-  --bg-card: #ffffff;
-  --text-primary: #141517;
-  --text-muted: #5e6573;
-  --border-light: rgba(20, 21, 23, 0.08);
-  --accent-gold: #9c8052;
-  --accent-gold-dark: #7a633c;
-  --onyx-purple: #4e2e84;
-  --onyx-purple-light: #6b3fa0;
 }
 
-/* Suppress default OS cursor completely on desktop pointer devices so only custom gold cursor displays */
+/* ── Global Base ── */
 @media (pointer: fine) {
   *, *::before, *::after, html, body, a, button, input, select, textarea, [role="button"], label {
     cursor: none !important;
@@ -29,97 +50,185 @@
 }
 
 body {
-  background-color: var(--bg-sand);
+  background-color: var(--bg-cream);
   color: var(--text-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
   scroll-padding-top: 84px;
 }
 
+/* ── Typography — Swiss Editorial Tight Tracking ── */
 .font-serif {
   font-family: var(--font-serif);
+  letter-spacing: -0.04em;
 }
 
-/* Fluid responsive sizing matching Elyse */
+/* Display-scale headings: even tighter */
+h1, .text-7xl, .text-8xl, .text-9xl,
+.hero-title-clamp {
+  letter-spacing: -0.065em;
+  line-height: 0.95;
+}
+
+h2, .text-5xl, .text-6xl {
+  letter-spacing: -0.045em;
+  line-height: 1.0;
+}
+
+h3, .text-3xl, .text-4xl {
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+/* Fluid hero title */
 @media (min-width: 1024px) {
   .hero-title-clamp {
     font-size: clamp(3.5rem, 8.5vw, 9.5rem);
-    line-height: 0.95;
+    line-height: 0.93;
+    letter-spacing: -0.07em;
   }
 }
 
-/* Smooth custom scrollbar */
+/* ── Mono / Technical Section Labels ── */
+.font-mono {
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+  letter-spacing: 0.08em;
+}
+
+/* ── Scrollbar ── */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #f6f5f0;
+  background: #fffdf1;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cfcbbe;
-  border-radius: 9999px;
+  background: #c5bfb0;
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #9c8052;
 }
 
-/* Luxury Card & Glass */
+/* ── Architectural Glass Header ── */
 .glass-header {
-  background: rgba(246, 245, 240, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(20, 21, 23, 0.06);
+  background: rgba(255, 253, 241, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(20, 20, 22, 0.08);
 }
 
+/* ── Card Base ── */
 .card-luxury {
   background: #ffffff;
-  border: 1px solid rgba(20, 21, 23, 0.08);
+  border: 1px solid rgba(20, 20, 22, 0.08);
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.03);
 }
 
-/* Shimmer & Image reveal */
+/* ── Architectural Dashed Dividers ── */
+.border-dashed-light {
+  border-color: rgba(20, 20, 22, 0.18);
+  border-style: dashed;
+}
+.border-dashed-dark {
+  border-color: rgba(255, 255, 255, 0.18);
+  border-style: dashed;
+}
+
+/* ── Image Reveal Container ── */
 .img-reveal-container {
   overflow: hidden;
   position: relative;
 }
 
-/* Custom Bespoke Range Slider */
+/* ── Luxury Range Slider ── */
 input[type="range"].onyx-range {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 2px;
-  border-radius: 9999px;
-  background: rgba(20, 21, 23, 0.14);
+  height: 1px;
+  background: rgba(20, 20, 22, 0.14);
   outline: none;
 }
 
 input[type="range"].onyx-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 9999px;
-  background: #141517;
-  border: 2px solid #c5a059;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  background: #141416;
+  border: 1.5px solid #c5a059;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
 }
 
 input[type="range"].onyx-range::-webkit-slider-thumb:hover {
-  transform: scale(1.18);
+  transform: scale(1.15);
   background: #9c8052;
 }
 
 input[type="range"].onyx-range::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
-  border-radius: 9999px;
-  background: #141517;
-  border: 2px solid #c5a059;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  background: #141416;
+  border: 1.5px solid #c5a059;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+}
+
+/* ── Architectural Button Styles ── */
+.btn-onyx-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: #141416;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.btn-onyx-primary:hover {
+  background: #9c8052;
+  color: #ffffff;
+}
+
+.btn-onyx-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: transparent;
+  color: #141416;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  border: 1px dashed rgba(20, 20, 22, 0.35);
+  transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+.btn-onyx-secondary:hover {
+  border-color: #9c8052;
+  color: #9c8052;
+}
+
+/* ── Selection ── */
+::selection {
+  background: #9c8052;
+  color: #ffffff;
 }

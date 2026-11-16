@@ -43,7 +43,7 @@ export default function Home() {
 
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-[#f6f5f0] text-[#141517]">
+      <main className="min-h-screen bg-[#fffdf1] text-[#141416]">
         {/* Transparent Hero Navigation -> Off-White Glass on Main Page */}
         <Navbar onOpenBookVisit={handleOpenBookVisit} />
 

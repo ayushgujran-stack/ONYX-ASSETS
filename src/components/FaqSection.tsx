@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import { MaskedWords, ScrubbedText } from "@/components/ui/motion-primitives";
+import { ConcreteTexture } from "@/components/ui/ConcreteTexture";
 
 const FAQS = [
   {
@@ -46,7 +47,10 @@ export function FaqSection() {
       id="faq"
       className="py-28 md:py-40 bg-[#dcd9c8] border-t border-dashed border-black/12 relative overflow-clip"
     >
-      <div className="max-w-[1720px] mx-auto px-6 md:px-12">
+      {/* Warm stone concrete grain — greige variant */}
+      <ConcreteTexture variant="greige" />
+
+      <div className="max-w-[1720px] mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Sticky Editorial Heading */}
           <div className="lg:col-span-5 lg:sticky lg:top-32">

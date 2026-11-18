@@ -17,6 +17,7 @@ import {
   ScrubbedText,
   SlidingImage,
 } from "@/components/ui/motion-primitives";
+import { ConcreteTexture } from "@/components/ui/ConcreteTexture";
 
 interface PortfolioGridProps {
   onSelectProperty: (p: Property) => void;
@@ -121,6 +122,9 @@ export function PortfolioGrid({
 
   return (
     <div id="portfolio" className="relative bg-[#fffdf1]">
+      {/* Poured concrete grain — light variant, cream surface */}
+      <ConcreteTexture variant="light" />
+
       {/* ─── Sticky Architectural Status & Typology Rail ─── */}
       <div className="sticky top-[68px] md:top-[72px] z-30 bg-[#fffdf1]/95 backdrop-blur-xl border-y border-black/10 transition-colors">
         <div className="max-w-[1720px] mx-auto px-6 md:px-12 py-3.5 flex flex-col xl:flex-row xl:items-center justify-between gap-3">
@@ -192,6 +196,7 @@ export function PortfolioGrid({
       </div>
 
       {/* ─── Editorial Chapter Content ─── */}
+      <div className="relative z-10">
       {totalMatches === 0 ? (
         <HorizonBriefingChapter
           statusFilter={statusFilter}
@@ -222,6 +227,7 @@ export function PortfolioGrid({
           })}
         </div>
       )}
+      </div>{/* /relative z-10 */}
     </div>
   );
 }

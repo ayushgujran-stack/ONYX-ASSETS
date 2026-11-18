@@ -17,6 +17,7 @@ import {
 } from "@/data/properties";
 import { ExpandingCards, CardItem } from "@/components/ui/expanding-cards";
 import { MaskedWords, SlidingImage } from "@/components/ui/motion-primitives";
+import { ConcreteTexture } from "@/components/ui/ConcreteTexture";
 
 interface ProjectsSliderProps {
   onSelectProperty: (property: Property) => void;
@@ -91,6 +92,9 @@ export function ProjectsSlider({ onSelectProperty }: ProjectsSliderProps) {
       id="projects"
       className="py-28 md:py-36 bg-[#dcd9c8] border-t border-dashed border-black/12 relative overflow-clip"
     >
+      {/* Warm stone concrete grain — greige variant */}
+      <ConcreteTexture variant="greige" />
+
       <div className="max-w-[1720px] mx-auto px-6 md:px-12 relative z-10">
         {/* Clean Editorial Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">

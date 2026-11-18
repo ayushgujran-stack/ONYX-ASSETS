@@ -8,6 +8,7 @@ import {
   SlidingImage,
   AnimatedCounter,
 } from "@/components/ui/motion-primitives";
+import { ConcreteTexture } from "@/components/ui/ConcreteTexture";
 
 export function AboutSection() {
   const prefersReducedMotion = useReducedMotion();
@@ -40,7 +41,10 @@ export function AboutSection() {
       id="about"
       className="py-28 md:py-40 bg-[#fffdf1] border-t border-dashed border-black/12 relative overflow-clip"
     >
-      <div className="max-w-[1720px] mx-auto px-6 md:px-12">
+      {/* Poured concrete grain — light variant, barely-there 3% opacity */}
+      <ConcreteTexture variant="light" />
+
+      <div className="max-w-[1720px] mx-auto px-6 md:px-12 relative z-10">
         <motion.div
           initial={prefersReducedMotion ? false : { opacity: 0, x: -16 }}
           whileInView={{ opacity: 1, x: 0 }}

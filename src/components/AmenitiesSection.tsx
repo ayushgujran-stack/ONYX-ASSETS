@@ -7,6 +7,7 @@ import {
   ScrubbedText,
   SlidingImage,
 } from "@/components/ui/motion-primitives";
+import { ConcreteTexture } from "@/components/ui/ConcreteTexture";
 
 const CDN =
   "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e";
@@ -67,7 +68,10 @@ export function AmenitiesSection() {
       id="amenities"
       className="py-28 md:py-40 bg-[#dcd9c8] border-t border-dashed border-black/12 relative overflow-clip"
     >
-      <div className="max-w-[1720px] mx-auto px-6 md:px-12">
+      {/* Warm stone concrete grain — greige variant */}
+      <ConcreteTexture variant="greige" />
+
+      <div className="max-w-[1720px] mx-auto px-6 md:px-12 relative z-10">
         {/* Top Editorial Header */}
         <div className="max-w-3xl mb-16 md:mb-24">
           <motion.span

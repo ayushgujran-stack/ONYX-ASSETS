@@ -11,6 +11,7 @@ import { ProjectModal } from "@/components/ProjectModal";
 import { ConversionDock } from "@/components/ConversionDock";
 import { Footer } from "@/components/Footer";
 import { MaskedWords } from "@/components/ui/motion-primitives";
+import { ConcreteTexture } from "@/components/ui/ConcreteTexture";
 import { Property } from "@/data/properties";
 
 const EXPO_OUT = [0.16, 1, 0.3, 1] as const;
@@ -38,6 +39,7 @@ export default function EstatesPage() {
 
         {/* Warm Sand Editorial Hero Matching FindRealEstate Rhythm */}
         <section className="relative pt-36 pb-16 md:pt-44 md:pb-24 bg-[#fffdf1] text-[#141416] overflow-clip">
+          <ConcreteTexture variant="light" />
           <div className="max-w-[1720px] mx-auto px-6 md:px-12 relative z-10">
             {/* Back link */}
             <motion.div

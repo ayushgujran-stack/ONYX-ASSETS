@@ -14,12 +14,14 @@ import {
   Clock,
 } from "lucide-react";
 import { MaskedWords } from "@/components/ui/motion-primitives";
+import { ConcreteTexture } from "@/components/ui/ConcreteTexture";
 
 interface FooterProps {
   onOpenBookVisit?: () => void;
 }
 
 export function Footer({ onOpenBookVisit: _onOpenBookVisit }: FooterProps) {
+  void _onOpenBookVisit;
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -27,7 +29,10 @@ export function Footer({ onOpenBookVisit: _onOpenBookVisit }: FooterProps) {
       id="contact"
       className="bg-[#0e1014] text-white pt-28 pb-12 border-t border-dashed border-black/15 relative overflow-clip"
     >
-      <div className="max-w-[1720px] mx-auto px-6 md:px-12">
+      {/* Tadao Ando architectural poured concrete texture */}
+      <ConcreteTexture variant="dark" />
+
+      <div className="max-w-[1720px] mx-auto px-6 md:px-12 relative z-10">
         {/* Giant Editorial Brand Banner with masked reveal */}
         <div className="pb-16 border-b border-white/10 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>

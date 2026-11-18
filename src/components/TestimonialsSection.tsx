@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Quote, ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { CLIENT_TESTIMONIALS } from "@/data/properties";
+import { ConcreteTexture } from "@/components/ui/ConcreteTexture";
 
 const EXPO_OUT = [0.16, 1, 0.3, 1] as const;
 
@@ -54,9 +55,12 @@ export function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="py-24 md:py-36 bg-[#141416] text-white border-t border-white/10 relative overflow-clip min-h-[540px] flex items-center"
+      className="py-24 md:py-36 bg-[#141416] text-white border-t border-white/10 relative overflow-clip min-h-[580px] flex items-center"
     >
-      <div className="max-w-[1520px] mx-auto px-6 md:px-12 w-full">
+      {/* Tadao Ando architectural poured concrete texture */}
+      <ConcreteTexture variant="dark" />
+
+      <div className="max-w-[1520px] mx-auto px-6 md:px-12 w-full relative z-10">
         <AnimatePresence mode="popLayout" initial={false}>
           {!isExpanded ? (
             /* ─── State 1: 3-Avatar Carousel (Center Big, Sides Fading on click) ─── */
@@ -68,16 +72,27 @@ export function TestimonialsSection() {
               transition={{ duration: 0.35, ease: EXPO_OUT }}
               className="flex flex-col items-center text-center relative w-full"
             >
-              {/* Minimal Clean Click Badge (Fades away when expanding) */}
+              {/* Big Stylized Editorial Heading (Fades away when expanding) */}
               <motion.div
-                initial={prefersReducedMotion ? false : { opacity: 0, y: -8 }}
+                initial={prefersReducedMotion ? false : { opacity: 0, y: -16 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={prefersReducedMotion ? undefined : { opacity: 0, y: -12, scale: 0.95 }}
-                transition={{ duration: 0.3 }}
-                className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#dfc082]/35 bg-[#1c1c20] text-[11px] font-mono tracking-widest uppercase text-[#dfc082] mb-12 sm:mb-16 shadow-md select-none"
+                exit={
+                  prefersReducedMotion
+                    ? undefined
+                    : { opacity: 0, y: -24, filter: "blur(6px)" }
+                }
+                transition={{ duration: 0.45, ease: EXPO_OUT }}
+                className="max-w-3xl mb-12 sm:mb-16 space-y-3 select-none"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#dfc082] animate-pulse" />
-                <span>Click avatar to read review</span>
+                <span className="text-xs font-mono tracking-[0.25em] text-[#dfc082] uppercase block">
+                  (RESIDENT STORIES)
+                </span>
+                <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif text-[#fffdf1] font-light tracking-tight leading-[1.08]">
+                  Voices of{" "}
+                  <span className="italic font-normal text-[#dfc082]">
+                    Those Who Call It Home
+                  </span>
+                </h2>
               </motion.div>
 
               {/* 3-Avatar Stage */}

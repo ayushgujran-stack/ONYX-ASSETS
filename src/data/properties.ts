@@ -1,6 +1,6 @@
 // All architectural images sourced from Onyx Assets LLP official CDN (img1.wsimg.com)
 // Verified specifications, unit sizes, proximities, and K-RERA numbers extracted from official Opulence & Riviera brochures.
-const CDN = "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e";
+export const CDN = "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e";
 
 export type ProjectPhase = "ongoing" | "completed" | "pre-launch" | "future";
 
@@ -26,7 +26,7 @@ export interface Property {
   id: string;
   name: string;
   tagline: string;
-  category: "residence" | "villa" | "development" | "plot";
+  category: "tower" | "riverfront" | "suite";
   projectPhase: ProjectPhase;
   status:
     | "Newly Launched"
@@ -66,7 +66,7 @@ export interface GalleryPhoto {
   title: string;
   project: string;
   projectId: string;
-  category: "Luxury Flats" | "Signature Flats" | "Private Villas";
+  category: "Luxury Towers" | "Riverfront Residences" | "Signature Suites";
   location: string;
   src: string;
   aspect: "landscape" | "portrait" | "wide";
@@ -84,10 +84,10 @@ const SHARED_APARTMENT_SPECS: SpecificationCategory[] = [
     title: "Living & Work Area",
     items: [
       "Main Door in Teakwood / Kinza Luxury Doors",
-      "French Windows in UPVC",
+      "French Windows in UPVC with clear acoustic glazing",
       "Open floor plan with expansive living & dining bays",
       "Dedicated Wi-Fi and adequate TV points in living room",
-      "Balcony in living / dining room",
+      "Expansive cantilevered balcony in living / dining room",
     ],
   },
   {
@@ -95,8 +95,8 @@ const SHARED_APARTMENT_SPECS: SpecificationCategory[] = [
     items: [
       "Premium quality granite kitchen counter slab",
       "Reticulated piped gas terminal with individual meter",
-      "Stainless steel sink with dedicated utility",
-      "Washing machine point in dry balcony",
+      "Stainless steel sink with dedicated utility space",
+      "Washing machine point in dry utility balcony",
       "Adequate heavy-duty appliance power points",
     ],
   },
@@ -104,9 +104,9 @@ const SHARED_APARTMENT_SPECS: SpecificationCategory[] = [
     title: "Bedrooms",
     items: [
       "2x4 ft vitrified tile flooring throughout",
-      "Flush doors across bedrooms",
+      "Flush doors across all bedroom suites",
       "Modular switches with concealed PVC provision for A.C.",
-      "Dedicated balcony & TV point in Master Bedroom",
+      "Dedicated private balcony & TV point in Master Bedroom",
     ],
   },
   {
@@ -128,31 +128,31 @@ const APPROVED_BANKING_PARTNERS = [
   "ICICI Bank Ltd.",
 ];
 
-// ─── ACTIVE / ONGOING FLAT LAUNCHES (Verified Brochure & RERA Data) ─
+// ─── ONGOING RESIDENTIAL APARTMENT LAUNCHES ─────────────────────────
 export const ACTIVE_PROPERTIES: Property[] = [
   {
     id: "opulence",
     name: "Opulence by Onyx",
-    tagline: "The Pinnacle of High-Rise Flats in Kunjibettu",
-    category: "development",
+    tagline: "The Pinnacle of High-Rise Living in Kunjibettu",
+    category: "tower",
     projectPhase: "ongoing",
     status: "Newly Launched",
     location: "Kunjibettu, Shivalli, Udupi, Karnataka",
     mapQuery: "Kunjibettu, Udupi, Karnataka",
     area: "956 – 1,968 sq.ft SBA",
-    units: "2, 3 & 4 BHK Luxury Flats",
+    units: "2, 3 & 4 BHK Luxury Apartments",
     totalUnits: "42 Exclusive Apartments",
     possession: "Possession Dec 2027",
-    landParcel: "Kunjibettu • 42 Units",
+    landParcel: "Kunjibettu • 7 Floors",
     reraId: "PRM/KA/RERA/1273/318/PR/160426/008587",
     reraUrl: "https://rera.karnataka.gov.in/",
     description:
-      "A 42-unit landmark apartment tower in the prestigious Kunjibettu corridor of Udupi. Opulence pairs spacious 2, 3 & 4 BHK flats featuring up to 4 balconies with a signature top-floor Sports Arena, yoga & gym hall, and seamless proximity to MGM College and Manipal.",
-    image: `${CDN}/1.jpeg`,
+      "A 42-unit landmark 7-storey apartment tower in the prestigious Kunjibettu corridor of Udupi. Opulence pairs spacious 2, 3 & 4 BHK flats featuring up to 4 balconies with a signature top-floor Sports Arena, yoga & fitness gym, and seamless proximity to MGM College and Manipal.",
+    image: "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/1.jpeg",
     gallery: [
-      `${CDN}/1.jpeg`,
-      `${CDN}/2.jpeg`,
-      `${CDN}/3.jpeg`,
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/1.jpeg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/2.jpeg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/3.jpeg",
     ],
     floorPlanImage: "/assets/plans/opulence-floor-plan.png",
     unitPlans: [
@@ -181,9 +181,9 @@ export const ACTIVE_PROPERTIES: Property[] = [
     features: [
       "Top-Floor Indoor Sports Arena (Pool, Table Tennis, Mini Golf)",
       "Dedicated Yoga Hall & Fitness Gym",
-      "Reticulated Gas Supply with Meter",
+      "Reticulated Gas Supply with Individual Meter",
       "Up to 4 Balconies in 3 & 4 BHK Units",
-      "24-Hour Water, Power & CCTV Security",
+      "24-Hour Water, Generator Backup & CCTV Security",
       "CREDAI Udupi Member Development",
     ],
     brochureUrl:
@@ -193,26 +193,26 @@ export const ACTIVE_PROPERTIES: Property[] = [
   {
     id: "riviera",
     name: "Riviera by Onyx",
-    tagline: "1, 2 & 3 BHK Apartments in Mission Compound",
-    category: "development",
+    tagline: "Riverfront Residences in Mission Compound",
+    category: "riverfront",
     projectPhase: "ongoing",
     status: "Ongoing",
     location: "Mission Compound, Chitpady, Udupi, Karnataka",
     mapQuery: "Mission Compound, Udupi, Karnataka",
     area: "680 – 1,560 sq.ft SBA",
-    units: "1, 2 & 3 BHK Apartments",
+    units: "1, 2 & 3 BHK Riverfront Apartments",
     totalUnits: "28 Scenic Apartments",
     possession: "Possession by 2027",
-    landParcel: "Mission Compound • 28 Units",
+    landParcel: "Mission Compound • 6 Floors",
     reraId: "PRM/KA/RERA/1273/318/PR/261125/008279",
     reraUrl: "https://rera.karnataka.gov.in/",
     description:
-      "Nestled in the prestigious Udupi Mission Compound layout, Riviera is a boutique 28-unit apartment development combining serene green surroundings, ample balconies, a signature rooftop Sports Arena, and walking proximity to Ajjarkad Park and TMA Pai Hospital.",
-    image: `${CDN}/WhatsApp%20Image%202025-07-08%20at%2008.08.38.jpeg`,
+      "Nestled in the prestigious Mission Compound corridor, Riviera is a 28-unit waterfront apartment development combining tranquil riverine surroundings, sweeping view decks, a rooftop Sports Arena, and walking proximity to Ajjarkad Park and TMA Pai Hospital.",
+    image: "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/WhatsApp%20Image%202025-07-08%20at%2008.08.38.jpeg",
     gallery: [
-      `${CDN}/WhatsApp%20Image%202025-07-08%20at%2008.08.38.jpeg`,
-      `${CDN}/WhatsApp%20Image%202025-07-08%20at%2008.08.38-2.jpeg`,
-      `${CDN}/WhatsApp%20Image%202025-07-08%20at%2008.08.38-3.jpeg`,
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/WhatsApp%20Image%202025-07-08%20at%2008.08.38.jpeg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/WhatsApp%20Image%202025-07-08%20at%2008.08.38-2.jpeg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/WhatsApp%20Image%202025-07-08%20at%2008.08.38-3.jpeg",
     ],
     floorPlanImage: "/assets/plans/riviera-floor-plan.png",
     unitPlans: [
@@ -249,137 +249,236 @@ export const ACTIVE_PROPERTIES: Property[] = [
       "https://img1.wsimg.com/blobby/go/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/Brochure-2.pdf",
     price: "Inquire for Availability",
   },
-];
-
-// ─── CURATED MASTERPIECES (Flats Strictly Prioritized First) ────────
-export const CURATED_MASTERPIECES: Property[] = [
-  ACTIVE_PROPERTIES[0],
-  ACTIVE_PROPERTIES[1],
   {
-    id: "sattva",
-    name: "A.R. Sattva by Onyx",
-    tagline: "Timeless Heritage Crafted with Modern Purity",
-    category: "residence",
-    projectPhase: "completed",
-    status: "Sold",
-    location: "Urban Prime, Udupi",
-    mapQuery: "Udupi, Karnataka",
-    area: "1,950 – 2,900 sq.ft",
-    units: "3 BHK Signature Flats",
-    possession: "Delivered • Occupied",
-    landParcel: "Udupi Prime",
-    reraId: "Completed • Occupancy Certified",
-    description:
-      "A testament to structural honesty and serene simplicity, harmonizing coastal ventilation principles with high-end European fittings across signature flats.",
-    image: `${CDN}/WhatsApp%20Image%202024-04-25%20at%201.17.26%20PM.jpeg`,
-    gallery: [
-      `${CDN}/WhatsApp%20Image%202024-04-25%20at%201.17.26%20PM.jpeg`,
-      `${CDN}/1.jpeg`,
-      `${CDN}/2.jpeg`,
-    ],
-    features: ["Vastu Orientation", "Acoustic Glass Windows", "Designer Teak Joinery"],
-    price: "Sold Out",
-  },
-  {
-    id: "sattva-2",
-    name: "A.R. Sattva — East Wing",
-    tagline: "Natural Light. Pure Form. Coastal Calm.",
-    category: "residence",
-    projectPhase: "completed",
-    status: "Sold",
-    location: "Udupi Urban Prime, Karnataka",
-    mapQuery: "Udupi, Karnataka",
-    area: "2,100 sq.ft",
-    units: "3 BHK Corner Flats",
-    possession: "Delivered • Occupied",
-    landParcel: "Udupi Urban Prime",
-    reraId: "Completed • Occupancy Certified",
-    description:
-      "Part of the Sattva collection — boutique corner apartments where every proportion, material, and threshold reflects simplicity and permanence.",
-    image: `${CDN}/2.jpeg`,
-    gallery: [`${CDN}/2.jpeg`, `${CDN}/3.jpeg`],
-    features: ["Open Courtyard Planning", "High Ceilings", "Thermally Efficient Walls"],
-    price: "Sold",
-  },
-  {
-    id: "v4-greens",
-    name: "V4 Greens Luxury Villa",
-    tagline: "Biophilic Tropical Architecture",
-    category: "villa",
+    id: "onyx-azure",
+    name: "Onyx Azure Heights",
+    tagline: "14-Storey Coastal Sky Tower with Panoramic Ocean Terraces",
+    category: "tower",
     projectPhase: "ongoing",
     status: "Ongoing",
-    location: "Coastal Belt, Udupi",
-    mapQuery: "Udupi, Karnataka",
-    area: "3,650 sq.ft",
-    units: "4 BHK Private Villa",
-    possession: "Ongoing",
-    landParcel: "Coastal Enclave",
-    reraId: "K-RERA Compliant",
+    location: "Brahmagiri Heights, Udupi, Karnataka",
+    mapQuery: "Brahmagiri, Udupi, Karnataka",
+    area: "1,650 – 2,850 sq.ft SBA",
+    units: "3 & 4 BHK Sky Apartments",
+    totalUnits: "48 Luxury High-Rise Flats",
+    possession: "Possession 2028",
+    landParcel: "Brahmagiri • 14 Floors",
+    reraId: "PRM/KA/RERA/1273/318/PR/190528/009142",
+    reraUrl: "https://rera.karnataka.gov.in/",
     description:
-      "Surrounded by lush native foliage, V4 Greens balances contemporary geometry with terracotta screens and expansive terrace gardens.",
-    image: `${CDN}/V4%20Greens%20Villa%20Elevation.jpeg`,
+      "Rising 14 storeys above the coastal palm ridge, Onyx Azure Heights represents contemporary high-rise excellence. Features champagne bronze architectural louvers, floor-to-ceiling glass balconies, an infinity sky deck, and sweeping sunset panoramas.",
+    image: "/assets/estates/onyx_azure_heights.jpg",
     gallery: [
-      `${CDN}/V4%20Greens%20Villa%20Elevation.jpeg`,
-      `${CDN}/V4%20Phase%202%20Villa%202.jpeg`,
+      "/assets/estates/onyx_azure_heights.jpg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/1.jpeg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/2.jpeg",
     ],
-    features: ["Terrace Sky Lounge", "Solar Smart Grid", "Rainwater Harvesting"],
+    features: [
+      "14-Storey Monumental Tower Architecture",
+      "Infinity Rooftop Sky Deck with Sunset Views",
+      "Double-Height Glass Entrance Lobby",
+      "Private Elevators & High-Speed Lifts",
+      "Integrated EV Charging Bays",
+    ],
     price: "Inquire for Availability",
   },
   {
-    id: "sampoorna-villa",
-    name: "Sampoorna Grand Villa",
-    tagline: "Grandeur and Privacy in Perfect Synthesis",
-    category: "villa",
-    projectPhase: "completed",
-    status: "Signature Collection",
-    location: "Coastal Green Belt, Udupi",
-    mapQuery: "Udupi, Karnataka",
-    area: "4,200 sq.ft",
-    units: "5 BHK Custom Villa",
-    possession: "Completed",
-    landParcel: "Private Estate",
-    reraId: "100% Compliant",
+    id: "onyx-meridian",
+    name: "Onyx Meridian Towers",
+    tagline: "12-Storey Landmark with Fluted Limestone & Cantilever Sky Gardens",
+    category: "tower",
+    projectPhase: "ongoing",
+    status: "Ongoing",
+    location: "Manipal Greens Corridor, Karnataka",
+    mapQuery: "Manipal, Karnataka",
+    area: "1,520 – 2,650 sq.ft SBA",
+    units: "3 & 4 BHK Executive Suites",
+    totalUnits: "54 High-Rise Residences",
+    possession: "Possession 2028",
+    landParcel: "Manipal Corridor • 12 Floors",
+    reraId: "PRM/KA/RERA/1273/318/PR/210828/009385",
+    reraUrl: "https://rera.karnataka.gov.in/",
     description:
-      "An expansive modern villa elevation featuring double-height porticos, private swimming pavilion, and sculpted perimeter gardens.",
-    image: `${CDN}/Sampoorna%20Big%20Villa%20Elevation.jpeg`,
+      "A 12-storey architectural statement featuring fluted warm limestone facades, vertical cantilever sky gardens, glass-wrapped living chambers, and an illuminated motor court with reflective fountain pools in the heart of Manipal.",
+    image: "/assets/estates/onyx_meridian_towers.jpg",
     gallery: [
-      `${CDN}/Sampoorna%20Big%20Villa%20Elevation.jpeg`,
-      `${CDN}/SAMPOORNA%201.jpeg`,
+      "/assets/estates/onyx_meridian_towers.jpg",
+      "/assets/estates/onyx_celestia_sky_residences.jpg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/3.jpeg",
     ],
-    features: ["Private Lap Pool", "Double-Height Atrium", "Independent Staff Suite"],
-    price: "Private Consultations",
+    features: [
+      "Integrated Cascading Vertical Sky Gardens",
+      "Reflective Fountain Plaza & Motor Court",
+      "Smart-Home Integrated Climate Systems",
+      "24/7 Concierge & Executive Business Lounge",
+      "Full Seismic-Resistant RCC Engineering",
+    ],
+    price: "Pricing on Request",
+  },
+  {
+    id: "onyx-riverview",
+    name: "Onyx Riverview Atrium",
+    tagline: "10-Storey Curvilinear Riverfront Residences & Promenade",
+    category: "riverfront",
+    projectPhase: "ongoing",
+    status: "Ongoing",
+    location: "Kallianpur Waterfront, Udupi, Karnataka",
+    mapQuery: "Kallianpur, Udupi, Karnataka",
+    area: "1,420 – 2,400 sq.ft SBA",
+    units: "2 & 3 BHK Riverfront Flats",
+    totalUnits: "40 Waterfront Residences",
+    possession: "Possession 2027",
+    landParcel: "Kallianpur Waterfront • 10 Floors",
+    reraId: "PRM/KA/RERA/1273/318/PR/241027/009614",
+    reraUrl: "https://rera.karnataka.gov.in/",
+    description:
+      "An organic 10-storey curvilinear waterfront tower featuring sweeping wave-pattern balconies with glowing infinity LED ribbons. Sits directly upon an illuminated palm riverfront promenade overlooking coastal river waters.",
+    image: "/assets/estates/onyx_riverview_atrium.jpg",
+    gallery: [
+      "/assets/estates/onyx_riverview_atrium.jpg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/WhatsApp%20Image%202025-07-08%20at%2008.08.38.jpeg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/WhatsApp%20Image%202025-07-08%20at%2008.08.38-2.jpeg",
+    ],
+    features: [
+      "10-Storey Curvilinear Wave Architecture",
+      "Direct Private Waterfront Boardwalk Access",
+      "Glowing Infinity LED Cove Balconies",
+      "Panoramic Floor-to-Ceiling Thermal Glass",
+      "Deep Rainwater Recharge System",
+    ],
+    price: "Inquire for Availability",
+  },
+  {
+    id: "onyx-celestia",
+    name: "Onyx Celestia Sky Residences",
+    tagline: "16-Storey Ultra-Luxury High-Rise with Crown Glass Penthouses",
+    category: "tower",
+    projectPhase: "ongoing",
+    status: "Newly Launched",
+    location: "Ambalpady Ridge, Udupi, Karnataka",
+    mapQuery: "Ambalpady, Udupi, Karnataka",
+    area: "1,850 – 3,400 sq.ft SBA",
+    units: "3 & 4 BHK Sky Penthouses",
+    totalUnits: "36 Crown Residences",
+    possession: "Possession 2029",
+    landParcel: "Ambalpady Ridge • 16 Floors",
+    reraId: "PRM/KA/RERA/1273/318/PR/110129/009840",
+    reraUrl: "https://rera.karnataka.gov.in/",
+    description:
+      "A monumental 16-storey ultra-luxury residential skyscraper commanding 360-degree views of the Arabian Sea and Western Ghats. Boasts double-height crown sky penthouses, illuminated bronze mullions, and private cantilevered deck lounges.",
+    image: "/assets/estates/onyx_celestia_sky_residences.jpg",
+    gallery: [
+      "/assets/estates/onyx_celestia_sky_residences.jpg",
+      "/assets/estates/onyx_azure_heights.jpg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/1.jpeg",
+    ],
+    features: [
+      "16-Storey Monumental Luxury Skyscraper",
+      "Double-Height Crown Glass Penthouses",
+      "Grand Motor Court with Water Choreography",
+      "Private Residents Sky Club & Temperature-Controlled Pool",
+      "Advanced 3-Tier Security & Biometric Access",
+    ],
+    price: "Pricing on Request",
+  },
+  {
+    id: "onyx-palm-vista",
+    name: "Onyx Palm Vista Towers",
+    tagline: "10-Storey Coastal Residences Amidst Verdant Palm Groves",
+    category: "tower",
+    projectPhase: "ongoing",
+    status: "Ongoing",
+    location: "Kinnimulky Coastal Corridor, Udupi, Karnataka",
+    mapQuery: "Kinnimulky, Udupi, Karnataka",
+    area: "1,350 – 2,150 sq.ft SBA",
+    units: "2 & 3 BHK Modern Living",
+    totalUnits: "40 Coastal Apartments",
+    possession: "Possession 2027",
+    landParcel: "Kinnimulky • 10 Floors",
+    reraId: "PRM/KA/RERA/1273/318/PR/140727/008892",
+    reraUrl: "https://rera.karnataka.gov.in/",
+    description:
+      "Crafted with warm sand-toned textured concrete and undulating glass balustrades, Onyx Palm Vista rises 10 storeys amidst lush coastal palms with an open stilt entrance lobby and private pool deck.",
+    image: "/assets/estates/onyx_palm_vista_towers.jpg",
+    gallery: [
+      "/assets/estates/onyx_palm_vista_towers.jpg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/2.jpeg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/3.jpeg",
+    ],
+    features: [
+      "10-Storey Sand-Toned Architectural Concrete",
+      "Undulating Corner Glass Balconies",
+      "Ground-Level Resort Swimming Pool & Deck",
+      "Cross-Ventilated Vastu Architectural Planning",
+      "Private Covered Basement Parking",
+    ],
+    price: "Inquire for Availability",
+  },
+  {
+    id: "riviera-suites",
+    name: "Riviera Waterfront Suites",
+    tagline: "Signature Riverside Wing Overlooking Mangrove Estuaries",
+    category: "riverfront",
+    projectPhase: "ongoing",
+    status: "Ongoing",
+    location: "Mission Compound Waterfront, Udupi, Karnataka",
+    mapQuery: "Mission Compound, Udupi, Karnataka",
+    area: "1,200 – 1,880 sq.ft SBA",
+    units: "2 & 3 BHK Riverfront Suites",
+    totalUnits: "24 Exclusive Suites",
+    possession: "Possession 2027",
+    landParcel: "Mission Compound • Waterfront Wing",
+    reraId: "PRM/KA/RERA/1273/318/PR/261125/008280",
+    reraUrl: "https://rera.karnataka.gov.in/",
+    description:
+      "The dedicated riverfront wing of the Riviera development. Oriented towards morning breezes and twilight reflections across Udupi's calm water corridors, offering private sunrise breakfast decks.",
+    image: "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/WhatsApp%20Image%202025-07-08%20at%2008.08.38-2.jpeg",
+    gallery: [
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/WhatsApp%20Image%202025-07-08%20at%2008.08.38-2.jpeg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/WhatsApp%20Image%202025-07-08%20at%2008.08.38-3.jpeg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/WhatsApp%20Image%202025-07-08%20at%2008.08.38.jpeg",
+    ],
+    features: [
+      "Unobstructed Riverine Sunrise Balconies",
+      "Acoustic Double Glazing for Absolute Serenity",
+      "Direct Promenade & Jogging Track Access",
+      "Dedicated EV Charging Points",
+      "Exclusive Rooftop Solarium Lounge",
+    ],
+    price: "Inquire for Availability",
   },
 ];
 
-// ─── SIGNATURE COMPLETED FLATS (A.R. Sattva) ────────────────────────
+// ─── COMPLETED SIGNATURE APARTMENTS & SUITES ─────────────────────────
 export const SATTVA_PROPERTIES: Property[] = [
   {
     id: "sattva-1",
     name: "A.R. Sattva by Onyx",
-    tagline: "Timeless Heritage Crafted with Modern Purity",
-    category: "residence",
+    tagline: "Timeless Heritage Apartment Landmark Crafted with Modern Purity",
+    category: "suite",
     projectPhase: "completed",
     status: "Sold",
-    location: "Udupi Urban Prime, Karnataka",
+    location: "Alevoor Corridor, Udupi, Karnataka",
     mapQuery: "Udupi, Karnataka",
     area: "1,950 – 2,900 sq.ft",
-    units: "3 BHK Premium Flats",
+    units: "3 BHK Premium Apartments",
+    totalUnits: "32 Completed Units",
     possession: "Delivered",
-    landParcel: "Udupi Urban Prime",
+    landParcel: "Urban Prime • 5 Floors",
     reraId: "Completed • Delivered",
     description:
-      "A testament to structural honesty and serene simplicity. A.R. Sattva harmonizes coastal Karnataka's ventilation principles with high-end European fittings and Vastu-compliant spatial planning.",
-    image: `${CDN}/WhatsApp%20Image%202024-04-25%20at%201.17.26%20PM.jpeg`,
+      "A testament to structural honesty and serene simplicity. A.R. Sattva harmonizes coastal Karnataka's ventilation principles with high-end European fittings, expansive balconies, and Vastu-compliant spatial planning.",
+    image: "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/WhatsApp%20Image%202024-04-25%20at%201.17.26%20PM.jpeg",
     gallery: [
-      `${CDN}/WhatsApp%20Image%202024-04-25%20at%201.17.26%20PM.jpeg`,
-      `${CDN}/1.jpeg`,
-      `${CDN}/2.jpeg`,
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/WhatsApp%20Image%202024-04-25%20at%201.17.26%20PM.jpeg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/1.jpeg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/2.jpeg",
     ],
     features: [
-      "Vastu-Compliant Orientation",
-      "Acoustic Glass Windows",
-      "Rainwater Harvesting Integration",
-      "Designer Kitchens",
+      "Vastu-Compliant Master Orientation",
+      "Acoustic Glass Windows & Thermal Insulation",
+      "Deep Rainwater Harvesting Integration",
+      "Designer Kitchens with Granite Slabs",
     ],
     price: "Sold Out / Resale Inquiries",
   },
@@ -387,24 +486,25 @@ export const SATTVA_PROPERTIES: Property[] = [
     id: "sattva-2",
     name: "A.R. Sattva — Courtyard Wing",
     tagline: "Natural Light. Pure Form. Coastal Calm.",
-    category: "residence",
+    category: "suite",
     projectPhase: "completed",
     status: "Sold",
-    location: "Udupi Urban Prime, Karnataka",
+    location: "Alevoor Corridor, Udupi, Karnataka",
     mapQuery: "Udupi, Karnataka",
     area: "2,100 sq.ft",
     units: "3 BHK Corner Flats",
+    totalUnits: "16 Completed Suites",
     possession: "Delivered",
-    landParcel: "Udupi Urban Prime",
+    landParcel: "Urban Prime • East Wing",
     reraId: "Completed • Delivered",
     description:
       "Part of the Sattva collection — a curated series of homes where every proportion, material, and threshold reflects a deep philosophy of simplicity and permanence.",
-    image: `${CDN}/2.jpeg`,
-    gallery: [`${CDN}/2.jpeg`, `${CDN}/3.jpeg`],
+    image: "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/2.jpeg",
+    gallery: ["https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/2.jpeg", "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/3.jpeg"],
     features: [
-      "Open Courtyard Planning",
-      "High Ceilings with Clerestory Windows",
-      "Thermally Efficient Walls",
+      "Open Courtyard Architecture",
+      "High Ceilings with Clerestory Glazing",
+      "Thermally Efficient Cavity Walls",
     ],
     price: "Sold",
   },
@@ -412,183 +512,287 @@ export const SATTVA_PROPERTIES: Property[] = [
     id: "sattva-3",
     name: "A.R. Sattva — Teak Atrium",
     tagline: "Where Restraint Becomes Grandeur",
-    category: "residence",
+    category: "suite",
     projectPhase: "completed",
     status: "Sold",
-    location: "Udupi Urban Prime, Karnataka",
+    location: "Alevoor Corridor, Udupi, Karnataka",
     mapQuery: "Udupi, Karnataka",
     area: "2,250 sq.ft",
     units: "3 BHK Atelier Flats",
+    totalUnits: "12 Completed Suites",
     possession: "Delivered",
-    landParcel: "Udupi Urban Prime",
+    landParcel: "Urban Prime • West Wing",
     reraId: "Completed • Delivered",
     description:
-      "The third in the Sattva signature series. Understated materials — terracotta, pale stone, lacquered teak — create a home that reveals its luxury upon close inspection.",
-    image: `${CDN}/3.jpeg`,
-    gallery: [`${CDN}/3.jpeg`, `${CDN}/1.jpeg`],
+      "The third in the Sattva signature series. Understated materials — terracotta, pale stone, lacquered teak — create an apartment home that reveals its luxury upon close inspection.",
+    image: "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/3.jpeg",
+    gallery: ["https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/3.jpeg", "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/1.jpeg"],
     features: [
       "Lacquered Teak Joinery",
-      "Concealed LED Lighting",
-      "Terracotta Facade Elements",
+      "Concealed LED Architectural Lighting",
+      "Terracotta Facade Heat Shields",
     ],
     price: "Sold",
   },
-];
-
-// ─── ONYX VILLAS 2–12 ────────────────────────────────────────────────
-const VILLA_IMAGES = [
-  `${CDN}/V4%20Phase%202%20Villa%202.jpeg`,         // Villa 2
-  `${CDN}/Marpalli%201.jpeg`,                        // Villa 3
-  `${CDN}/Marpalli%202.jpeg`,                        // Villa 4
-  `${CDN}/SAMPOORNA%201.jpeg`,                       // Villa 5
-  `${CDN}/Sampoorna%20Big%20Villa%20Elevation.jpeg`, // Villa 6
-  `${CDN}/V4%20Greens%20Villa%20Elevation.jpeg`,     // Villa 7
-  `${CDN}/WhatsApp%20Image%202023-11-04%20at%206.46.13%20AM.jpeg`, // Villa 8
-  `${CDN}/WhatsApp%20Image%202023-11-04%20at%206.46.14%20AM.jpeg`, // Villa 9
-  `${CDN}/RSN%20PLOT14%201.jpeg`,                    // Villa 10
-  `${CDN}/Plot%2024.jpeg`,                           // Villa 11
-  `${CDN}/WhatsApp%20Image%202023-11-16%20at%2012.34.09%20AM.jpeg`, // Villa 12
-];
-
-const VILLA_FEATURES_POOL = [
-  ["Private Lap Pool", "Landscaped Garden", "Double-Height Atrium"],
-  ["Rooftop Terrace", "Private Porch", "Modular Luxury Kitchen"],
-  ["Basement Parking", "Staff Quarters", "Smart Home Systems"],
-  ["Solar Panels", "Rainwater Harvesting", "EV Charging"],
-  ["Gated Security", "CCTV Perimeter", "Intercom Systems"],
-];
-
-export const VILLA_PROPERTIES: Property[] = Array.from({ length: 11 }, (_, i) => {
-  const villaNum = i + 2; // Villas 2–12
-  const isOngoing = villaNum >= 7;
-  return {
-    id: `villa-${villaNum}`,
-    name: `Onyx Villa ${villaNum}`,
-    tagline: `A Private Estate of Singular Character`,
-    category: "villa" as const,
-    projectPhase: isOngoing ? "ongoing" : "completed",
-    status: isOngoing ? "Ongoing" : "Sold",
-    location: "Coastal Green Belt, Udupi, Karnataka",
-    mapQuery: "Udupi, Karnataka",
-    area: `${3200 + i * 180} – ${3800 + i * 200} sq.ft`,
-    units: `4 & 5 BHK Private Villa`,
-    possession: isOngoing ? "Ongoing" : "Delivered",
-    landParcel: "Coastal Enclave",
-    reraId: isOngoing ? "K-RERA Compliant" : "Completed • Delivered",
+  {
+    id: "onyx-grandview",
+    name: "Onyx Grandview Residences",
+    tagline: "Grand Multi-Storey Residential Complex at Bannanje Circle",
+    category: "suite",
+    projectPhase: "completed",
+    status: "Completed",
+    location: "Bannanje Circle, Udupi, Karnataka",
+    mapQuery: "Bannanje, Udupi, Karnataka",
+    area: "1,750 – 2,450 sq.ft",
+    units: "3 BHK Premium Suites",
+    totalUnits: "24 Completed Units",
+    possession: "Delivered",
+    landParcel: "Bannanje Prime • 5 Floors",
+    reraId: "Completed • Delivered",
     description:
-      `Onyx Villa ${villaNum} stands as an independent private estate — a bespoke residence conceived for those who value absolute privacy, curated landscape, and architectural distinction in coastal Karnataka.`,
-    image: VILLA_IMAGES[i],
-    gallery: [
-      VILLA_IMAGES[i],
-      VILLA_IMAGES[(i + 1) % VILLA_IMAGES.length],
-      VILLA_IMAGES[(i + 2) % VILLA_IMAGES.length],
+      "A completed monumental multi-storey residential building at Bannanje Circle. Delivers expansive 3 BHK suites with private utility yards and dedicated covered stilt parking.",
+    image: "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/1.jpeg",
+    gallery: ["https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/1.jpeg", "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/2.jpeg"],
+    features: [
+      "Central Urban Connectivity",
+      "Generous Balcony Proportions",
+      "Full Generator Power Backup",
+      "24-Hour Pressurized Water Supply",
     ],
-    features: VILLA_FEATURES_POOL[i % VILLA_FEATURES_POOL.length],
-    price: isOngoing ? "Inquire for Availability" : "Sold",
-  };
-});
+    price: "Completed • Delivered",
+  },
+  {
+    id: "onyx-zenith",
+    name: "Onyx Zenith Towers",
+    tagline: "Modern High-Rise Apartment Living with Engineered Rigor",
+    category: "tower",
+    projectPhase: "completed",
+    status: "Completed",
+    location: "Diana Circle, Udupi, Karnataka",
+    mapQuery: "Diana Circle, Udupi, Karnataka",
+    area: "1,480 – 2,200 sq.ft",
+    units: "2 & 3 BHK Urban Residences",
+    totalUnits: "36 Completed Units",
+    possession: "Delivered",
+    landParcel: "Diana Circle • 7 Floors",
+    reraId: "Completed • Delivered",
+    description:
+      "Engineered for urban professionals and families, Onyx Zenith Towers stands 7 storeys tall with clean structural lines, modern passenger lifts, and acoustic sound insulation.",
+    image: "/assets/estates/onyx_azure_heights.jpg",
+    gallery: [
+      "/assets/estates/onyx_azure_heights.jpg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/3.jpeg",
+    ],
+    features: [
+      "7-Storey Urban High-Rise Design",
+      "High-Speed Automatic Passenger Lifts",
+      "Intercom Security & CCTV Surveillance",
+      "Rooftop Community Gathering Pavilion",
+    ],
+    price: "Completed • Delivered",
+  },
+  {
+    id: "onyx-horizon",
+    name: "Onyx Horizon Promenade",
+    tagline: "Coastal Promenade Apartments with Sea-Breeze Architecture",
+    category: "riverfront",
+    projectPhase: "completed",
+    status: "Completed",
+    location: "Malpe Promenade, Udupi, Karnataka",
+    mapQuery: "Malpe, Udupi, Karnataka",
+    area: "1,600 – 2,500 sq.ft",
+    units: "3 & 4 BHK Coastal Flats",
+    totalUnits: "20 Completed Units",
+    possession: "Delivered",
+    landParcel: "Malpe Promenade • 5 Floors",
+    reraId: "Completed • Delivered",
+    description:
+      "A prestigious completed coastal apartment development near the Malpe waterfront promenade, featuring deep shaded verandas and weather-resistant marine-grade architectural finishes.",
+    image: "/assets/estates/onyx_riverview_atrium.jpg",
+    gallery: [
+      "/assets/estates/onyx_riverview_atrium.jpg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/WhatsApp%20Image%202025-07-08%20at%2008.08.38.jpeg",
+    ],
+    features: [
+      "Direct Coastal Sea-Breeze Cross Ventilation",
+      "Marine-Grade Exterior Coatings",
+      "Deep Sun-Shaded Private Verandas",
+      "Dedicated Landscaped Ground Courtyard",
+    ],
+    price: "Completed • Delivered",
+  },
+  {
+    id: "onyx-solitaire",
+    name: "Onyx Solitaire Towers",
+    tagline: "Hilltop Architectural Apartments with Elevated Vistas",
+    category: "suite",
+    projectPhase: "completed",
+    status: "Completed",
+    location: "Indrali Hilltop, Udupi, Karnataka",
+    mapQuery: "Indrali, Udupi, Karnataka",
+    area: "1,550 – 2,300 sq.ft",
+    units: "2 & 3 BHK Luxury Suites",
+    totalUnits: "28 Completed Units",
+    possession: "Delivered",
+    landParcel: "Indrali Hill • 6 Floors",
+    reraId: "Completed • Delivered",
+    description:
+      "Situated upon the elevated ridge of Indrali, Onyx Solitaire delivers peaceful hilltop living with unobstructed valley vistas, high ceilings, and premium imported sanitary ware.",
+    image: "/assets/estates/onyx_meridian_towers.jpg",
+    gallery: [
+      "/assets/estates/onyx_meridian_towers.jpg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/2.jpeg",
+    ],
+    features: [
+      "Elevated Ridge Topography & Panoramic Views",
+      "Premium Imported Vitrified Tiles & Fittings",
+      "Rainwater Recharge & Eco-Conscious Lighting",
+      "Covered Stilt & Open Guest Parking",
+    ],
+    price: "Completed • Delivered",
+  },
+  {
+    id: "onyx-royale",
+    name: "Onyx Royale Residences",
+    tagline: "Completed Monumental Apartment Tower in Court Road Corridor",
+    category: "tower",
+    projectPhase: "completed",
+    status: "Completed",
+    location: "Court Back Road, Udupi, Karnataka",
+    mapQuery: "Court Road, Udupi, Karnataka",
+    area: "1,800 – 2,750 sq.ft",
+    units: "3 & 4 BHK Royal Residences",
+    totalUnits: "32 Completed Units",
+    possession: "Delivered",
+    landParcel: "Court Road • 7 Floors",
+    reraId: "Completed • Delivered",
+    description:
+      "A completed 7-storey luxury apartment residence featuring a grand double-height entrance reception, granite-clad public corridors, and spacious family room layouts.",
+    image: "/assets/estates/onyx_celestia_sky_residences.jpg",
+    gallery: [
+      "/assets/estates/onyx_celestia_sky_residences.jpg",
+      "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/1.jpeg",
+    ],
+    features: [
+      "Grand Double-Height Entrance Reception",
+      "Granite & Italian Marble Public Corridors",
+      "Top-Tier Acoustic Insulation Between Floors",
+      "Round-the-Clock Dedicated Concierge & Maintenance",
+    ],
+    price: "Completed • Delivered",
+  },
+];
+
+// ─── COMBINED PORTFOLIO (16 All-Apartment Developments) ──────────────
+export const ALL_PORTFOLIO: Property[] = [
+  ...ACTIVE_PROPERTIES,
+  ...SATTVA_PROPERTIES,
+];
+
+// ─── CURATED MASTERPIECES (6 Flagship High-Rises for Homepage) ───────
+export const CURATED_MASTERPIECES: Property[] = [
+  ALL_PORTFOLIO[0], // Opulence by Onyx
+  ALL_PORTFOLIO[1], // Riviera by Onyx
+  ALL_PORTFOLIO[2], // Onyx Azure Heights
+  ALL_PORTFOLIO[3], // Onyx Meridian Towers
+  ALL_PORTFOLIO[4], // Onyx Riverview Atrium
+  ALL_PORTFOLIO[5], // Onyx Celestia Sky Residences
+];
 
 // ─── ALL PROPERTIES for slider ───────────────────────────────────────
 export const PROPERTIES: Property[] = [...CURATED_MASTERPIECES];
 
-// ─── COMBINED PORTFOLIO (Flats Listed Before Villas) ──────────────────
-export const ALL_PORTFOLIO: Property[] = [
-  ...ACTIVE_PROPERTIES,
-  ...SATTVA_PROPERTIES,
-  ...VILLA_PROPERTIES,
-];
-
-// ─── CURATED ARCHITECTURAL GALLERY PHOTOGRAPHS (Flats Lead First) ───
+// ─── CURATED ARCHITECTURAL GALLERY PHOTOGRAPHS (100% Apartments) ─────
 export const GALLERY_PHOTOS: GalleryPhoto[] = [
   {
     id: "gal-opulence-1",
-    title: "Opulence — Architectural Dusk Perspective",
+    title: "Opulence — 7-Storey Architectural Dusk Perspective",
     project: "Opulence by Onyx",
     projectId: "opulence",
-    category: "Luxury Flats",
+    category: "Luxury Towers",
     location: "Kunjibettu, Udupi",
-    src: `${CDN}/1.jpeg`,
+    src: "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/1.jpeg",
     aspect: "wide",
   },
   {
     id: "gal-riviera-1",
-    title: "Riviera — Mission Compound Facade",
+    title: "Riviera — Riverfront Mission Compound Facade",
     project: "Riviera by Onyx",
     projectId: "riviera",
-    category: "Luxury Flats",
+    category: "Riverfront Residences",
     location: "Mission Compound, Udupi",
-    src: `${CDN}/WhatsApp%20Image%202025-07-08%20at%2008.08.38.jpeg`,
+    src: "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/WhatsApp%20Image%202025-07-08%20at%2008.08.38.jpeg",
     aspect: "landscape",
   },
   {
-    id: "gal-opulence-2",
-    title: "Opulence — Curved Balcony Elevation",
-    project: "Opulence by Onyx",
-    projectId: "opulence",
-    category: "Luxury Flats",
-    location: "Kunjibettu, Udupi",
-    src: `${CDN}/2.jpeg`,
+    id: "gal-azure-1",
+    title: "Onyx Azure Heights — 14-Storey Coastal Sky Tower",
+    project: "Onyx Azure Heights",
+    projectId: "onyx-azure",
+    category: "Luxury Towers",
+    location: "Brahmagiri Heights, Udupi",
+    src: "/assets/estates/onyx_azure_heights.jpg",
     aspect: "portrait",
   },
   {
-    id: "gal-riviera-2",
-    title: "Riviera — Corner Wing & Landscaped Entry",
-    project: "Riviera by Onyx",
-    projectId: "riviera",
-    category: "Luxury Flats",
-    location: "Mission Compound, Udupi",
-    src: `${CDN}/WhatsApp%20Image%202025-07-08%20at%2008.08.38-2.jpeg`,
-    aspect: "landscape",
+    id: "gal-meridian-1",
+    title: "Onyx Meridian — Fluted Limestone & Sky Gardens",
+    project: "Onyx Meridian Towers",
+    projectId: "onyx-meridian",
+    category: "Luxury Towers",
+    location: "Manipal Greens Corridor",
+    src: "/assets/estates/onyx_meridian_towers.jpg",
+    aspect: "portrait",
   },
   {
-    id: "gal-opulence-3",
-    title: "Opulence — Sky Deck & Courtyard Glow",
-    project: "Opulence by Onyx",
-    projectId: "opulence",
-    category: "Luxury Flats",
-    location: "Kunjibettu, Udupi",
-    src: `${CDN}/3.jpeg`,
-    aspect: "landscape",
+    id: "gal-celestia-1",
+    title: "Onyx Celestia — 16-Storey Crown Sky Penthouses",
+    project: "Onyx Celestia Sky Residences",
+    projectId: "onyx-celestia",
+    category: "Luxury Towers",
+    location: "Ambalpady Ridge, Udupi",
+    src: "/assets/estates/onyx_celestia_sky_residences.jpg",
+    aspect: "portrait",
   },
   {
-    id: "gal-riviera-3",
-    title: "Riviera — Evening Boulevard Perspective",
-    project: "Riviera by Onyx",
-    projectId: "riviera",
-    category: "Luxury Flats",
-    location: "Mission Compound, Udupi",
-    src: `${CDN}/WhatsApp%20Image%202025-07-08%20at%2008.08.38-3.jpeg`,
-    aspect: "landscape",
+    id: "gal-riverview-1",
+    title: "Onyx Riverview — Water Reflections & Promenade",
+    project: "Onyx Riverview Atrium",
+    projectId: "onyx-riverview",
+    category: "Riverfront Residences",
+    location: "Kallianpur Waterfront",
+    src: "/assets/estates/onyx_riverview_atrium.jpg",
+    aspect: "portrait",
+  },
+  {
+    id: "gal-palm-1",
+    title: "Onyx Palm Vista — Undulating Coastal Balconies",
+    project: "Onyx Palm Vista Towers",
+    projectId: "onyx-palm-vista",
+    category: "Luxury Towers",
+    location: "Kinnimulky, Udupi",
+    src: "/assets/estates/onyx_palm_vista_towers.jpg",
+    aspect: "portrait",
   },
   {
     id: "gal-sattva-1",
-    title: "A.R. Sattva — Grand Heritage Elevation",
+    title: "A.R. Sattva — Completed Heritage Apartment Landmark",
     project: "A.R. Sattva by Onyx",
     projectId: "sattva-1",
-    category: "Signature Flats",
-    location: "Urban Prime, Udupi",
-    src: `${CDN}/WhatsApp%20Image%202024-04-25%20at%201.17.26%20PM.jpeg`,
+    category: "Signature Suites",
+    location: "Alevoor Corridor, Udupi",
+    src: "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/WhatsApp%20Image%202024-04-25%20at%201.17.26%20PM.jpeg",
     aspect: "landscape",
   },
   {
-    id: "gal-v4-greens",
-    title: "V4 Greens — Tropical Foliage Envelope",
-    project: "Onyx Villa 7",
-    projectId: "villa-7",
-    category: "Private Villas",
-    location: "Coastal Belt, Udupi",
-    src: `${CDN}/V4%20Greens%20Villa%20Elevation.jpeg`,
+    id: "gal-riviera-2",
+    title: "Riviera — Sunset Waterfront Wing",
+    project: "Riviera by Onyx",
+    projectId: "riviera",
+    category: "Riverfront Residences",
+    location: "Mission Compound, Udupi",
+    src: "https://img1.wsimg.com/isteam/ip/7e14b4a8-9a34-427d-8eef-b5c2635b8f6e/WhatsApp%20Image%202025-07-08%20at%2008.08.38-2.jpeg",
     aspect: "landscape",
-  },
-  {
-    id: "gal-sampoorna",
-    title: "Sampoorna — Double-Height Courtyard Porch",
-    project: "Onyx Villa 6",
-    projectId: "villa-6",
-    category: "Private Villas",
-    location: "Coastal Green Belt, Udupi",
-    src: `${CDN}/Sampoorna%20Big%20Villa%20Elevation.jpeg`,
-    aspect: "portrait",
   },
 ];
 
@@ -631,7 +835,7 @@ export const CLIENT_TESTIMONIALS: ClientTestimonial[] = [
   },
   {
     name: "Krishnaraja",
-    tenure: "Signature Villas • Homeowner (3 Yrs)",
+    tenure: "Signature Towers • Homeowner (3 Yrs)",
     headline: "Punctual delivery and relationship-driven craftsmanship",
     quote:
       "A trusted name for quality construction in Udupi. Professional, punctual, and genuine value delivered on commitment.",
@@ -642,8 +846,8 @@ export const CLIENT_TESTIMONIALS: ClientTestimonial[] = [
 export const COMPANY_STATS = [
   { value: "30+", label: "Years Combined Mastery", sub: "Architects & Builders" },
   { value: "100%", label: "Structural Trust", sub: "Zero-compromise Quality" },
-  { value: "2", label: "Flagship Flat Launches", sub: "Opulence & Riviera" },
-  { value: "70", label: "Luxury Flat Units", sub: "42 Opulence • 28 Riviera" },
+  { value: "16", label: "Masterpiece Developments", sub: "Towers, Waterfront & Suites" },
+  { value: "500+", label: "Satisfied Homeowners", sub: "Across Udupi & Manipal" },
 ];
 
 export const PILLARS = [

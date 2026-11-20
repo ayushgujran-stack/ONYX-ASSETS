@@ -26,9 +26,9 @@ const TIMELINE = [
   },
   {
     year: "2015",
-    title: "The Onyx Villa Enclave Conception",
+    title: "The Luxury High-Rise & Waterfront Conception",
     description:
-      "Acquired prime coastal green belts to develop low-density private sanctuaries. Villas 2 through 12 established a new benchmark for private gated luxury in Udupi.",
+      "Acquired prime coastal and riverfront parcels to develop landmark multi-storey residences. Set new benchmarks for structural excellence and luxury apartment living in Udupi.",
   },
   {
     year: "2023",

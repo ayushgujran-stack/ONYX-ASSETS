@@ -46,26 +46,13 @@ export function ProjectsSlider({ onSelectProperty }: ProjectsSliderProps) {
     margin: "0px 0px -40px 0px",
   });
 
-  // Select curated residences matching the active status tab, always prioritizing flats over villas
+  // Select curated residences matching the active status tab
   const displayedProperties: Property[] = useMemo(() => {
     if (activeTab === "all") {
-      // Feature all 5 flat showcases first, plus 1 villa enclave highlight at the end
-      const flats = CURATED_MASTERPIECES.filter((p) => p.category !== "villa");
-      const villaHighlight = CURATED_MASTERPIECES.filter((p) => p.category === "villa").slice(0, 1);
-      return [...flats, ...villaHighlight];
+      return CURATED_MASTERPIECES.slice(0, 6);
     }
     const matching = ALL_PORTFOLIO.filter((p) => p.projectPhase === activeTab);
-    const flats = matching.filter((p) => p.category !== "villa");
-    const villas = matching.filter((p) => p.category === "villa").slice(0, 1);
-    const ordered = [...flats, ...villas];
-    const seen = new Set<string>();
-    return ordered
-      .filter((p) => {
-        if (seen.has(p.id)) return false;
-        seen.add(p.id);
-        return true;
-      })
-      .slice(0, 6);
+    return matching.slice(0, 6);
   }, [activeTab]);
 
   const cardItems: CardItem[] = useMemo(

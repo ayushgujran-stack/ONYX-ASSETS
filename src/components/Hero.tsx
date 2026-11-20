@@ -220,7 +220,7 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
             y: contentY,
             scale: contentScale,
             opacity: contentOpacity,
-            pointerEvents: contentPointerEvents as any,
+            pointerEvents: contentPointerEvents as unknown as React.CSSProperties["pointerEvents"],
           }}
           className="absolute inset-0 z-[2] h-full flex flex-col items-center justify-center px-6 md:px-12 text-center pb-36 md:pb-48 will-change-transform"
         >
@@ -268,7 +268,7 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
           </div>
         </motion.div>
 
-        {/* Layer 3: High-Res 2.5K Unmasked V4 Greens Villa Cutout */}
+        {/* Layer 3: High-Res 4K Unmasked Opulence Apartment Tower Cutout */}
         {/* Sweeps IN FRONT of the sinking text & buttons, then dissolves leaving only ONYX capture */}
         <motion.div
           style={{
@@ -286,8 +286,8 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
             className="relative shrink-0 w-[195vw] sm:w-[130vw] md:w-[88vw] lg:w-[84vw] max-w-[1360px] h-[76vh] sm:h-[82vh] md:h-[88vh]"
           >
             <Image
-              src="/assets/v4_greens_4k_cutout.png"
-              alt="Onyx V4 Greens Architectural Cutout"
+              src="/assets/opulence_tower_4k_cutout.png"
+              alt="Opulence by Onyx Architectural Apartment Tower Cutout"
               fill
               priority
               quality={95}
@@ -297,7 +297,7 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
           </motion.div>
         </motion.div>
 
-        {/* Layer 4: Masked Copy of V4 Greens Villa (EXACT pixel-locked sibling of Layer 3) */}
+        {/* Layer 4: Masked Copy of Opulence Apartment Tower (EXACT pixel-locked sibling of Layer 3) */}
         {/* Static center viewport mask reveals ONLY the pixels sitting behind the ONYX letters */}
         <motion.div
           style={{
@@ -329,8 +329,8 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
               className="relative shrink-0 w-[195vw] sm:w-[130vw] md:w-[88vw] lg:w-[84vw] max-w-[1360px] h-[76vh] sm:h-[82vh] md:h-[88vh]"
             >
               <Image
-                src="/assets/v4_greens_4k_cutout.png"
-                alt="V4 Greens Architectural Texture Inside ONYX"
+                src="/assets/opulence_tower_4k_cutout.png"
+                alt="Opulence by Onyx Architectural Texture Inside ONYX"
                 fill
                 priority
                 quality={95}

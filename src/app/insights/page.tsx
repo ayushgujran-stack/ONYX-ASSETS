@@ -36,16 +36,16 @@ const ARTICLES: Article[] = [
       "Coastal real estate in prime Udupi pockets has yielded consistent 9-11% annual capital appreciation with near-zero supply dilution due to strict environmental zoning.",
   },
   {
-    id: "villa-vs-highrise",
+    id: "waterfront-vs-skytower",
     category: "Architecture & Design",
-    title: "Private Villa Enclaves vs Landmark Penthouses: What Families Prioritize Today",
+    title: "Waterfront Sanctuaries vs Sky Towers: What Homeowners Prioritize Today",
     readTime: "4 min read",
     date: "October 2026",
     excerpt:
-      "An analytical comparison of high-density serviced luxury at Opulence versus the unfettered autonomy of private estate ownership in the Onyx Villa Enclave (Villas 2 through 12).",
-    image: `${CDN}/Sampoorna%20Big%20Villa%20Elevation.jpeg`,
+      "An analytical study of tranquil waterfront living at Riviera versus the panoramic skyline heights of Opulence and Onyx Celestia.",
+    image: "/assets/estates/onyx_celestia_sky_residences.jpg",
     keyTakeaway:
-      "Modern buyers increasingly demand private lap pools and independent staff suites, while retaining central concierge oversight.",
+      "Discerning homeowners seek uninterrupted natural ventilation, wrap-around sunset sky balconies, and private high-speed elevator access.",
   },
   {
     id: "coastal-engineering",

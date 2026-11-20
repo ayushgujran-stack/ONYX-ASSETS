@@ -23,8 +23,8 @@ interface ConversionDockProps {
 
 const ALL_SELECTABLE_ESTATES = [
   ...ACTIVE_PROPERTIES.map((p) => p.name),
-  "A.R. Sattva Resale Inquiries",
-  "Onyx Villa Enclave (Villas 7–12)",
+  "A.R. Sattva Completed Suites",
+  "Onyx Azure Heights & Meridian Towers",
 ];
 
 export function ConversionDock({

@@ -6,9 +6,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Download, ShieldCheck, Calendar } from "lucide-react";
 import {
   ALL_PORTFOLIO,
-  ACTIVE_PROPERTIES,
-  SATTVA_PROPERTIES,
-  VILLA_PROPERTIES,
   ProjectPhase,
   Property,
 } from "@/data/properties";
@@ -25,21 +22,21 @@ interface PortfolioGridProps {
 }
 
 type StatusFilter = "all" | ProjectPhase;
-type TypeFilter = "all" | "development" | "villa" | "residence";
+type TypeFilter = "all" | "tower" | "riverfront" | "suite";
 
 const STATUS_FILTERS: { key: StatusFilter; label: string }[] = [
   { key: "all", label: "All" },
   { key: "ongoing", label: "Ongoing Projects" },
   { key: "completed", label: "Completed" },
   { key: "pre-launch", label: "Pre-Launch" },
-  { key: "future", label: "Future" },
+  { key: "future", label: "Future Vision" },
 ];
 
 const TYPE_FILTERS: { key: TypeFilter; label: string }[] = [
   { key: "all", label: "All Types" },
-  { key: "development", label: "Luxury Flats" },
-  { key: "residence", label: "Signature Flats" },
-  { key: "villa", label: "Villas 2–12" },
+  { key: "tower", label: "Luxury Towers" },
+  { key: "riverfront", label: "Riverfront Residences" },
+  { key: "suite", label: "Signature Suites" },
 ];
 
 const EXPO_OUT = [0.16, 1, 0.3, 1] as const;
@@ -66,47 +63,17 @@ export function PortfolioGrid({
     }
   }, []);
 
-  // Filtered subsets for organized Editorial Chapters
-  const activeTowers = useMemo(
-    () =>
-      ACTIVE_PROPERTIES.filter((p) => {
-        const matchStatus =
-          statusFilter === "all" || p.projectPhase === statusFilter;
-        const matchType = typeFilter === "all" || p.category === typeFilter;
-        return matchStatus && matchType;
-      }),
-    [statusFilter, typeFilter]
-  );
-
-  const filteredVillas = useMemo(
-    () =>
-      VILLA_PROPERTIES.filter((p) => {
-        const matchStatus =
-          statusFilter === "all" || p.projectPhase === statusFilter;
-        const matchType = typeFilter === "all" || p.category === typeFilter;
-        return matchStatus && matchType;
-      }),
-    [statusFilter, typeFilter]
-  );
-
-  const filteredSattva = useMemo(
-    () =>
-      SATTVA_PROPERTIES.filter((p) => {
-        const matchStatus =
-          statusFilter === "all" || p.projectPhase === statusFilter;
-        const matchType = typeFilter === "all" || p.category === typeFilter;
-        return matchStatus && matchType;
-      }),
-    [statusFilter, typeFilter]
-  );
-
-  const totalMatches =
-    activeTowers.length + filteredVillas.length + filteredSattva.length;
-
-  // Flatten all matching properties so every single estate renders as an editorial spread
+  // Filtered master portfolio for organized Editorial Chapters (all 16 developments)
   const matchingProperties = useMemo(() => {
-    return [...activeTowers, ...filteredSattva, ...filteredVillas];
-  }, [activeTowers, filteredSattva, filteredVillas]);
+    return ALL_PORTFOLIO.filter((p) => {
+      const matchStatus =
+        statusFilter === "all" || p.projectPhase === statusFilter;
+      const matchType = typeFilter === "all" || p.category === typeFilter;
+      return matchStatus && matchType;
+    });
+  }, [statusFilter, typeFilter]);
+
+  const totalMatches = matchingProperties.length;
 
   const scrollToRail = () => {
     const el = document.getElementById("portfolio");

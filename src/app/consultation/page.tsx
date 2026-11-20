@@ -337,8 +337,8 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                           <option value="Opulence by Onyx">Opulence by Onyx (Kunjibettu)</option>
                           <option value="Riviera by Onyx">Riviera by Onyx (Mission Compound)</option>
                           <option value="A.R. Sattva by Onyx">A.R. Sattva Signature Series</option>
-                          <option value="The Onyx Villa Enclave (Villas 2-12)">The Onyx Villa Enclave (Villas 2-12)</option>
-                          <option value="Bespoke Coastal Villa Plot">Bespoke Coastal Villa Plot</option>
+                          <option value="Onyx Azure Heights">Onyx Azure Heights (Coastal High-Rise)</option>
+                          <option value="Onyx Celestia Sky Residences">Onyx Celestia Sky Residences (Penthouse Tower)</option>
                         </select>
                       </div>
 
@@ -448,7 +448,7 @@ ${formData.notes ? `*Client Notes:* ${formData.notes}` : ""}`;
                         </label>
                         <textarea
                           rows={3}
-                          placeholder="E.g. Interested in dual-penthouse configuration at Opulence or private garden sizing for Villa 8..."
+                          placeholder="E.g. Interested in dual-penthouse configuration at Opulence or corner high-rise views at Azure Heights..."
                           value={formData.notes}
                           onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                           className="w-full bg-[#fffdf1] border border-black/10 rounded-xl px-4 py-3.5 text-sm text-[#141416] placeholder-black/30 focus:outline-none focus:border-[#9c8052] transition-colors resize-none"

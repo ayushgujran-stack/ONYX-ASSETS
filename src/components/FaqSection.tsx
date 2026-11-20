@@ -10,12 +10,12 @@ const FAQS = [
   {
     question: "What types of residences are available across Onyx Assets?",
     answer:
-      "We offer a diverse portfolio of luxury residential formats: from newly launched high-rise luxury apartments at Opulence by Onyx (Kunjibettu) and riverfront residences at Riviera by Onyx (Mission Compound), to our signature completed suites at A.R. Sattva and the bespoke private gated Villa Enclave (Villas 2 through 12).",
+      "We offer a diverse portfolio of luxury residential formats: from newly launched high-rise luxury apartment towers at Opulence by Onyx (Kunjibettu) and riverfront residences at Riviera by Onyx (Mission Compound), to our signature completed suites at A.R. Sattva and monumental sky towers across prime Udupi and Manipal.",
   },
   {
     question: "Where are the flagship projects situated in Udupi?",
     answer:
-      "Opulence by Onyx is centrally located in Kunjibettu, offering seamless proximity to central Udupi and Manipal. Riviera by Onyx sits gracefully in Mission Compound along serene water corridors. Our private villa collection is nestled within pristine coastal green belts of Udupi, Karnataka.",
+      "Opulence by Onyx is centrally located in Kunjibettu, offering seamless proximity to central Udupi and Manipal. Riviera by Onyx sits gracefully in Mission Compound along serene water corridors. Our signature residential towers and waterfront suites are situated across prime urban and coastal corridors of Udupi and Manipal.",
   },
   {
     question: "What engineering standards and certifications does Onyx adhere to?",
@@ -25,12 +25,12 @@ const FAQS = [
   {
     question: "How can I obtain the official floor plans and downloadable brochures?",
     answer:
-      "Direct architectural brochures for Opulence and Riviera are available for instant download on this site. You may also schedule a private consultation or request bespoke villa layouts directly through our advisory desk.",
+      "Direct architectural brochures for Opulence and Riviera are available for instant download on this site. You may also schedule a private consultation or request bespoke apartment floor plans and duplex penthouses directly through our advisory desk.",
   },
   {
     question: "What wellness and lifestyle amenities are provided?",
     answer:
-      "Depending on the development, amenities include temperature-controlled infinity pools, rooftop sky lounges with panoramic sunset views, private elevators, fitness pavilions, landscaped meditation gardens, and dedicated EV charging stations.",
+      "Depending on the development, amenities include temperature-controlled rooftop pools, sky lounges with panoramic sunset views, high-speed automated elevators, fitness pavilions, landscaped podium gardens, and dedicated EV charging stations.",
   },
 ];
 

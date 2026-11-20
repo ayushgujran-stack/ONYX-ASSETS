@@ -31,15 +31,15 @@ const EXPO_OUT = [0.16, 1, 0.3, 1] as const;
 
 type GalleryCategory =
   | "All Frames"
-  | "Luxury Flats"
-  | "Signature Flats"
-  | "Private Villas";
+  | "Luxury Towers"
+  | "Riverfront Residences"
+  | "Signature Suites";
 
 const CATEGORIES: GalleryCategory[] = [
   "All Frames",
-  "Luxury Flats",
-  "Signature Flats",
-  "Private Villas",
+  "Luxury Towers",
+  "Riverfront Residences",
+  "Signature Suites",
 ];
 
 export default function GalleryPage() {

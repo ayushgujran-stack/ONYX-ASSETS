@@ -12,20 +12,26 @@ interface ProjectsSliderProps {
 }
 
 export function ProjectsSlider({ onSelectProperty }: ProjectsSliderProps) {
+  // Strictly filter to the 8 delivered / completed residential towers
+  const completedProperties = useMemo(
+    () => ALL_PORTFOLIO.filter((p) => p.projectPhase === "completed"),
+    []
+  );
+
   const cards: CardItem[] = useMemo(
     () =>
-      ALL_PORTFOLIO.slice(0, 10).map((prop) => ({
+      completedProperties.map((prop) => ({
         imgUrl: prop.image,
         alt: prop.name,
         linkUrl: `/estates/${prop.id}`,
         title: prop.name,
-        subtitle: `${prop.location} • ${prop.status}`,
+        subtitle: `${prop.location} • Handed Over`,
       })),
-    []
+    [completedProperties]
   );
 
   const handleCardClick = (_: CardItem, index: number) => {
-    const target = ALL_PORTFOLIO[index];
+    const target = completedProperties[index];
     if (target) {
       onSelectProperty(target);
     }
@@ -33,21 +39,21 @@ export function ProjectsSlider({ onSelectProperty }: ProjectsSliderProps) {
 
   return (
     <section
-      id="projects"
+      id="completed"
       className="py-24 md:py-32 bg-[#dcd9c8] border-t border-dashed border-black/12 relative overflow-clip"
     >
       {/* Warm stone concrete grain — greige variant */}
       <ConcreteTexture variant="greige" />
 
       <div className="max-w-[1720px] mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center">
-        {/* Minimalist Heading — Extra text removed as requested */}
+        {/* Minimalist Heading — Delivered Landmarks */}
         <div className="text-center mb-6 md:mb-10">
           <h2 className="text-4xl sm:text-6xl lg:text-7xl font-serif text-[#141416] font-light tracking-tight">
             <MaskedWords
               segments={[
-                { text: "Architectural " },
+                { text: "Delivered " },
                 {
-                  text: "Excellence",
+                  text: "Landmarks",
                   className: "italic font-normal text-[#9c8052]",
                 },
               ]}
@@ -55,7 +61,7 @@ export function ProjectsSlider({ onSelectProperty }: ProjectsSliderProps) {
           </h2>
         </div>
 
-        {/* Fanned Arc Carousel with Elastic GSAP Physics */}
+        {/* Fanned Arc Carousel with Elastic GSAP Physics for Delivered Masterpieces */}
         <SocialCards cards={cards} onCardClick={handleCardClick} />
       </div>
     </section>

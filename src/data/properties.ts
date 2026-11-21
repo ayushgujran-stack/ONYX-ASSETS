@@ -880,3 +880,59 @@ export const PILLARS = [
       "Reticulated gas infrastructure, deep rainwater harvesting tanks, and cross-ventilated floor plans lower long-term maintenance.",
   },
 ];
+
+// ─── UPCOMING PRE-LAUNCH & HORIZON CONCEPTS (Yet to Come) ───────────
+export interface UpcomingConcept {
+  id: string;
+  name: string;
+  tagline: string;
+  category: "Luxury Towers" | "Riverfront Residences" | "Signature Suites";
+  location: string;
+  horizon: string;
+  status: "Statutory Sanctioning" | "Architectural Design" | "Master-Plan Horizon";
+  description: string;
+  image: string;
+  highlights: string[];
+}
+
+export const UPCOMING_CONCEPTS: UpcomingConcept[] = [
+  {
+    id: "concept-horizon-sky",
+    name: "Onyx Horizon Sky Residences",
+    tagline: "18-Storey Coastal Sky Penthouses with 360° Arabian Sea Panoramas",
+    category: "Luxury Towers",
+    location: "Malpe Coastal Promenade, Udupi",
+    horizon: "Pre-Launch Q1 2027",
+    status: "Statutory Sanctioning",
+    description:
+      "A monumental 18-storey beachfront residential skyscraper designed with wrap-around cantilevered glass sky terraces, private infinity plunge pools, and dual-height penthouse chambers facing the setting sun.",
+    image: "/assets/estates/onyx_celestia_sky_residences.jpg",
+    highlights: ["18 Floors Monumental Elevation", "Private Plunge Pools", "Direct Promenade Access"],
+  },
+  {
+    id: "concept-elysium-heights",
+    name: "Onyx Elysium Heights",
+    tagline: "14-Storey Fluted Limestone Executive Suites on University Ridge",
+    category: "Signature Suites",
+    location: "University Ridge, Manipal",
+    horizon: "Architectural Release Q2 2027",
+    status: "Architectural Design",
+    description:
+      "Elevated fluted stone towers perched on Manipal's premier academic and medical ridge. Incorporates climate-responsive vertical sky gardens, biometric concierge entry, and acoustic triple-glazed floor-to-ceiling windows.",
+    image: "/assets/estates/onyx_meridian_towers.jpg",
+    highlights: ["14 Floors Fluted Limestone", "Vertical Sky Gardens", "Ridge-Line Panoramic Views"],
+  },
+  {
+    id: "concept-aqua-promenade",
+    name: "Onyx Aqua Promenade",
+    tagline: "12-Storey Curvilinear Riverfront Residences on Serene Waters",
+    category: "Riverfront Residences",
+    location: "Swarna River Corridor, Udupi",
+    horizon: "Master-Plan Sanctioning Q3 2027",
+    status: "Master-Plan Horizon",
+    description:
+      "Curvilinear aerodynamic architecture nestled directly along the tranquil Swarna riverbank. Features a private resident boat jetty, riverside boardwalk, elevated lotus pond courtyards, and deep rainwater bioswales.",
+    image: "/assets/estates/onyx_riverview_atrium.jpg",
+    highlights: ["12 Floors Curvilinear Design", "Private Riverside Boardwalk", "Expansive Cantilever Balconies"],
+  },
+];

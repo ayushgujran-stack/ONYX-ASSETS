@@ -23,12 +23,11 @@ export function CustomCursor() {
     const isTouchOnly = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
     if (isTouchOnly) return;
 
-    setIsPointer(true);
-
     // Suppress default OS cursor across all elements
     document.documentElement.classList.add("custom-cursor-active");
 
     const handleMouseMove = (e: MouseEvent) => {
+      setIsPointer(true);
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
       setIsVisible(true);
@@ -39,10 +38,16 @@ export function CustomCursor() {
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
-    // Dynamic hover detection for interactive elements
+    // Dynamic hover detection for interactive elements (fast-path check first)
     const handleOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
+
+      const tag = target.tagName;
+      if (tag === "A" || tag === "BUTTON" || tag === "INPUT" || tag === "SELECT" || tag === "TEXTAREA") {
+        setIsHovered(true);
+        return;
+      }
 
       const interactive = target.closest(
         "a, button, input, select, textarea, [role='button'], [data-cursor-hover], label, option"

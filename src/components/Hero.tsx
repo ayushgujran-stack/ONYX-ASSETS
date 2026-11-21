@@ -290,9 +290,9 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
               alt="Opulence by Onyx Architectural Apartment Tower Cutout"
               fill
               priority
-              quality={95}
+              quality={75}
               sizes="(max-width: 768px) 195vw, 88vw"
-              className="object-contain object-bottom drop-shadow-[0_24px_48px_rgba(0,0,0,0.3)]"
+              className="object-contain object-bottom"
             />
           </motion.div>
         </motion.div>
@@ -333,7 +333,7 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
                 alt="Opulence by Onyx Architectural Texture Inside ONYX"
                 fill
                 priority
-                quality={95}
+                quality={75}
                 sizes="(max-width: 768px) 195vw, 88vw"
                 className="object-contain object-bottom brightness-[1.12] contrast-[1.08] saturate-[1.08]"
               />

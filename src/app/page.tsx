@@ -6,14 +6,10 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { AboutSection } from "@/components/AboutSection";
-import { OngoingSection } from "@/components/OngoingSection";
 import { ProjectsSlider } from "@/components/ProjectsSlider";
+import { OngoingSection } from "@/components/OngoingSection";
 import { UpcomingSection } from "@/components/UpcomingSection";
-import { BeliefsSection } from "@/components/BeliefsSection";
-import { AmenitiesSection } from "@/components/AmenitiesSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
-import { FaqSection } from "@/components/FaqSection";
-import { CtaSection } from "@/components/CtaSection";
 import { Footer } from "@/components/Footer";
 import { ProjectModal } from "@/components/ProjectModal";
 import { ConversionDock } from "@/components/ConversionDock";
@@ -29,7 +25,7 @@ export default function Home() {
     const el = document.getElementById(id);
     if (!el) return;
     if (window.__lenis) {
-      window.__lenis.scrollTo(el, { duration: 1.4 });
+      window.__lenis.scrollTo(el, { duration: 1.2 });
     } else {
       el.scrollIntoView({ behavior: "smooth" });
     }
@@ -40,7 +36,7 @@ export default function Home() {
   };
 
   const handleExploreResidences = () => {
-    scrollToSection("ongoing");
+    scrollToSection("completed");
   };
 
   return (
@@ -58,14 +54,14 @@ export default function Home() {
         {/* About — scrubbed narrative + animated stat counters + sliding parallax image */}
         <AboutSection />
 
-        {/* 1. Ongoing Developments — Architectural Elevation Spotlight */}
-        <OngoingSection
+        {/* 1. Delivered Landmarks — Clean Card Fan Slideshow */}
+        <ProjectsSlider
           onSelectProperty={(prop) => setSelectedProperty(prop)}
           onOpenBookVisit={handleOpenBookVisit}
         />
 
-        {/* 2. Delivered Landmarks — Clean Card Fan Slideshow */}
-        <ProjectsSlider
+        {/* 2. Ongoing Developments — Architectural Elevation Spotlight (kept AFTER Delivered) */}
+        <OngoingSection
           onSelectProperty={(prop) => setSelectedProperty(prop)}
           onOpenBookVisit={handleOpenBookVisit}
         />
@@ -73,20 +69,8 @@ export default function Home() {
         {/* 3. Yet to Come — Deep Charcoal Pre-Launch Horizon Lounge */}
         <UpcomingSection onOpenBookVisit={handleOpenBookVisit} />
 
-        {/* 5 Architectural Beliefs — alternating asymmetric pan-in bands */}
-        <BeliefsSection />
-
-        {/* Curated Amenities — asymmetric dual-photo scrollytelling */}
-        <AmenitiesSection />
-
         {/* Homeowner Voices & Advisory Testimonials */}
         <TestimonialsSection />
-
-        {/* Sticky FAQ Accordion */}
-        <FaqSection />
-
-        {/* Full-Bleed Dark Outro CTA -> /consultation */}
-        <CtaSection />
 
         {/* Minimalist Editorial Footer */}
         <Footer onOpenBookVisit={handleOpenBookVisit} />

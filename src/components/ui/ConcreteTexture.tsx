@@ -14,7 +14,7 @@ export function ConcreteTexture({
 
   // Noise opacity tuned per surface: dark needs brighter overlay, light/greige need barely-there grain
   const noiseOpacity =
-    variant === "dark" ? "opacity-[0.055]" : variant === "greige" ? "opacity-[0.04]" : "opacity-[0.035]";
+    variant === "dark" ? "opacity-[0.06]" : variant === "greige" ? "opacity-[0.045]" : "opacity-[0.035]";
 
   // Formwork seam opacity: lighter on cream surfaces so they don't overpower
   const seamOpacity =
@@ -50,30 +50,15 @@ export function ConcreteTexture({
       aria-hidden="true"
       className={`pointer-events-none absolute inset-0 overflow-hidden select-none z-0 ${className}`}
     >
-      {/* ── Micro-aggregate mineral grain (feTurbulence fractalNoise) ── */}
-      <svg
-        className={`absolute inset-0 w-full h-full ${noiseOpacity}`}
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <filter id={`concrete-grain-${variant}`} colorInterpolationFilters="linearRGB">
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.72"
-            numOctaves="4"
-            stitchTiles="stitch"
-          />
-          <feColorMatrix type="saturate" values="0" />
-        </filter>
-        <rect
-          width="100%"
-          height="100%"
-          filter={`url(#concrete-grain-${variant})`}
-          style={{
-            fill: isDark ? "white" : "black",
-            mixBlendMode: isDark ? "overlay" : "multiply",
-          }}
-        />
-      </svg>
+      {/* ── Micro-aggregate mineral grain (GPU-cached static tile, zero CPU overhead) ── */}
+      <div
+        className={`absolute inset-0 ${noiseOpacity} bg-repeat pointer-events-none`}
+        style={{
+          backgroundImage: "url('/assets/noise-tile.png')",
+          backgroundSize: "128px 128px",
+          mixBlendMode: isDark ? "overlay" : "multiply",
+        }}
+      />
 
       {/* ── Tadao Ando formwork seams: 420 × 260 px poured-slab grid ── */}
       <div

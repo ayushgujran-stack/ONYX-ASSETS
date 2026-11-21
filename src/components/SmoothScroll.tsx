@@ -22,9 +22,9 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     }
 
     const lenis = new Lenis({
-      lerp: 0.085,
+      lerp: 0.09,
       smoothWheel: true,
-      wheelMultiplier: 0.92,
+      wheelMultiplier: 0.95,
       anchors: true,
       autoResize: true,
     });
@@ -32,7 +32,6 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     window.__lenis = lenis;
 
     let rafId = 0;
-    let resizeRaf = 0;
 
     function raf(time: number) {
       lenis.raf(time);
@@ -41,21 +40,15 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
     rafId = requestAnimationFrame(raf);
 
-    const scheduleResize = () => {
-      if (resizeRaf) cancelAnimationFrame(resizeRaf);
-      resizeRaf = requestAnimationFrame(() => lenis.resize());
+    const onResize = () => {
+      lenis.resize();
     };
 
-    const observer = new MutationObserver(scheduleResize);
-    observer.observe(document.documentElement, {
-      childList: true,
-      subtree: true,
-    });
+    window.addEventListener("resize", onResize, { passive: true });
 
     return () => {
       cancelAnimationFrame(rafId);
-      if (resizeRaf) cancelAnimationFrame(resizeRaf);
-      observer.disconnect();
+      window.removeEventListener("resize", onResize);
       lenis.destroy();
       if (window.__lenis === lenis) {
         delete window.__lenis;

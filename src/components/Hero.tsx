@@ -84,11 +84,9 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
   // Background Flanking Skyline Towers: Placed behind, slightly lower (~10%), with depth parallax
   const bgHouseY = useTransform(progress, [0, 0.36, 1], ["42%", "10%", "2%"]);
   const bgHouseScale = useTransform(progress, [0, 0.36, 1], [0.88, 0.98, 1.05]);
-  // Smoothly dissolve as the user approaches the ONYX stencil capture
-  const bgHouseOpacity = useTransform(progress, [0, 0.28, 0.44], [1, 1, 0]);
 
-  // Unmasked full house: visible initially as it rises behind the hollow outline,
-  // then disappears (0.36 -> 0.50) leaving ONLY the portion trapped inside the ONYX mask!
+  // Unmasked full skyline: visible initially as all 3 buildings rise behind the hollow outline,
+  // then disappears (0.36 -> 0.50) leaving ALL THREE BUILDINGS trapped inside the ONYX mask!
   const unmaskedHouseOpacity = useTransform(progress, [0, 0.36, 0.5], [1, 1, 0]);
 
   // Masked copy: sits at identical coordinates and activates smoothly BEFORE unmasked fades out,
@@ -278,7 +276,7 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
         {/* Placed behind the center building, slightly lower, panning in with staggered depth */}
         <motion.div
           style={{
-            opacity: bgHouseOpacity,
+            opacity: unmaskedHouseOpacity,
             y: bgHouseY,
             scale: bgHouseScale,
             transformOrigin: "center bottom",
@@ -351,8 +349,8 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
           </motion.div>
         </motion.div>
 
-        {/* Layer 4: Masked Copy of Opulence Apartment Tower (EXACT pixel-locked sibling of Layer 3) */}
-        {/* Static center viewport mask reveals ONLY the pixels sitting behind the ONYX letters */}
+        {/* Layer 4: Masked Skyline Portfolio (ALL THREE Buildings Framed Inside ONYX Stencil) */}
+        {/* Left tower framed inside 'O', Middle tower framed inside 'N' & 'Y', Right tower framed inside 'X' */}
         <motion.div
           style={{
             opacity: maskedHouseOpacity,
@@ -367,7 +365,53 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
           }}
           className="absolute inset-0 z-[5] pointer-events-none"
         >
-          {/* Identical animated building inside the stationary stencil mask */}
+          {/* Masked Background Flanking Towers (Left in 'O', Right in 'X') */}
+          <motion.div
+            style={{
+              y: bgHouseY,
+              scale: bgHouseScale,
+              transformOrigin: "center bottom",
+            }}
+            className="absolute inset-0 flex items-end justify-center will-change-transform"
+          >
+            {/* Left Flanking Residence Tower inside 'O' */}
+            <motion.div
+              initial={prefersReducedMotion ? false : { opacity: 0, y: "10%" }}
+              animate={{ opacity: 1, y: "0%" }}
+              transition={{ duration: 1.9, delay: 0.28, ease: EXPO_OUT }}
+              className="absolute bottom-0 left-[50%] -translate-x-[108%] sm:-translate-x-[102%] md:-translate-x-[98%] lg:-translate-x-[94%] shrink-0 w-[125vw] sm:w-[90vw] md:w-[62vw] lg:w-[56vw] max-w-[900px] h-[70vh] sm:h-[78vh] md:h-[84vh] will-change-transform pointer-events-none"
+            >
+              <Image
+                src="/assets/skyline_tower_left_cutout.png"
+                alt="Onyx Flanking Left Residence Tower Inside ONYX"
+                fill
+                priority
+                quality={75}
+                sizes="(max-width: 768px) 125vw, 56vw"
+                className="object-contain object-bottom brightness-[1.14] contrast-[1.10] saturate-[1.10]"
+              />
+            </motion.div>
+
+            {/* Right Flanking Residence Tower inside 'X' */}
+            <motion.div
+              initial={prefersReducedMotion ? false : { opacity: 0, y: "10%" }}
+              animate={{ opacity: 1, y: "0%" }}
+              transition={{ duration: 1.9, delay: 0.34, ease: EXPO_OUT }}
+              className="absolute bottom-0 left-[50%] translate-x-[6%] sm:-translate-x-[0%] md:-translate-x-[4%] lg:-translate-x-[8%] shrink-0 w-[125vw] sm:w-[90vw] md:w-[62vw] lg:w-[56vw] max-w-[900px] h-[70vh] sm:h-[78vh] md:h-[84vh] will-change-transform pointer-events-none"
+            >
+              <Image
+                src="/assets/skyline_tower_right_cutout.png"
+                alt="Onyx Flanking Right Residence Tower Inside ONYX"
+                fill
+                priority
+                quality={75}
+                sizes="(max-width: 768px) 125vw, 56vw"
+                className="object-contain object-bottom brightness-[1.14] contrast-[1.10] saturate-[1.10]"
+              />
+            </motion.div>
+          </motion.div>
+
+          {/* Masked Center Opulence Tower (Inside 'N' and 'Y') */}
           <motion.div
             style={{
               y: houseY,
@@ -389,7 +433,7 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
                 priority
                 quality={75}
                 sizes="(max-width: 768px) 195vw, 88vw"
-                className="object-contain object-bottom brightness-[1.12] contrast-[1.08] saturate-[1.08]"
+                className="object-contain object-bottom brightness-[1.14] contrast-[1.10] saturate-[1.10]"
               />
             </motion.div>
           </motion.div>

@@ -81,6 +81,12 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
   const houseY = useTransform(progress, [0, 0.36, 1], ["38%", "4%", "-4%"]);
   const houseScale = useTransform(progress, [0, 0.36, 1], [0.92, 1.08, 1.15]);
 
+  // Background Flanking Skyline Towers: Placed behind, slightly lower (~10%), with depth parallax
+  const bgHouseY = useTransform(progress, [0, 0.36, 1], ["42%", "10%", "2%"]);
+  const bgHouseScale = useTransform(progress, [0, 0.36, 1], [0.88, 0.98, 1.05]);
+  // Smoothly dissolve as the user approaches the ONYX stencil capture
+  const bgHouseOpacity = useTransform(progress, [0, 0.28, 0.44], [1, 1, 0]);
+
   // Unmasked full house: visible initially as it rises behind the hollow outline,
   // then disappears (0.36 -> 0.50) leaving ONLY the portion trapped inside the ONYX mask!
   const unmaskedHouseOpacity = useTransform(progress, [0, 0.36, 0.5], [1, 1, 0]);
@@ -268,6 +274,54 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
           </div>
         </motion.div>
 
+        {/* Layer 2b: Background Skyline Apartment Towers (Left & Right Flanking) */}
+        {/* Placed behind the center building, slightly lower, panning in with staggered depth */}
+        <motion.div
+          style={{
+            opacity: bgHouseOpacity,
+            y: bgHouseY,
+            scale: bgHouseScale,
+            transformOrigin: "center bottom",
+          }}
+          className="absolute inset-0 z-[3] flex items-end justify-center pointer-events-none will-change-transform"
+        >
+          {/* Left Flanking Residence Tower */}
+          <motion.div
+            initial={prefersReducedMotion ? false : { opacity: 0, y: "10%" }}
+            animate={{ opacity: 1, y: "0%" }}
+            transition={{ duration: 1.9, delay: 0.28, ease: EXPO_OUT }}
+            className="absolute bottom-0 left-[50%] -translate-x-[98%] sm:-translate-x-[92%] md:-translate-x-[86%] lg:-translate-x-[82%] shrink-0 w-[125vw] sm:w-[90vw] md:w-[62vw] lg:w-[56vw] max-w-[900px] h-[70vh] sm:h-[78vh] md:h-[84vh] will-change-transform pointer-events-none"
+          >
+            <Image
+              src="/assets/skyline_tower_left_cutout.png"
+              alt="Onyx Flanking Left Residence Tower"
+              fill
+              priority
+              quality={75}
+              sizes="(max-width: 768px) 125vw, 56vw"
+              className="object-contain object-bottom brightness-[0.93] contrast-[0.97] opacity-90"
+            />
+          </motion.div>
+
+          {/* Right Flanking Residence Tower */}
+          <motion.div
+            initial={prefersReducedMotion ? false : { opacity: 0, y: "10%" }}
+            animate={{ opacity: 1, y: "0%" }}
+            transition={{ duration: 1.9, delay: 0.34, ease: EXPO_OUT }}
+            className="absolute bottom-0 left-[50%] -translate-x-[2%] sm:-translate-x-[8%] md:-translate-x-[14%] lg:-translate-x-[18%] shrink-0 w-[125vw] sm:w-[90vw] md:w-[62vw] lg:w-[56vw] max-w-[900px] h-[70vh] sm:h-[78vh] md:h-[84vh] will-change-transform pointer-events-none"
+          >
+            <Image
+              src="/assets/skyline_tower_right_cutout.png"
+              alt="Onyx Flanking Right Residence Tower"
+              fill
+              priority
+              quality={75}
+              sizes="(max-width: 768px) 125vw, 56vw"
+              className="object-contain object-bottom brightness-[0.93] contrast-[0.97] opacity-90"
+            />
+          </motion.div>
+        </motion.div>
+
         {/* Layer 3: High-Res 4K Unmasked Opulence Apartment Tower Cutout */}
         {/* Sweeps IN FRONT of the sinking text & buttons, then dissolves leaving only ONYX capture */}
         <motion.div
@@ -277,7 +331,7 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
             scale: houseScale,
             transformOrigin: "center bottom",
           }}
-          className="absolute inset-0 z-[3] flex items-end justify-center pointer-events-none will-change-transform"
+          className="absolute inset-0 z-[4] flex items-end justify-center pointer-events-none will-change-transform"
         >
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, y: "8%" }}
@@ -311,7 +365,7 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
             maskRepeat: "no-repeat",
             maskSize: "min(82vw, 1040px) calc(min(82vw, 1040px) * 0.32)",
           }}
-          className="absolute inset-0 z-[4] pointer-events-none"
+          className="absolute inset-0 z-[5] pointer-events-none"
         >
           {/* Identical animated building inside the stationary stencil mask */}
           <motion.div
@@ -344,7 +398,7 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
         {/* Layer 5: Crisp Hollow Vector Outline of ONYX (Matches Mask Box Pixel-for-Pixel) */}
         <motion.div
           style={{ opacity: outlineOpacity }}
-          className="absolute inset-0 z-[5] flex items-center justify-center pointer-events-none"
+          className="absolute inset-0 z-[6] flex items-center justify-center pointer-events-none"
         >
           <svg
             viewBox="0 0 1000 320"
@@ -382,7 +436,7 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
         {/* Caption stamped smoothly below the centered ONYX outline */}
         <motion.div
           style={{ opacity: badgeOpacity }}
-          className="absolute inset-x-0 top-[calc(50%+clamp(64px,16vw,185px))] z-[5] flex justify-center px-4 pointer-events-none"
+          className="absolute inset-x-0 top-[calc(50%+clamp(64px,16vw,185px))] z-[6] flex justify-center px-4 pointer-events-none"
         >
           <div className="flex items-center gap-2 sm:gap-3 text-[9px] sm:text-[11px] md:text-xs font-mono uppercase tracking-[0.2em] sm:tracking-[0.35em] whitespace-nowrap text-[#fffdf1] bg-[#141416]/80 backdrop-blur-md px-4 py-2 sm:px-5 sm:py-2.5 rounded border border-white/25 shadow-lg">
             <span>RESIDENCE COLLECTION</span>
@@ -401,7 +455,7 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
             maskImage:
               "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.65) 45%, black 82%, transparent 100%)",
           }}
-          className="absolute -bottom-8 left-0 right-0 h-[34vh] md:h-[42vh] z-[6] pointer-events-none will-change-transform"
+          className="absolute -bottom-8 left-0 right-0 h-[34vh] md:h-[42vh] z-[7] pointer-events-none will-change-transform"
         >
           <Image
             src="/assets/smoke.png"
@@ -417,7 +471,7 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
         {/* Layer 7: Lush Tropical Coastal Bushes & Palms Framing Both Foreground Corners */}
         <motion.div
           style={{ opacity: bushOpacity }}
-          className="absolute inset-0 z-[7] pointer-events-none overflow-hidden"
+          className="absolute inset-0 z-[8] pointer-events-none overflow-hidden"
         >
           {/* Left Bush & Bougainvillea/Palm Cluster */}
           <motion.div
@@ -477,13 +531,13 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
         {/* Layer 8a: Seamless Bottom Blend into Sand Background (#fffdf1) */}
         <motion.div
           style={{ opacity: bottomOverlayOpacity }}
-          className="absolute left-0 right-0 bottom-0 h-44 md:h-64 z-[8] pointer-events-none bg-gradient-to-b from-transparent via-[#fffdf1]/85 to-[#fffdf1]"
+          className="absolute left-0 right-0 bottom-0 h-44 md:h-64 z-[9] pointer-events-none bg-gradient-to-b from-transparent via-[#fffdf1]/85 to-[#fffdf1]"
         />
 
         {/* Layer 8b: Bottom Scroll Cue */}
         <motion.div
           style={{ opacity: cueOpacity }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[8] pointer-events-none"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[9] pointer-events-none"
         >
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}

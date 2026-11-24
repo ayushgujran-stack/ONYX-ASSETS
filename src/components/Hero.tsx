@@ -285,12 +285,12 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
           }}
           className="absolute inset-0 z-[3] flex items-end justify-center pointer-events-none will-change-transform"
         >
-          {/* Left Flanking Residence Tower */}
+          {/* Left Flanking Residence Tower (Flipped towards right, unblocked branding) */}
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, y: "10%" }}
             animate={{ opacity: 1, y: "0%" }}
             transition={{ duration: 1.9, delay: 0.28, ease: EXPO_OUT }}
-            className="absolute bottom-0 left-[50%] -translate-x-[98%] sm:-translate-x-[92%] md:-translate-x-[86%] lg:-translate-x-[82%] shrink-0 w-[125vw] sm:w-[90vw] md:w-[62vw] lg:w-[56vw] max-w-[900px] h-[70vh] sm:h-[78vh] md:h-[84vh] will-change-transform pointer-events-none"
+            className="absolute bottom-0 left-[50%] -translate-x-[108%] sm:-translate-x-[102%] md:-translate-x-[98%] lg:-translate-x-[94%] shrink-0 w-[125vw] sm:w-[90vw] md:w-[62vw] lg:w-[56vw] max-w-[900px] h-[70vh] sm:h-[78vh] md:h-[84vh] will-change-transform pointer-events-none"
           >
             <Image
               src="/assets/skyline_tower_left_cutout.png"
@@ -303,12 +303,12 @@ export function Hero({ onExplore, onBookVisit }: HeroProps) {
             />
           </motion.div>
 
-          {/* Right Flanking Residence Tower */}
+          {/* Right Flanking Residence Tower (Shifted slightly outward so ONYX CELESTIA is fully visible) */}
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, y: "10%" }}
             animate={{ opacity: 1, y: "0%" }}
             transition={{ duration: 1.9, delay: 0.34, ease: EXPO_OUT }}
-            className="absolute bottom-0 left-[50%] -translate-x-[2%] sm:-translate-x-[8%] md:-translate-x-[14%] lg:-translate-x-[18%] shrink-0 w-[125vw] sm:w-[90vw] md:w-[62vw] lg:w-[56vw] max-w-[900px] h-[70vh] sm:h-[78vh] md:h-[84vh] will-change-transform pointer-events-none"
+            className="absolute bottom-0 left-[50%] translate-x-[6%] sm:-translate-x-[0%] md:-translate-x-[4%] lg:-translate-x-[8%] shrink-0 w-[125vw] sm:w-[90vw] md:w-[62vw] lg:w-[56vw] max-w-[900px] h-[70vh] sm:h-[78vh] md:h-[84vh] will-change-transform pointer-events-none"
           >
             <Image
               src="/assets/skyline_tower_right_cutout.png"

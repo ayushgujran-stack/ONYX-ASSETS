@@ -241,12 +241,12 @@ input[type="range"].onyx-range::-moz-range-thumb {
   align-items: center;
   width: 100%;
   max-width: 80rem;
-  height: 22rem;
+  height: 20rem;
 }
 
 @media (min-width: 480px) {
   .fan-layout {
-    height: 26rem;
+    height: 24rem;
   }
 }
 
@@ -270,9 +270,9 @@ input[type="range"].onyx-range::-moz-range-thumb {
 
 .fan-card {
   position: absolute;
-  width: 11.5rem;
-  height: 18.5rem;
-  border-radius: 1.5rem;
+  width: 10.5rem;
+  height: 16.5rem;
+  border-radius: 1.25rem;
   overflow: hidden;
   box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.32);
   transform-origin: center center;
@@ -283,8 +283,8 @@ input[type="range"].onyx-range::-moz-range-thumb {
 
 @media (min-width: 480px) {
   .fan-card {
-    width: 13rem;
-    height: 21rem;
+    width: 12.5rem;
+    height: 19.5rem;
     border-radius: 1.75rem;
   }
 }
@@ -292,7 +292,7 @@ input[type="range"].onyx-range::-moz-range-thumb {
 @media (min-width: 640px) {
   .fan-card {
     width: 14.5rem;
-    height: 23.5rem;
+    height: 23rem;
     border-radius: 2rem;
   }
 }
